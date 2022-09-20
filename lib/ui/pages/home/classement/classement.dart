@@ -12,35 +12,32 @@ class _ClassementState extends State<Classement> {
   var items = List<String>.generate(10000, (i) => 'Item $i');
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-                hintText: 'Recherché un pseudo',
-              )
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      TextField(
+          decoration: InputDecoration(
+        prefixIcon: Icon(Icons.search),
+        border: OutlineInputBorder(),
+        hintText: 'Recherché un pseudo',
+      )),
+      Expanded(
+        child: ListView.builder(
+          itemCount: items.length,
+          prototypeItem: ListTile(
+            title: Text(items.first),
           ),
-          Expanded(child: ListView.builder(
-            itemCount: items.length,
-            prototypeItem: ListTile(
-              title: Text(items.first),
-            ),
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg',
-                  ),
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg',
                 ),
-                title: Text(items[index]),
-                subtitle: Text("Score : "),
-              );
-            },
-          ),
-          ),
-        ]
-    );
+              ),
+              title: Text(items[index]),
+              subtitle: Text("Score : "),
+            );
+          },
+        ),
+      ),
+    ]);
   }
 }

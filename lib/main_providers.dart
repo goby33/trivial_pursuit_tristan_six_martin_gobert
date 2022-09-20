@@ -9,11 +9,8 @@ class MainProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-
-        ],
+      providers: [],
       child: child,
-
     );
   }
 }
