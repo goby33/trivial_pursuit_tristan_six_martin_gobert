@@ -22,9 +22,16 @@ class MyApp extends StatelessWidget {
             routerDelegate: _router.routerDelegate,
             routeInformationProvider: _router.routeInformationProvider,
             debugShowCheckedModeBanner: true,
+            darkTheme: ThemeData(
+
+            ),
             theme: ThemeData(
+              primaryColor: Color.fromRGBO(131, 197, 190, 1),
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
+              textTheme: const TextTheme(
+                headline1: TextStyle( fontSize: 20, fontWeight: FontWeight.bold)
+              )
             ),
           );
         },

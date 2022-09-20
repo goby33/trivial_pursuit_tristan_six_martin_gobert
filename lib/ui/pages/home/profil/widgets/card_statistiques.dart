@@ -24,12 +24,16 @@ class CardStatistiques extends StatelessWidget {
             Icon(
               icon,
               color: colorIcons,
+              size: 30,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(value.toString()),
+                Text(value.toString(), style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),),
                 Text(text),
               ],
             )
