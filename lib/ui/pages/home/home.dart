@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(131, 197, 190, 1),
+      backgroundColor: Theme.of(context).primaryColor,
         title: Text(titlesPage[_pageIndex]),
         elevation: 0,
       ),

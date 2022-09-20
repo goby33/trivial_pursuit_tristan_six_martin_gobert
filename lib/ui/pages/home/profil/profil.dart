@@ -20,14 +20,7 @@ class Profil extends StatelessWidget {
               Container(
                 height: 150,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          //Color.fromRGBO(115,158,130,1),
-                          Color.fromRGBO(131, 197, 190, 1),
-                          Color.fromRGBO(131, 197, 190, 1),
-                        ]),
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(100),
                         bottomRight: Radius.circular(100))),
@@ -49,9 +42,7 @@ class Profil extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 10, left: 15),
           child: Text(
             "Mes Statistiques : ",
-            style: TextStyle(
-              fontSize: 20,
-            ),
+            style: Theme.of(context).textTheme.headline1
           ),
         ),
         Expanded(
@@ -67,7 +58,7 @@ class Profil extends StatelessWidget {
                   text: "fois dans le top 3",
                   value: 1,
                   icon: Icons.emoji_events,
-                  colorIcons: Color.fromARGB(10, 10, 10, 1)),
+                  colorIcons: Color.fromARGB(252, 191, 73, 1)),
               CardStatistiques(
                 text: "question reussites",
                 value: 10,
@@ -78,40 +69,20 @@ class Profil extends StatelessWidget {
                 text: "XP gagnés",
                 value: 1100,
                 icon: Icons.bolt,
-                colorIcons: Color.fromARGB(10, 10, 10, 1),
+                colorIcons: Color.fromARGB(252, 246, 189, 1),
               ),
               CardStatistiques(
                 text: "Jours d'activité",
                 value: 1,
                 icon: Icons.access_alarm,
-                colorIcons: Color.fromARGB(10, 10, 10, 1),
+                colorIcons: Color.fromRGBO(76, 201, 240, 1),
               ),
             ],
           ),
         ),
 
-        /* SizedBox(
-          width: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    "Mes Statistiques : ",
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
 
-              ],
-            ),
-          ),
-        ),*/
-        /*ElevatedButton(
+        ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {
@@ -126,7 +97,7 @@ class Profil extends StatelessWidget {
             print("redirection update profil");
           },
           child: Text("Decconnexion"),
-        )*/
+        )
       ],
     );
   }
