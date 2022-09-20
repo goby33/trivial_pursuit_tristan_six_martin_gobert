@@ -6,12 +6,11 @@ abstract class AppRoutes {
   static const root = '/';
 
   static GoRouter buildRouter() => GoRouter(routes: [
-    GoRoute(
-        path: '/',
-        name: 'home',
-        builder: (context, state) {
-          return Home(
-          );
-        }),
-  ], initialLocation: '/', debugLogDiagnostics: true);
+        GoRoute(
+            path: '/',
+            name: 'home',
+            builder: (context, state) {
+              return Home();
+            }),
+      ], initialLocation: '/', debugLogDiagnostics: true);
 }

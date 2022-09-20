@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CirclePhoto extends StatelessWidget {
-
   CirclePhoto({Key? key, required this.url_photo}) : super(key: key);
 
   final String url_photo;
@@ -16,7 +15,7 @@ class CirclePhoto extends StatelessWidget {
           child: Align(
             alignment: Alignment.bottomRight,
             child: CircleAvatar(
-              backgroundColor: Color.fromRGBO(226, 149, 120,1),
+              backgroundColor: Color.fromRGBO(226, 149, 120, 1),
               radius: 17.0,
               child: Icon(
                 Icons.camera_alt,

@@ -5,7 +5,8 @@ class CardStatistiques extends StatelessWidget {
     required this.text,
     required this.value,
     required this.icon,
-    Key? key, required  this.colorIcons,
+    Key? key,
+    required this.colorIcons,
   }) : super(key: key);
 
   final String text;

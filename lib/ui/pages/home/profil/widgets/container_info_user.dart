@@ -56,18 +56,20 @@ class ContainerInfoUser extends StatelessWidget {
               ),
             ),
           ),
-
-
           ElevatedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
+                (Set<MaterialState> states) {
                   if (states.contains(MaterialState.pressed))
                     return Color.fromRGBO(131, 197, 190, 1);
-                  return Color.fromRGBO(0, 109, 119,1); // Use the component's default.
+                  return Color.fromRGBO(
+                      0, 109, 119, 1); // Use the component's default.
                 },
               ),
-            ), onPressed: () { print("redirection update profil"); },
+            ),
+            onPressed: () {
+              print("redirection update profil");
+            },
             child: Text("Modifier le profil"),
           )
         ],
