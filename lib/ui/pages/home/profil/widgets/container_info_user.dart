@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ContainerInfoUser extends StatelessWidget {
@@ -5,6 +7,7 @@ class ContainerInfoUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
           color: Color.fromRGBO(255, 221, 210, 1),
@@ -56,22 +59,51 @@ class ContainerInfoUser extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed))
-                    return Color.fromRGBO(131, 197, 190, 1);
-                  return Color.fromRGBO(
-                      0, 109, 119, 1); // Use the component's default.
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed))
+                        return Color.fromRGBO(131, 197, 190, 1);
+                      return Color.fromRGBO(
+                          0, 109, 119, 1); // Use the component's default.
+                    },
+                  ),
+                ),
+                onPressed: () {
+                  print("redirection update profil");
                 },
+                child: Text("Modifier le profil"),
               ),
-            ),
-            onPressed: () {
-              print("redirection update profil");
-            },
-            child: Text("Modifier le profil"),
-          )
+              PopupMenuButton (
+                icon: Icon(Icons.settings),
+                itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                  PopupMenuItem (
+                    value: 1,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      leading: Icon(Icons.logout),
+                      title: Text('Log Out'),
+                      onTap: () {
+                        print("deconnexion");
+                      },
+                    ),
+                  ),
+                  const PopupMenuItem (
+                    value: 2,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      leading: Icon(Icons.dark_mode),
+                      title: Text('Dark Mode'),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ],
       ),
     );

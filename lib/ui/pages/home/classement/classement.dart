@@ -12,8 +12,20 @@ class _ClassementState extends State<Classement> {
   var items = List<String>.generate(10000, (i) => 'Item $i');
   @override
   Widget build(BuildContext context) {
+
+
+
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TextField(
+          onChanged: (text) {
+            print(text);
+           /*items.where((element) {
+             final itemPseudo = items.pseudo.toLowerCase();
+             final inputSearch = text.toLowerCase();
+             return itemPseudo.contains(inputSearch);
+           }).toList();
+           setState(() => items = itemPseudo);*/
+          },
           decoration: InputDecoration(
         prefixIcon: Icon(Icons.search),
         border: OutlineInputBorder(),
@@ -40,4 +52,5 @@ class _ClassementState extends State<Classement> {
       ),
     ]);
   }
+
 }

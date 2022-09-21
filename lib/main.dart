@@ -15,27 +15,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    return  Builder(
-        builder: (context) {
-          return MaterialApp.router(
-            routeInformationParser: _router.routeInformationParser,
-            routerDelegate: _router.routerDelegate,
-            routeInformationProvider: _router.routeInformationProvider,
-            debugShowCheckedModeBanner: true,
-            darkTheme: ThemeData(
-
-            ),
-            theme: ThemeData(
+    return Builder(
+      builder: (context) {
+        return MaterialApp.router(
+          routeInformationParser: _router.routeInformationParser,
+          routerDelegate: _router.routerDelegate,
+          routeInformationProvider: _router.routeInformationProvider,
+          debugShowCheckedModeBanner: true,
+          darkTheme: ThemeData(),
+          theme: ThemeData(
               primaryColor: Color.fromRGBO(131, 197, 190, 1),
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
               textTheme: const TextTheme(
-                headline1: TextStyle( fontSize: 20, fontWeight: FontWeight.bold)
-              )
-            ),
-          );
-        },
+                  headline1:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+        );
+      },
     );
   }
 }

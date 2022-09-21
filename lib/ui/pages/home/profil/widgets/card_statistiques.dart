@@ -31,10 +31,10 @@ class CardStatistiques extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(value.toString(), style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20
-                ),),
+                Text(
+                  value.toString(),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
                 Text(text),
               ],
             )

@@ -40,10 +40,8 @@ class Profil extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(bottom: 10, left: 15),
-          child: Text(
-            "Mes Statistiques : ",
-            style: Theme.of(context).textTheme.headline1
-          ),
+          child: Text("Mes Statistiques : ",
+              style: Theme.of(context).textTheme.headline1),
         ),
         Expanded(
           child: GridView.count(
@@ -80,24 +78,6 @@ class Profil extends StatelessWidget {
             ],
           ),
         ),
-
-
-        ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-              (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return Color.fromRGBO(131, 197, 190, 1);
-                return Color.fromRGBO(
-                    0, 109, 119, 1); // Use the component's default.
-              },
-            ),
-          ),
-          onPressed: () {
-            print("redirection update profil");
-          },
-          child: Text("Decconnexion"),
-        )
       ],
     );
   }
