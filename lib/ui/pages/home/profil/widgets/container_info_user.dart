@@ -1,13 +1,18 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
-class ContainerInfoUser extends StatelessWidget {
+import '../../../../../theme/theme_service.dart';
+
+class ContainerInfoUser extends StatefulWidget {
   ContainerInfoUser({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<ContainerInfoUser> createState() => _ContainerInfoUserState();
+}
 
+class _ContainerInfoUserState extends State<ContainerInfoUser> {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: Color.fromRGBO(255, 221, 210, 1),
@@ -65,7 +70,7 @@ class ContainerInfoUser extends StatelessWidget {
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
+                    (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
                         return Color.fromRGBO(131, 197, 190, 1);
                       return Color.fromRGBO(
@@ -78,21 +83,25 @@ class ContainerInfoUser extends StatelessWidget {
                 },
                 child: Text("Modifier le profil"),
               ),
-              PopupMenuButton (
+              PopupMenuButton<int>(
+                onSelected: (value) {
+                  if (value == 1) {
+                    print("deconnexion");
+                  } else {
+                    ThemeService().switchTheme();
+                  }
+                },
                 icon: Icon(Icons.settings),
-                itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                  PopupMenuItem (
+                itemBuilder: (BuildContext context) => [
+                  PopupMenuItem(
                     value: 1,
                     child: ListTile(
                       contentPadding: EdgeInsets.all(0),
                       leading: Icon(Icons.logout),
                       title: Text('Log Out'),
-                      onTap: () {
-                        print("deconnexion");
-                      },
                     ),
                   ),
-                  const PopupMenuItem (
+                  PopupMenuItem(
                     value: 2,
                     child: ListTile(
                       contentPadding: EdgeInsets.all(0),
@@ -101,7 +110,7 @@ class ContainerInfoUser extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],

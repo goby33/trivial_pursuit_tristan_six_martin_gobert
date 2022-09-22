@@ -4,9 +4,14 @@ import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/card_statistiqu
 import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/circle_photo.dart';
 import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/container_info_user.dart';
 
-class Profil extends StatelessWidget {
+class Profil extends StatefulWidget {
   Profil({Key? key}) : super(key: key);
 
+  @override
+  State<Profil> createState() => _ProfilState();
+}
+
+class _ProfilState extends State<Profil> {
   @override
   Widget build(BuildContext context) {
     return Column(
