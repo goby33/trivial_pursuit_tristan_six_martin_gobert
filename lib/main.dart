@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:trivial_pursuit_app/theme/my_theme.dart';
+import 'package:trivial_pursuit_app/theme/theme_service.dart';
 import 'package:trivial_pursuit_app/ui/routes/app_routes.dart';
 
-import 'main_providers.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+
+Future<void> main() async {
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -15,27 +20,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    return  Builder(
-        builder: (context) {
-          return MaterialApp.router(
-            routeInformationParser: _router.routeInformationParser,
-            routerDelegate: _router.routerDelegate,
-            routeInformationProvider: _router.routeInformationProvider,
-            debugShowCheckedModeBanner: true,
-            darkTheme: ThemeData(
-
-            ),
-            theme: ThemeData(
-              primaryColor: Color.fromRGBO(131, 197, 190, 1),
-              primarySwatch: Colors.blue,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-              textTheme: const TextTheme(
-                headline1: TextStyle( fontSize: 20, fontWeight: FontWeight.bold)
-              )
-            ),
-          );
-        },
+    return Builder(
+      builder: (context) {
+        return GetMaterialApp.router(
+          routeInformationParser: _router.routeInformationParser,
+          routerDelegate: _router.routerDelegate,
+          routeInformationProvider: _router.routeInformationProvider,
+          debugShowCheckedModeBanner: true,
+          darkTheme: MyTheme.dark,
+          theme: MyTheme.light,
+          themeMode: ThemeService().theme,
+        );
+      },
     );
   }
 }

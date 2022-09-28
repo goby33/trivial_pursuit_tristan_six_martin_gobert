@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardStatistiques extends StatelessWidget {
-  CardStatistiques({
+  const CardStatistiques({
     required this.text,
     required this.value,
     required this.icon,
@@ -16,30 +16,28 @@ class CardStatistiques extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              icon,
-              color: colorIcons,
-              size: 30,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(value.toString(), style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20
-                ),),
-                Text(text),
-              ],
-            )
-          ],
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Icon(
+            icon,
+            color: colorIcons,
+            size: 30,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                value.toString(),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              Text(text),
+            ],
+          )
+        ],
       ),
     );
   }
