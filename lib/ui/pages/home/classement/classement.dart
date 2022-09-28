@@ -12,14 +12,11 @@ class _ClassementState extends State<Classement> {
   var items = List<String>.generate(10000, (i) => 'Item $i');
   @override
   Widget build(BuildContext context) {
-
-
-
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TextField(
           onChanged: (text) {
             print(text);
-           /*items.where((element) {
+            /*items.where((element) {
              final itemPseudo = items.pseudo.toLowerCase();
              final inputSearch = text.toLowerCase();
              return itemPseudo.contains(inputSearch);
@@ -27,10 +24,10 @@ class _ClassementState extends State<Classement> {
            setState(() => items = itemPseudo);*/
           },
           decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search),
-        border: OutlineInputBorder(),
-        hintText: 'Recherché un pseudo',
-      )),
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(),
+            hintText: 'Recherché un pseudo',
+          )),
       Expanded(
         child: ListView.builder(
           itemCount: items.length,
@@ -52,5 +49,4 @@ class _ClassementState extends State<Classement> {
       ),
     ]);
   }
-
 }

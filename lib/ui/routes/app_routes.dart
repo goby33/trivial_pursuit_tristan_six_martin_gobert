@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../pages/home/home.dart';
+import '../pages/login/login.dart';
 
 abstract class AppRoutes {
   static const root = '/';
@@ -12,5 +13,11 @@ abstract class AppRoutes {
             builder: (context, state) {
               return Home();
             }),
-      ], initialLocation: '/', debugLogDiagnostics: true);
+        GoRoute(
+            path: '/login',
+            name: 'login',
+            builder: (context, state) {
+              return Login();
+            }),
+      ], initialLocation: '/login', debugLogDiagnostics: true);
 }

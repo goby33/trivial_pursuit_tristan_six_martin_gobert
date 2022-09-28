@@ -106,7 +106,7 @@ class _ContainerInfoUserState extends State<ContainerInfoUser> {
                     child: ListTile(
                       contentPadding: EdgeInsets.all(0),
                       leading: Icon(Icons.dark_mode),
-                      title: Text('Dark Mode'),
+                      title: Text(ThemeService().getStringTheme()),
                     ),
                   ),
                 ],

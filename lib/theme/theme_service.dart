@@ -17,4 +17,10 @@ class ThemeService {
     Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
     _saveThemeToBox(!_loadThemeFromBox());
   }
+
+  get key => _key;
+
+  String getStringTheme() {
+    return (this.theme != ThemeMode.dark) ? "Dark Theme" : "Light Theme";
+  }
 }
