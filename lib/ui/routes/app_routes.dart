@@ -11,13 +11,13 @@ abstract class AppRoutes {
             path: '/',
             name: 'home',
             builder: (context, state) {
-              return Home();
+              return const Home();
             }),
         GoRoute(
             path: '/login',
             name: 'login',
             builder: (context, state) {
-              return Login();
+              return const Login();
             }),
       ], initialLocation: '/login', debugLogDiagnostics: true);
 }

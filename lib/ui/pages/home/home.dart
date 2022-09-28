@@ -4,7 +4,7 @@ import 'package:trivial_pursuit_app/ui/pages/home/jeux/jeux.dart';
 import 'package:trivial_pursuit_app/ui/pages/home/profil/profil.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() {
@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _pageIndex = 0;
 
-  final pages = [Jeux(), Profil(), Classement()];
+  final pages = [Jeux(), Profil(), const Classement()];
 
   final titlesPage = ["Jeux", "Profil", "Classement"];
   @override
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
         onTap: _onItemTapped,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.smart_screen),
             label: 'Jeux',

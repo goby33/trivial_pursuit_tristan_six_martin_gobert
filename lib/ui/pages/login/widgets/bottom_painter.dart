@@ -12,7 +12,7 @@ class BottomPainter extends CustomPainter {
     // Path number 1
 
 
-    paint.color = Color.fromRGBO(131, 197, 190, 1);
+    paint.color = const Color.fromRGBO(131, 197, 190, 1);
     path = Path();
     path.lineTo(size.width, size.height * 0.03);
     path.cubicTo(size.width * 0.89, -0.03, size.width * 0.75, 0, size.width * 0.67, size.height * 0.13);

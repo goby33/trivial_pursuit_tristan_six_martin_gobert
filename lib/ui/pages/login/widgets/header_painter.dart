@@ -8,7 +8,7 @@ class HeaderPainter extends CustomPainter {
 
     // Path number 1
 
-    paint.color = Color.fromRGBO(131, 197, 190, 1);
+    paint.color = const Color.fromRGBO(131, 197, 190, 1);
     path = Path();
     path.lineTo(0, 0);
     path.cubicTo(0, 0, 0, size.height, 0, size.height);

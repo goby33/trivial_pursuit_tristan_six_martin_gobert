@@ -5,7 +5,7 @@ import 'package:trivial_pursuit_app/ui/pages/login/widgets/header_painter.dart';
 import 'package:trivial_pursuit_app/ui/pages/login/widgets/login_form.dart';
 
 class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
                   width: MediaQuery.of(context).size.width, height: 200),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 220,
             left: 200,
             child: Text(
@@ -39,11 +39,11 @@ class Login extends StatelessWidget {
               child: LoginForm(),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 530,
             right: 70,
             child: Text(
-              "Forgort ? ",
+              "Forgot ? ",
               style: TextStyle(
                 fontSize: 18,
                 fontStyle: FontStyle.italic,
@@ -61,15 +61,15 @@ class Login extends StatelessWidget {
               },
               child: Container(
 
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 15,
                   left: 30,
                   bottom: 15,
                   right: 15,
                 ),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(172, 221, 231, 1),
-                  borderRadius: BorderRadius.only(
+                  color: const Color.fromRGBO(172, 221, 231, 1),
+                  borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(30),
                     bottomRight: Radius.circular(30),
                   ),
@@ -78,11 +78,11 @@ class Login extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                 ),
-                child: Text(
+                child: const Text(
                   "Register",
                   style: TextStyle(
                     fontSize: 20,

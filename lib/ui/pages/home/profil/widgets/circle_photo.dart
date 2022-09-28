@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CirclePhoto extends StatelessWidget {
-  CirclePhoto({Key? key, required this.url_photo}) : super(key: key);
+  const CirclePhoto({Key? key, required this.urlPhoto}) : super(key: key);
 
-  final String url_photo;
+  final String urlPhoto;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,11 @@ class CirclePhoto extends StatelessWidget {
         radius: 70.0,
         backgroundColor: Colors.brown,
         child: CircleAvatar(
-          child: Align(
+          radius: 68.0,
+          backgroundImage: NetworkImage(
+            urlPhoto,
+          ),
+          child: const Align(
             alignment: Alignment.bottomRight,
             child: CircleAvatar(
               backgroundColor: Color.fromRGBO(226, 149, 120, 1),
@@ -23,10 +27,6 @@ class CirclePhoto extends StatelessWidget {
                 color: Color(0xFF404040),
               ),
             ),
-          ),
-          radius: 68.0,
-          backgroundImage: NetworkImage(
-            url_photo,
           ),
         ),
       ),

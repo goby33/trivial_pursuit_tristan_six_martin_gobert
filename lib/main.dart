@@ -6,7 +6,6 @@ import 'package:trivial_pursuit_app/ui/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'main_providers.dart';
 
 Future<void> main() async {
   await GetStorage.init();
