@@ -82,13 +82,18 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: const Text(
-                  "Register",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color.fromRGBO(183, 68, 184, 1),
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push("/subscription");
+                  },
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromRGBO(183, 68, 184, 1),
+                    ),
                   ),
-                ),
+                )
               ),
             ),
           ),
