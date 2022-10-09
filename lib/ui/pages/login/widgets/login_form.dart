@@ -19,44 +19,42 @@ class LoginForm extends StatelessWidget {
               right: 60,
               bottom: 5,
             ),
-              width: 350,
-              height: 150,
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(255, 221, 210, 1),
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3), // changes position of shadow
-                  ),
-                ],
+            width: 350,
+            height: 150,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 221, 210, 1),
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(40),
+                bottomRight: Radius.circular(40),
               ),
-              child: Column(
-                children: const [
-                  TextField(
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: 'User',
-                      icon: Icon(Icons.person),
-                      focusColor: Color.fromRGBO(163, 121, 201, 1),
-                      fillColor: Color.fromRGBO(163, 121, 201, 1),
-                      hoverColor: Color.fromRGBO(163, 121, 201, 1)
-                    ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Column(
+              children: const [
+                TextField(
+                  style: TextStyle(color: Colors.white),
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: 'User',
+                    icon: Icon(Icons.person),
+                    iconColor: Colors.green,
                   ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                        icon: Icon(Icons.lock)
-                    ),
-                  ),
-                ],
-              )),
+                ),
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      labelText: 'Password', icon: Icon(Icons.lock)),
+                ),
+              ],
+            ),
+          ),
         ),
         Positioned(
           right: 40,
