@@ -7,7 +7,7 @@ class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() {
+  State<Home> createState() {
     return _HomeState();
   }
 }
@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _pageIndex = 0;
 
-  final pages = [Jeux(), Profil(), const Classement()];
+  final pages = [const Jeux(), const Profil(), const Classement()];
 
   final titlesPage = ["Jeux", "Profil", "Classement"];
   @override

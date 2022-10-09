@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_app/ui/pages/login/widgets/bottom_painter.dart';
-import 'package:trivial_pursuit_app/ui/pages/login/widgets/header_painter.dart';
+import 'package:trivial_pursuit_app/ui/widgets/bottom_painter.dart';
+import 'package:trivial_pursuit_app/ui/widgets/header_painter.dart';
 import 'package:trivial_pursuit_app/ui/pages/login/widgets/login_form.dart';
 
 class Login extends StatelessWidget {
@@ -10,6 +10,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(233, 236, 239, 1),
       body: Stack(
         children: <Widget>[
           Align(
@@ -36,7 +37,7 @@ class Login extends StatelessWidget {
             top: 350,
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: LoginForm(),
+              child: const LoginForm(),
             ),
           ),
           const Positioned(

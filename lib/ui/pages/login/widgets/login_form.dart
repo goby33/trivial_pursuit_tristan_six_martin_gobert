@@ -18,7 +18,6 @@ class LoginForm extends StatelessWidget {
               left: 10,
               right: 60,
               bottom: 5,
-
             ),
               width: 350,
               height: 150,

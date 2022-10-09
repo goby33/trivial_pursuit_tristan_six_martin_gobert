@@ -21,7 +21,7 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.4'
+          flutter-version: '3.3.2'
           channel: 'stable'
       - name: Flutter build web
         env:
