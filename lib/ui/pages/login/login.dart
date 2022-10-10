@@ -57,7 +57,7 @@ class Login extends StatelessWidget {
             left: 0,
             child: GestureDetector(
               onTap: () {
-                GoRouter.of(context).push("/");
+                GoRouter.of(context).push("/subscription");
               },
               child: Container(
 
@@ -82,11 +82,7 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: GestureDetector(
-                  onTap: () {
-                    GoRouter.of(context).push("/subscription");
-                  },
-                  child: const Text(
+                child: const Text(
                     "Register",
                     style: TextStyle(
                       fontSize: 20,
@@ -96,7 +92,6 @@ class Login extends StatelessWidget {
                 )
               ),
             ),
-          ),
           Align(
             alignment: Alignment.bottomLeft,
             child: CustomPaint(
