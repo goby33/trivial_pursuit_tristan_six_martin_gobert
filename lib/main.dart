@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trivial_pursuit_app/theme/my_theme.dart';
 import 'package:trivial_pursuit_app/theme/theme_service.dart';
@@ -6,9 +7,13 @@ import 'package:trivial_pursuit_app/ui/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'firebase_options.dart';
 
 Future<void> main() async {
   await GetStorage.init();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 

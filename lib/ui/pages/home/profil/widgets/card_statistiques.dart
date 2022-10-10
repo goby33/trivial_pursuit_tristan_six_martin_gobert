@@ -32,7 +32,8 @@ class CardStatistiques extends StatelessWidget {
             children: [
               Text(
                 value.toString(),
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               Text(text),
             ],

@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static final light = ThemeData.light().copyWith(
     backgroundColor: Colors.black,
-    primaryColor: Color.fromRGBO(131, 197, 190, 1),
+    primaryColor: const Color.fromRGBO(131, 197, 190, 1),
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: Colors.red,
-      selectionColor: Colors.cyan
-    ),
-    inputDecorationTheme: InputDecorationTheme(
+    textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: Colors.red, selectionColor: Colors.cyan),
+    inputDecorationTheme: const InputDecorationTheme(
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.red),
       ),
