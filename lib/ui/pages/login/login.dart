@@ -57,41 +57,41 @@ class Login extends StatelessWidget {
             top: 600,
             left: 0,
             child: GestureDetector(
-              onTap: () {
-                GoRouter.of(context).push("/subscription");
-              },
-              child: Container(
-                padding: const EdgeInsets.only(
-                  top: 15,
-                  left: 30,
-                  bottom: 15,
-                  right: 15,
-                ),
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(172, 221, 231, 1),
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
+                onTap: () {
+                  GoRouter.of(context).push("/subscription");
+                },
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                    left: 30,
+                    bottom: 15,
+                    right: 15,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(172, 221, 231, 1),
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
                     ),
-                  ],
-                ),
-                child: const Text(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: const Text(
                     "Register",
                     style: TextStyle(
                       fontSize: 20,
                       color: Color.fromRGBO(183, 68, 184, 1),
                     ),
                   ),
-                )
-              ),
-            ),
+                )),
+          ),
           Align(
             alignment: Alignment.bottomLeft,
             child: CustomPaint(

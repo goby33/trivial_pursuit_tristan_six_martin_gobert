@@ -21,10 +21,10 @@ abstract class AppRoutes {
               return const Login();
             }),
         GoRoute(
-          path: '/subscription',
-          name: 'subscription',
-          builder: (context, state) {
-            return const subscription();
-          }),
+            path: '/subscription',
+            name: 'subscription',
+            builder: (context, state) {
+              return const Subscription();
+            }),
       ], initialLocation: '/login', debugLogDiagnostics: true);
 }

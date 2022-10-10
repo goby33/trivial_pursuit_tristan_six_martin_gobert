@@ -1,18 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../login/widgets/bottom_painter.dart';
-import '../login/widgets/header_painter.dart';
+import '../../widgets/bottom_painter.dart';
+import '../../widgets/header_painter.dart';
 
-class subscription extends StatefulWidget {
-  const subscription({Key? key}) : super(key: key);
+class Subscription extends StatefulWidget {
+  const Subscription({Key? key}) : super(key: key);
 
   @override
-  State<subscription> createState() => _subscriptionState();
+  State<Subscription> createState() => _SubscriptionState();
 }
 
-class _subscriptionState extends State<subscription> {
+class _SubscriptionState extends State<Subscription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,24 +41,22 @@ class _subscriptionState extends State<subscription> {
             top: 350,
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(),
-                          hintText: 'Entrer un pseudo',
-                        )
-                    ),
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(),
+                      hintText: 'Entrer un pseudo',
+                    )),
                     TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(),
-                          hintText: 'Entrer un mot de passe',
-                        )
-                    ),
-                  ]
-              ),
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(),
+                      hintText: 'Entrer un mot de passe',
+                    )),
+                  ]),
             ),
           ),
           Positioned(
