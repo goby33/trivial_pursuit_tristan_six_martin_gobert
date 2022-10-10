@@ -26,8 +26,8 @@ class _SubscriptionState extends State<Subscription> {
             ),
           ),
           const Positioned(
-            top: 220,
-            left: 200,
+            top: 300,
+            left: 75,
             child: Text(
               "Subscription",
               style: TextStyle(
@@ -46,16 +46,22 @@ class _SubscriptionState extends State<Subscription> {
                   children: const [
                     TextField(
                         decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: Icon(Icons.account_circle),
                       border: OutlineInputBorder(),
                       hintText: 'Entrer un pseudo',
                     )),
                     TextField(
                         decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: Icon(Icons.account_balance),
                       border: OutlineInputBorder(),
-                      hintText: 'Entrer un mot de passe',
+                      hintText: 'Entrer un email',
                     )),
+                    TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.abc),
+                          border: OutlineInputBorder(),
+                          hintText: 'Entrer un mot de passe',
+                        )),
                   ]),
             ),
           ),
