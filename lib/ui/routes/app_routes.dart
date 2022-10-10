@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../pages/home/home.dart';
 import '../pages/login/login.dart';
+import '../pages/subscription/subscription.dart';
 
 abstract class AppRoutes {
   static const root = '/';
@@ -18,6 +19,12 @@ abstract class AppRoutes {
             name: 'login',
             builder: (context, state) {
               return const Login();
+            }),
+        GoRoute(
+            path: '/subscription',
+            name: 'subscription',
+            builder: (context, state) {
+              return const Subscription();
             }),
       ], initialLocation: '/login', debugLogDiagnostics: true);
 }
