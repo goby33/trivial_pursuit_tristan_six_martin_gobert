@@ -9,16 +9,16 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - name: Add SSH key
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          mkdir -p /home/runner/.ssh
-          ssh-keyscan github.com >> /home/runner/.ssh/known_hosts
-          echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
-          chmod 600 /home/runner/.ssh/github_actions
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null   
-          ssh-add /home/runner/.ssh/github_actions
+#      - name: Add SSH key
+#        env:
+#          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+#        run: |
+#          mkdir -p /home/runner/.ssh
+#          ssh-keyscan github.com >> /home/runner/.ssh/known_hosts
+#          echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
+#          chmod 600 /home/runner/.ssh/github_actions
+#          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+#          ssh-add /home/runner/.ssh/github_actions
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.3.2'
@@ -31,5 +31,4 @@ jobs:
           flutter pub get
           flutter format --set-exit-if-changed .
           flutter analyze
-          flutter test test/data test/integration_test test/ui
           flutter build web

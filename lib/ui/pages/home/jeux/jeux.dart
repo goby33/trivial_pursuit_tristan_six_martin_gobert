@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class Jeux extends StatefulWidget {
   const Jeux({Key? key}) : super(key: key);
 
-
   @override
-  State<Jeux> createState() { // Avoid using private types in public APIs.
+  State<Jeux> createState() {
+    // Avoid using private types in public APIs.
     return _JeuxState();
   }
 }

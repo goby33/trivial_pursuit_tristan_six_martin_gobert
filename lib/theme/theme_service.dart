@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 
 class ThemeService {
@@ -13,7 +13,6 @@ class ThemeService {
   _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
 
   void switchTheme() {
-    print("switch theme");
     Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
     _saveThemeToBox(!_loadThemeFromBox());
   }
@@ -21,6 +20,6 @@ class ThemeService {
   get key => _key;
 
   String getStringTheme() {
-    return (this.theme != ThemeMode.dark) ? "Dark Theme" : "Light Theme";
+    return (theme != ThemeMode.dark) ? "Dark Theme" : "Light Theme";
   }
 }
