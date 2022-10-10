@@ -6,7 +6,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    var widthPage = MediaQuery.of(context).size.width;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -14,13 +14,12 @@ class LoginForm extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Container(
             padding: const EdgeInsets.only(
-              top: 5,
               left: 10,
-              right: 60,
-              bottom: 5,
+              right: 30,
+              bottom: 10,
             ),
-            width: 350,
-            height: 150,
+            width: widthPage * 0.8,
+            height: widthPage * 0.35,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(255, 221, 210, 1),
               borderRadius: const BorderRadius.only(
@@ -37,9 +36,11 @@ class LoginForm extends StatelessWidget {
               ],
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
                 TextField(
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 15),
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: 'User',
@@ -48,6 +49,7 @@ class LoginForm extends StatelessWidget {
                   ),
                 ),
                 TextField(
+                  style: TextStyle(fontSize: 15),
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Password', icon: Icon(Icons.lock)),
@@ -57,16 +59,16 @@ class LoginForm extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: 40,
-          top: 40,
+          right: widthPage * 0.09,
+          top: 45,
           child: GestureDetector(
             onTap: () {
               GoRouter.of(context).push("/");
             },
-            child: const CircleAvatar(
-              minRadius: 40,
-              backgroundColor: Color.fromRGBO(0, 109, 119, 1),
-              child: Icon(
+            child: CircleAvatar(
+              minRadius: widthPage * 0.09,
+              backgroundColor: const Color.fromRGBO(0, 109, 119, 1),
+              child: const Icon(
                 Icons.arrow_forward,
                 size: 40,
               ),

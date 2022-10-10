@@ -15,6 +15,7 @@ class _SubscriptionState extends State<Subscription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
           Align(
@@ -58,10 +59,10 @@ class _SubscriptionState extends State<Subscription> {
                     )),
                     TextField(
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.abc),
-                          border: OutlineInputBorder(),
-                          hintText: 'Entrer un mot de passe',
-                        )),
+                      prefixIcon: Icon(Icons.abc),
+                      border: OutlineInputBorder(),
+                      hintText: 'Entrer un mot de passe',
+                    )),
                   ]),
             ),
           ),

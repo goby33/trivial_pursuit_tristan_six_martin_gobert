@@ -9,7 +9,10 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var heightPage = MediaQuery.of(context).size.height;
+    var widthPage = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(233, 236, 239, 1),
       body: Stack(
         children: <Widget>[
@@ -17,14 +20,13 @@ class Login extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: CustomPaint(
               painter: HeaderPainter(),
-              child: SizedBox(
-                  width: MediaQuery.of(context).size.width, height: 200),
+              child: SizedBox(width: widthPage, height: heightPage * 0.3),
             ),
           ),
-          const Positioned(
-            top: 220,
-            left: 200,
-            child: Text(
+          Positioned(
+            top: heightPage * 0.30,
+            left: 160,
+            child: const Text(
               "Login",
               style: TextStyle(
                 fontSize: 40,
@@ -34,16 +36,16 @@ class Login extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 350,
+            top: heightPage * 0.45,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width,
+              width: widthPage,
               child: const LoginForm(),
             ),
           ),
-          const Positioned(
-            top: 530,
+          Positioned(
+            top: heightPage * 0.68,
             right: 70,
-            child: Text(
+            child: const Text(
               "Forgot ? ",
               style: TextStyle(
                 fontSize: 18,
@@ -54,7 +56,7 @@ class Login extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 600,
+            top: heightPage * 0.68,
             left: 0,
             child: GestureDetector(
                 onTap: () {
@@ -96,8 +98,7 @@ class Login extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             child: CustomPaint(
               painter: BottomPainter(),
-              child: SizedBox(
-                  width: MediaQuery.of(context).size.width, height: 200),
+              child: SizedBox(width: widthPage, height: heightPage * 0.2),
             ),
           ),
         ],
