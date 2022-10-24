@@ -64,9 +64,9 @@ class Login extends StatelessWidget {
                 },
                 child: Container(
                   padding: const EdgeInsets.only(
-                    top: 15,
+                    top: 10,
                     left: 30,
-                    bottom: 15,
+                    bottom: 10,
                     right: 15,
                   ),
                   decoration: BoxDecoration(
@@ -88,8 +88,8 @@ class Login extends StatelessWidget {
                   child: const Text(
                     "Register",
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(183, 68, 184, 1),
+                      fontSize: 15,
+                      color: Colors.amber,
                     ),
                   ),
                 )),

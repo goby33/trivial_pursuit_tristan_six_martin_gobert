@@ -9,11 +9,15 @@ class MyTheme {
         cursorColor: Colors.red, selectionColor: Colors.cyan),
     inputDecorationTheme: const InputDecorationTheme(
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.red),
+        borderSide: BorderSide(
+          color: Color.fromRGBO(172, 221, 231, 1),
+        ),
       ),
-      labelStyle: TextStyle(color: Colors.purple),
-      iconColor: Colors.purple,
-      focusColor: Colors.red,
+      labelStyle: TextStyle(
+        color: Color.fromRGBO(173, 185, 227, 1),
+      ),
+      iconColor: Color.fromRGBO(163, 121, 201, 1),
+      focusColor: Color.fromRGBO(172, 221, 231, 1),
     ),
     textTheme: const TextTheme(
       headline1: TextStyle(
