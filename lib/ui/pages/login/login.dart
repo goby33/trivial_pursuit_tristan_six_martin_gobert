@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_app/ui/widgets/bottom_painter.dart';
-import 'package:trivial_pursuit_app/ui/widgets/header_painter.dart';
+import 'package:trivial_pursuit_app/ui/common//bottom_painter.dart';
+import 'package:trivial_pursuit_app/ui/common//header_painter.dart';
 import 'package:trivial_pursuit_app/ui/pages/login/widgets/login_form.dart';
 
 class Login extends StatelessWidget {
@@ -45,13 +45,16 @@ class Login extends StatelessWidget {
           Positioned(
             top: heightPage * 0.68,
             right: 70,
-            child: const Text(
-              "Forgot ? ",
-              style: TextStyle(
-                fontSize: 18,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline,
-                color: Color.fromRGBO(173, 185, 227, 1),
+            child: InkWell(
+              onTap: () => GoRouter.of(context).push("/forgot"),
+              child: const Text(
+                "Forgot ? ",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline,
+                  color: Color.fromRGBO(173, 185, 227, 1),
+                ),
               ),
             ),
           ),
@@ -59,9 +62,7 @@ class Login extends StatelessWidget {
             top: heightPage * 0.68,
             left: 0,
             child: GestureDetector(
-                onTap: () {
-                  GoRouter.of(context).push("/subscription");
-                },
+                onTap: () => GoRouter.of(context).push("/subscription"),
                 child: Container(
                   padding: const EdgeInsets.only(
                     top: 10,

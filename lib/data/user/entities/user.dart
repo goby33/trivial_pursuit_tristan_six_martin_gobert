@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
- 
 part 'user.freezed.dart';
 part 'user.g.dart';
 
@@ -10,7 +9,7 @@ part 'user.g.dart';
 @freezed
 class User with _$User {
   /// {@macro user}
-  const factory User({ 
+  const factory User({
     required int id,
     required String name,
     required String surname,
@@ -19,7 +18,7 @@ class User with _$User {
     required String password,
     required int score,
   }) = _User;
-  
-    /// Creates a User from Json map
+
+  /// Creates a User from Json map
   factory User.fromJson(Map<String, dynamic> data) => _$UserFromJson(data);
 }
