@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>93566381279-1tjef2imgili2thh3rk0bcnq31e9eteu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.93566381279-1tjef2imgili2thh3rk0bcnq31e9eteu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBxnNP_bHPlSp75gLaD1m60a92pMWEbju8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>93566381279</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>fges.cyber.trivialPursuitTristanSixMartinGobert</string>
+	<key>PROJECT_ID</key>
+	<string>trivialpoursuittristanmartin</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trivialpoursuittristanmartin.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:93566381279:ios:be64e15dad115168ce0d6a</string>
+</dict>
+</plist>

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,9 +46,19 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCbYZVxBvFrdfjCIfs6PCaPy75vZ5TmwdI',
+    appId: '1:93566381279:web:99182f4c1d3dc205ce0d6a',
+    messagingSenderId: '93566381279',
+    projectId: 'trivialpoursuittristanmartin',
+    authDomain: 'trivialpoursuittristanmartin.firebaseapp.com',
+    storageBucket: 'trivialpoursuittristanmartin.appspot.com',
+    measurementId: 'G-R5C2K7W9JE',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBgQSVKFJO_lDEBW-JZC-j6qcFv86jQZ0g',
-    appId: '1:93566381279:android:e7f6220dca8261dece0d6a',
+    appId: '1:93566381279:android:8bf9c649985f10a2ce0d6a',
     messagingSenderId: '93566381279',
     projectId: 'trivialpoursuittristanmartin',
     storageBucket: 'trivialpoursuittristanmartin.appspot.com',
@@ -59,12 +66,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBxnNP_bHPlSp75gLaD1m60a92pMWEbju8',
-    appId: '1:93566381279:ios:2feca26e236c419cce0d6a',
+    appId: '1:93566381279:ios:be64e15dad115168ce0d6a',
     messagingSenderId: '93566381279',
     projectId: 'trivialpoursuittristanmartin',
     storageBucket: 'trivialpoursuittristanmartin.appspot.com',
     iosClientId:
-        '93566381279-ralkriqtquudhtkdsn79cmtl4ohsp2tc.apps.googleusercontent.com',
-    iosBundleId: 'fges.cyber.trivialPursuitApp',
+        '93566381279-1tjef2imgili2thh3rk0bcnq31e9eteu.apps.googleusercontent.com',
+    iosBundleId: 'fges.cyber.trivialPursuitTristanSixMartinGobert',
   );
 }
