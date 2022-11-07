@@ -7,7 +7,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'data/repositories/question_repository.dart';
 import 'firebase_options.dart';
+import 'main_providers.dart';
 
 Future<void> main() async {
   await GetStorage.init();
@@ -25,9 +27,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return GetMaterialApp.router(
+    return MainProviders(
+      child: Builder(
+        builder: (context) => GetMaterialApp.router(
           routeInformationParser: _router.routeInformationParser,
           routerDelegate: _router.routerDelegate,
           routeInformationProvider: _router.routeInformationProvider,
@@ -35,8 +37,8 @@ class MyApp extends StatelessWidget {
           darkTheme: MyTheme.dark,
           theme: MyTheme.light,
           themeMode: ThemeService().theme,
-        );
-      },
+        ),
+      ),
     );
   }
 }

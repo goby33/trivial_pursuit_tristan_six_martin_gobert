@@ -48,6 +48,7 @@ dependencies:
   firebase_auth: ^3.11.2
   cloud_firestore: ^3.5.1
   mason: ^0.1.0-dev.34
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
