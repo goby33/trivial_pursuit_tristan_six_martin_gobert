@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivial_pursuit_app/data/jeux/entities/list_questions.dart';
+import 'package:trivial_pursuit_app/data/jeux/entities/question.dart';
+import 'package:trivial_pursuit_app/tests/jeux_cubit.dart';
 
 class Jeux extends StatefulWidget {
   const Jeux({Key? key}) : super(key: key);
@@ -24,6 +28,9 @@ class _JeuxState extends State<Jeux> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return const Text("Jeux");
+    return BlocListener<JeuxCubit, JeuxState>(
+      listener: (context, state) {},
+      child: Text("pp"),
+    );
   }
 }

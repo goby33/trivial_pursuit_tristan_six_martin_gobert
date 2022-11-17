@@ -14,8 +14,8 @@ class Question with _$Question {
     required String type,
     required String difficulty,
     required String question,
-    required String correctAnswer,
-    required List<String> incorrectAnswers,
+    required String correct_answer,
+    required List<String> incorrect_answers,
   }) = _Question;
 
   /// Creates a Question from Json map

@@ -7,8 +7,8 @@
     { "name": "type", "type": "String" },
     { "name": "difficulty", "type": "String" },
     { "name": "question", "type": "String" },
-    { "name": "correctAnswer", "type": "String" },
-    { "name": "incorrectAnswers", "type": "List<String>" }
+    { "name": "correct_answer", "type": "String" },
+    { "name": "incorrect_answers", "type": "List<String>" }
   ]
 }
 
