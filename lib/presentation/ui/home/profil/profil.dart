@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/card_statistiques.dart';
-import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/circle_photo.dart';
-import 'package:trivial_pursuit_app/ui/pages/home/profil/widgets/container_info_user.dart';
+import 'package:trivial_pursuit_app/presentation/ui/home/profil/widgets/card_statistiques.dart';
+import 'package:trivial_pursuit_app/presentation/ui/home/profil/widgets/circle_photo.dart';
+import 'package:trivial_pursuit_app/presentation/ui/home/profil/widgets/container_info_user.dart';
 
 class Profil extends StatefulWidget {
   const Profil({Key? key}) : super(key: key);

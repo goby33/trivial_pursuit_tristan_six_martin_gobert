@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_app/tests/jeux_cubit.dart';
-import 'package:trivial_pursuit_app/ui/common//bottom_painter.dart';
-import 'package:trivial_pursuit_app/ui/common//header_painter.dart';
-import 'package:trivial_pursuit_app/ui/pages/login/widgets/login_form.dart';
+import 'package:trivial_pursuit_app/presentation/ui/common/bottom_painter.dart';
+import 'package:trivial_pursuit_app/presentation/ui/common/header_painter.dart';
+import 'package:trivial_pursuit_app/presentation/ui/register/widgets/register_form.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     var heightPage = MediaQuery.of(context).size.height;
@@ -22,14 +25,15 @@ class Login extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: CustomPaint(
               painter: HeaderPainter(),
-              child: SizedBox(width: widthPage, height: heightPage * 0.3),
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width, height: 200),
             ),
           ),
           Positioned(
             top: heightPage * 0.30,
-            left: 160,
+            left: 80,
             child: const Text(
-              "Login",
+              "Register",
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
@@ -39,32 +43,15 @@ class Login extends StatelessWidget {
           ),
           Positioned(
             top: heightPage * 0.45,
-            child: SizedBox(
-              width: widthPage,
-              child: const LoginForm(),
-            ),
-          ),
-          Positioned(
-            top: heightPage * 0.68,
-            right: 70,
-            child: InkWell(
-              onTap: () => GoRouter.of(context).push("/forgot"),
-              child: const Text(
-                "Forgot ? ",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.underline,
-                  color: Color.fromRGBO(173, 185, 227, 1),
-                ),
-              ),
-            ),
+            child: SizedBox(width: widthPage, child: const RegisterForm()),
           ),
           Positioned(
             top: heightPage * 0.68,
             left: 0,
             child: GestureDetector(
-                onTap: () => GoRouter.of(context).push("/subscription"),
+                onTap: () {
+                  GoRouter.of(context).push("/login");
+                },
                 child: Container(
                   padding: const EdgeInsets.only(
                     top: 10,
@@ -89,7 +76,7 @@ class Login extends StatelessWidget {
                     ],
                   ),
                   child: const Text(
-                    "Register",
+                    "Login",
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.amber,
@@ -101,7 +88,8 @@ class Login extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             child: CustomPaint(
               painter: BottomPainter(),
-              child: SizedBox(width: widthPage, height: heightPage * 0.2),
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width, height: 200),
             ),
           ),
         ],

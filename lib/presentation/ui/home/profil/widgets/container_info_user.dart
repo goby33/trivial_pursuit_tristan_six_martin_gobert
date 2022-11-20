@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../theme/theme_service.dart';
+import 'package:trivial_pursuit_app/presentation/style/theme_service.dart';
 
 class ContainerInfoUser extends StatefulWidget {
   const ContainerInfoUser({Key? key}) : super(key: key);

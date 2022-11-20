@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_app/ui/common//bottom_painter.dart';
-import 'package:trivial_pursuit_app/ui/common//header_painter.dart';
-import 'package:trivial_pursuit_app/ui/pages/user_forgot/widgets/user_forgot_form.dart';
-
-import '../../common/button_login.dart';
+import 'package:trivial_pursuit_app/presentation/ui/common/bottom_painter.dart';
+import 'package:trivial_pursuit_app/presentation/ui/common/button_login.dart';
+import 'package:trivial_pursuit_app/presentation/ui/common/header_painter.dart';
+import 'package:trivial_pursuit_app/presentation/ui/user_forgot/widgets/user_forgot_form.dart';
 
 class UserForgot extends StatelessWidget {
   const UserForgot({Key? key}) : super(key: key);

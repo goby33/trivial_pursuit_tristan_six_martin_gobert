@@ -1,4 +1,4 @@
-part of 'user_cubit.dart';
+part of 'cubits/user_cubit.dart';
 
 @immutable
 abstract class UserState {}
