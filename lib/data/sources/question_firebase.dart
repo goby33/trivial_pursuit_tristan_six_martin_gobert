@@ -24,7 +24,7 @@ class QuestionFirebase {
 
   String _getDate() {
     DateTime today = DateTime.now();
-    return '${today.day}-${today.month}-${today.year}';
+    return '${today.year}-${today.month}-${today.day}';
   }
 
   Future<ListQuestions?> getQuestionsOfToDay() async {
