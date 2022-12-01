@@ -26,13 +26,37 @@ class _JeuxState extends State<Jeux> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return BlocListener<JeuxCubit, JeuxState>(
-      listener: (context, state) => state.maybeMap(
-        loading: (value) => debugPrint("loading"),
+     listener: (context, state) => state.maybeMap(
+        loaded: (value) => print(
+          value.partie.listQuestions.results.length.toString(),
+        ),
+        loading: (value) => print(
+          value.dateTime.toString(),
+        ),
         orElse: () => null,
       ),
-      child: const Text("pp"),
+      child: BlocBuilder<JeuxCubit, JeuxState>(
+        //buildWhen: (previousState, state) => state is! JeuxStateLoaded,
+        builder: (context, state) {
+          print(state);
+          JeuxPlayers? jeuxPlayers = state.partie;
+          if (jeuxPlayers != null) {
+            return const Text("tout vas bien ");
+          } else {
+            return const Text('chargement');
+          }
+        },
+      ),
     );
   }
+
+  void showLoading() {
+    Text("ppp");
+  }
 }
+
+
+// show Everlai
+
+// stockTake => single bloc obsertver => main  52

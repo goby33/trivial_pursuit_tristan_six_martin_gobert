@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
         providers: [
           BlocProvider<JeuxCubit>(
             create: (context) =>
-                JeuxCubit(questionRepository: QuestionRepository.getInstance()),
+                JeuxCubit(questionRepository: QuestionRepository.getInstance())..getQuestion(),
           ),
         ],
         child: pages[_pageIndex],

@@ -6,17 +6,22 @@ part 'jeux_state.freezed.dart';
 @Freezed(makeCollectionsUnmodifiable: false)
 class JeuxState with _$JeuxState {
   const JeuxState._();
+  factory JeuxState.initial() = JeuxStateInitial;
 
-  factory JeuxState.loading() = JeuxStateLoading;
+  factory JeuxState.loading({ required DateTime dateTime,}) = JeuxStateLoading;
+
+
   factory JeuxState.loaded({
     required JeuxPlayers partie,
   }) = JeuxStateLoaded;
+
+
   factory JeuxState.failed({
     String? failed,
   }) = JeuxStateFailed;
 
   JeuxPlayers? get partie => maybeMap(
-        loading: (value) => value.partie,
+        loaded: (value) => value.partie,
         orElse: () => null,
       );
 }

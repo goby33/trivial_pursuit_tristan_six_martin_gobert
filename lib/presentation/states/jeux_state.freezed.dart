@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$JeuxState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() initial,
+    required TResult Function(DateTime dateTime) loading,
     required TResult Function(JeuxPlayers partie) loaded,
     required TResult Function(String? failed) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(DateTime dateTime)? loading,
     TResult? Function(JeuxPlayers partie)? loaded,
     TResult? Function(String? failed)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? initial,
+    TResult Function(DateTime dateTime)? loading,
     TResult Function(JeuxPlayers partie)? loaded,
     TResult Function(String? failed)? failed,
     required TResult orElse(),
@@ -40,6 +43,7 @@ mixin _$JeuxState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(JeuxStateInitial value) initial,
     required TResult Function(JeuxStateLoading value) loading,
     required TResult Function(JeuxStateLoaded value) loaded,
     required TResult Function(JeuxStateFailed value) failed,
@@ -47,6 +51,7 @@ mixin _$JeuxState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JeuxStateInitial value)? initial,
     TResult? Function(JeuxStateLoading value)? loading,
     TResult? Function(JeuxStateLoaded value)? loaded,
     TResult? Function(JeuxStateFailed value)? failed,
@@ -54,6 +59,7 @@ mixin _$JeuxState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(JeuxStateInitial value)? initial,
     TResult Function(JeuxStateLoading value)? loading,
     TResult Function(JeuxStateLoaded value)? loaded,
     TResult Function(JeuxStateFailed value)? failed,
@@ -80,10 +86,127 @@ class _$JeuxStateCopyWithImpl<$Res, $Val extends JeuxState>
 }
 
 /// @nodoc
+abstract class _$$JeuxStateInitialCopyWith<$Res> {
+  factory _$$JeuxStateInitialCopyWith(
+          _$JeuxStateInitial value, $Res Function(_$JeuxStateInitial) then) =
+      __$$JeuxStateInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$JeuxStateInitialCopyWithImpl<$Res>
+    extends _$JeuxStateCopyWithImpl<$Res, _$JeuxStateInitial>
+    implements _$$JeuxStateInitialCopyWith<$Res> {
+  __$$JeuxStateInitialCopyWithImpl(
+      _$JeuxStateInitial _value, $Res Function(_$JeuxStateInitial) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$JeuxStateInitial extends JeuxStateInitial {
+  _$JeuxStateInitial() : super._();
+
+  @override
+  String toString() {
+    return 'JeuxState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$JeuxStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DateTime dateTime) loading,
+    required TResult Function(JeuxPlayers partie) loaded,
+    required TResult Function(String? failed) failed,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DateTime dateTime)? loading,
+    TResult? Function(JeuxPlayers partie)? loaded,
+    TResult? Function(String? failed)? failed,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DateTime dateTime)? loading,
+    TResult Function(JeuxPlayers partie)? loaded,
+    TResult Function(String? failed)? failed,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(JeuxStateInitial value) initial,
+    required TResult Function(JeuxStateLoading value) loading,
+    required TResult Function(JeuxStateLoaded value) loaded,
+    required TResult Function(JeuxStateFailed value) failed,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JeuxStateInitial value)? initial,
+    TResult? Function(JeuxStateLoading value)? loading,
+    TResult? Function(JeuxStateLoaded value)? loaded,
+    TResult? Function(JeuxStateFailed value)? failed,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(JeuxStateInitial value)? initial,
+    TResult Function(JeuxStateLoading value)? loading,
+    TResult Function(JeuxStateLoaded value)? loaded,
+    TResult Function(JeuxStateFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class JeuxStateInitial extends JeuxState {
+  factory JeuxStateInitial() = _$JeuxStateInitial;
+  JeuxStateInitial._() : super._();
+}
+
+/// @nodoc
 abstract class _$$JeuxStateLoadingCopyWith<$Res> {
   factory _$$JeuxStateLoadingCopyWith(
           _$JeuxStateLoading value, $Res Function(_$JeuxStateLoading) then) =
       __$$JeuxStateLoadingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime dateTime});
 }
 
 /// @nodoc
@@ -93,57 +216,85 @@ class __$$JeuxStateLoadingCopyWithImpl<$Res>
   __$$JeuxStateLoadingCopyWithImpl(
       _$JeuxStateLoading _value, $Res Function(_$JeuxStateLoading) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateTime = null,
+  }) {
+    return _then(_$JeuxStateLoading(
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$JeuxStateLoading extends JeuxStateLoading {
-  _$JeuxStateLoading() : super._();
+  _$JeuxStateLoading({required this.dateTime}) : super._();
+
+  @override
+  final DateTime dateTime;
 
   @override
   String toString() {
-    return 'JeuxState.loading()';
+    return 'JeuxState.loading(dateTime: $dateTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$JeuxStateLoading);
+        (other.runtimeType == runtimeType &&
+            other is _$JeuxStateLoading &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, dateTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JeuxStateLoadingCopyWith<_$JeuxStateLoading> get copyWith =>
+      __$$JeuxStateLoadingCopyWithImpl<_$JeuxStateLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() initial,
+    required TResult Function(DateTime dateTime) loading,
     required TResult Function(JeuxPlayers partie) loaded,
     required TResult Function(String? failed) failed,
   }) {
-    return loading();
+    return loading(dateTime);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(DateTime dateTime)? loading,
     TResult? Function(JeuxPlayers partie)? loaded,
     TResult? Function(String? failed)? failed,
   }) {
-    return loading?.call();
+    return loading?.call(dateTime);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? initial,
+    TResult Function(DateTime dateTime)? loading,
     TResult Function(JeuxPlayers partie)? loaded,
     TResult Function(String? failed)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(dateTime);
     }
     return orElse();
   }
@@ -151,6 +302,7 @@ class _$JeuxStateLoading extends JeuxStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(JeuxStateInitial value) initial,
     required TResult Function(JeuxStateLoading value) loading,
     required TResult Function(JeuxStateLoaded value) loaded,
     required TResult Function(JeuxStateFailed value) failed,
@@ -161,6 +313,7 @@ class _$JeuxStateLoading extends JeuxStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JeuxStateInitial value)? initial,
     TResult? Function(JeuxStateLoading value)? loading,
     TResult? Function(JeuxStateLoaded value)? loaded,
     TResult? Function(JeuxStateFailed value)? failed,
@@ -171,6 +324,7 @@ class _$JeuxStateLoading extends JeuxStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(JeuxStateInitial value)? initial,
     TResult Function(JeuxStateLoading value)? loading,
     TResult Function(JeuxStateLoaded value)? loaded,
     TResult Function(JeuxStateFailed value)? failed,
@@ -184,8 +338,14 @@ class _$JeuxStateLoading extends JeuxStateLoading {
 }
 
 abstract class JeuxStateLoading extends JeuxState {
-  factory JeuxStateLoading() = _$JeuxStateLoading;
+  factory JeuxStateLoading({required final DateTime dateTime}) =
+      _$JeuxStateLoading;
   JeuxStateLoading._() : super._();
+
+  DateTime get dateTime;
+  @JsonKey(ignore: true)
+  _$$JeuxStateLoadingCopyWith<_$JeuxStateLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -252,7 +412,8 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() initial,
+    required TResult Function(DateTime dateTime) loading,
     required TResult Function(JeuxPlayers partie) loaded,
     required TResult Function(String? failed) failed,
   }) {
@@ -262,7 +423,8 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(DateTime dateTime)? loading,
     TResult? Function(JeuxPlayers partie)? loaded,
     TResult? Function(String? failed)? failed,
   }) {
@@ -272,7 +434,8 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? initial,
+    TResult Function(DateTime dateTime)? loading,
     TResult Function(JeuxPlayers partie)? loaded,
     TResult Function(String? failed)? failed,
     required TResult orElse(),
@@ -286,6 +449,7 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(JeuxStateInitial value) initial,
     required TResult Function(JeuxStateLoading value) loading,
     required TResult Function(JeuxStateLoaded value) loaded,
     required TResult Function(JeuxStateFailed value) failed,
@@ -296,6 +460,7 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JeuxStateInitial value)? initial,
     TResult? Function(JeuxStateLoading value)? loading,
     TResult? Function(JeuxStateLoaded value)? loaded,
     TResult? Function(JeuxStateFailed value)? failed,
@@ -306,6 +471,7 @@ class _$JeuxStateLoaded extends JeuxStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(JeuxStateInitial value)? initial,
     TResult Function(JeuxStateLoading value)? loading,
     TResult Function(JeuxStateLoaded value)? loaded,
     TResult Function(JeuxStateFailed value)? failed,
@@ -393,7 +559,8 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() initial,
+    required TResult Function(DateTime dateTime) loading,
     required TResult Function(JeuxPlayers partie) loaded,
     required TResult Function(String? failed) failed,
   }) {
@@ -403,7 +570,8 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(DateTime dateTime)? loading,
     TResult? Function(JeuxPlayers partie)? loaded,
     TResult? Function(String? failed)? failed,
   }) {
@@ -413,7 +581,8 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? initial,
+    TResult Function(DateTime dateTime)? loading,
     TResult Function(JeuxPlayers partie)? loaded,
     TResult Function(String? failed)? failed,
     required TResult orElse(),
@@ -427,6 +596,7 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(JeuxStateInitial value) initial,
     required TResult Function(JeuxStateLoading value) loading,
     required TResult Function(JeuxStateLoaded value) loaded,
     required TResult Function(JeuxStateFailed value) failed,
@@ -437,6 +607,7 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JeuxStateInitial value)? initial,
     TResult? Function(JeuxStateLoading value)? loading,
     TResult? Function(JeuxStateLoaded value)? loaded,
     TResult? Function(JeuxStateFailed value)? failed,
@@ -447,6 +618,7 @@ class _$JeuxStateFailed extends JeuxStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(JeuxStateInitial value)? initial,
     TResult Function(JeuxStateLoading value)? loading,
     TResult Function(JeuxStateLoaded value)? loaded,
     TResult Function(JeuxStateFailed value)? failed,

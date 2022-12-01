@@ -7,23 +7,33 @@ import '../../../data/repositories/question_repository.dart';
 
 class JeuxCubit extends Cubit<JeuxState> {
   QuestionRepository questionRepository;
-  JeuxCubit({required this.questionRepository}) : super(JeuxStateLoading());
+  JeuxCubit({required this.questionRepository}) : super(JeuxStateInitial());
 
   Future<List<Question>> test() async {
     //vetifier si c'edt null ou pas
     ListQuestions result = await questionRepository.getQuestionOfTheDay();
     return result.results;
   }
-
   Future<void> getQuestion() async {
-    emit(
-      JeuxState.loading(),
-    );
-    ListQuestions result = await questionRepository.getQuestionOfTheDay();
-    emit(
-      JeuxState.loaded(
-          partie: JeuxPlayers(listQuestions: result, item: 0, goodAnswers: 0)),
-    );
+    try {
+      emit(
+        JeuxState.loading(
+          dateTime: DateTime.now(),
+        ),
+      );
+      ListQuestions result = await questionRepository.getQuestionOfTheDay();
+     emit(
+        JeuxState.loaded(
+            partie:
+                JeuxPlayers(listQuestions: result, item: 0, goodAnswers: 0)),
+      );
+    } catch (e) {
+      emit(
+        JeuxState.failed(
+          failed: e.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> nextQuestions() async {
