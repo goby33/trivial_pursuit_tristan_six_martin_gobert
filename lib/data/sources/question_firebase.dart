@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
 import 'package:trivial_pursuit_app/data/jeux/entities/list_questions.dart';
 
 class QuestionFirebase {
@@ -25,7 +24,7 @@ class QuestionFirebase {
 
   String _getDate() {
     DateTime today = DateTime.now();
-    return '${today.day}-${today.month}-${today.year}';
+    return '${today.year}-${today.month}-${today.day}';
   }
 
   Future<ListQuestions?> getQuestionsOfToDay() async {

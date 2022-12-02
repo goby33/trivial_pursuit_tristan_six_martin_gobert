@@ -1,13 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit_app/theme/my_theme.dart';
-import 'package:trivial_pursuit_app/theme/theme_service.dart';
-import 'package:trivial_pursuit_app/ui/routes/app_routes.dart';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:trivial_pursuit_app/presentation/style/my_theme.dart';
+import 'package:trivial_pursuit_app/presentation/style/theme_service.dart';
+import 'package:trivial_pursuit_app/router.dart';
 
-import 'data/repositories/question_repository.dart';
 import 'firebase_options.dart';
 import 'main_providers.dart';
 

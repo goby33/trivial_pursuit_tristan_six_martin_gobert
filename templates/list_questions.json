@@ -4,7 +4,6 @@
   "style": "freezed",
   "relations": [{ "name": "question" }],
   "properties": [
-    { "name": "response_code", "type": "int" },
     { "name": "results", "type": "List<Question>" }
   ]
 }

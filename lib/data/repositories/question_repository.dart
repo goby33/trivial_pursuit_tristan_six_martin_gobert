@@ -24,7 +24,7 @@ class QuestionRepository {
     } else {
       ListQuestions? resultApi = await _instanceQuestionApi?.getQuestions();
       if (resultApi != null) {
-        _instanceQuestionFirebase?.post(resultApi);
+        await _instanceQuestionFirebase?.post(resultApi);
       }
       return resultApi!;
     }
