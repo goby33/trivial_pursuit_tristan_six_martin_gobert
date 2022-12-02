@@ -17,5 +17,5 @@ _$_ListQuestions _$$_ListQuestionsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_ListQuestionsToJson(_$_ListQuestions instance) =>
     <String, dynamic>{
       'response_code': instance.response_code,
-      'results':  instance.results.map((e) => e.toJson()).toList(),
+      'results': instance.results,
     };

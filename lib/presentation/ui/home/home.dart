@@ -48,15 +48,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: MultiProvider(
-        providers: [
-          BlocProvider<JeuxCubit>(
-            create: (context) =>
-                JeuxCubit(questionRepository: QuestionRepository.getInstance())..getQuestion(),
-          ),
-        ],
-        child: pages[_pageIndex],
-      ),
+      body: pages[_pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
         onTap: _onItemTapped,

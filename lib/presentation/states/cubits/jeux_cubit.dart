@@ -17,15 +17,13 @@ class JeuxCubit extends Cubit<JeuxState> {
   Future<void> getQuestion() async {
     try {
       emit(
-        JeuxState.loading(
-          dateTime: DateTime.now(),
-        ),
+        JeuxState.loading(),
       );
       ListQuestions result = await questionRepository.getQuestionOfTheDay();
      emit(
         JeuxState.loaded(
-            partie:
-                JeuxPlayers(listQuestions: result, item: 0, goodAnswers: 0)),
+            listQuestions: result,
+            ),
       );
     } catch (e) {
       emit(
@@ -35,26 +33,6 @@ class JeuxCubit extends Cubit<JeuxState> {
       );
     }
   }
-
-  Future<void> nextQuestions() async {
-    JeuxPlayers? jeuxPlayers = state.partie;
-    if (jeuxPlayers != null) {
-      jeuxPlayers.item += 1;
-      emit(
-        JeuxState.loaded(partie: jeuxPlayers),
-      );
-    }
-  }
 }
 
-class JeuxPlayers {
-  ListQuestions listQuestions;
-  int item;
-  int goodAnswers;
 
-  JeuxPlayers({
-    required this.listQuestions,
-    required this.item,
-    required this.goodAnswers,
-  });
-}

@@ -43,12 +43,14 @@ dependencies:
   freezed: ^2.1.1
   freezed_annotation: ^2.1.0
   json_serializable: ^6.2.0
-  firebase_core: ^1.24.0
-  firebase_core_platform_interface: 4.5.1
-  firebase_auth: ^3.11.2
-  cloud_firestore: ^3.5.1
+  firebase_core: ^2.3.0
+  firebase_core_platform_interface: ^4.5.2
+  firebase_auth: ^4.1.5
+  cloud_firestore: ^4.1.0
   mason: ^0.1.0-dev.34
   dio: ^4.0.6
+  html_unescape: ^2.0.0
+  swiping_card_deck: ^1.2.0
 
 dev_dependencies:
   flutter_test:
