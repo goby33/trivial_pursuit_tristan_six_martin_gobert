@@ -1,0 +1,9 @@
+{
+  "model_name": "list_users_model",
+  "additionals": ["copyWith", "json", "equatable"],
+  "style": "freezed",
+  "relations": [{ "name": "user_model" }],
+  "properties": [
+    { "name": "list_users", "type": "List<UserModel>" }
+  ]
+}

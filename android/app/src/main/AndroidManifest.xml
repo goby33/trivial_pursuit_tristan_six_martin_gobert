@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fges.cyber.trivial_pursuit_app">
+    package="com.example.trivial_pursuit_six_tristan_gobert_martin">
    <application
-        android:label="trivial_pursuit_app"
+        android:label="trivial_pursuit_six_tristan_gobert_martin"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

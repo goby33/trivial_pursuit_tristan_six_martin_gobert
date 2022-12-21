@@ -1,42 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:trivial_pursuit_app/presentation/style/my_theme.dart';
-import 'package:trivial_pursuit_app/presentation/style/theme_service.dart';
-import 'package:trivial_pursuit_app/router.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/app.dart';
 
 import 'firebase_options.dart';
-import 'main_providers.dart';
 
-Future<void> main() async {
-  await GetStorage.init();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-
-  final _router = AppRoutes.buildRouter();
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MainProviders(
-      child: Builder(
-        builder: (context) => GetMaterialApp.router(
-          routeInformationParser: _router.routeInformationParser,
-          routerDelegate: _router.routerDelegate,
-          routeInformationProvider: _router.routeInformationProvider,
-          debugShowCheckedModeBanner: true,
-          darkTheme: MyTheme.dark,
-          theme: MyTheme.light,
-          themeMode: ThemeService().theme,
-        ),
-      ),
-    );
-  }
+  runApp(TrivialPursuitApp());
 }
