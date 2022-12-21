@@ -1,6 +1,6 @@
-# trivial_pursuit_app
+# trivial_pursuit_six_tristan_gobert_martin
 
-A new Flutter project.
+trivial pursuit
 
 ## Getting Started
 
@@ -14,3 +14,20 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+Ne pas push dans firestore si c'est un mode différent 
+1 -> Easy 
+3 -> medium 
+5 -> hard 
+
+TEST 
+
+Chosir un avatar 
+
+modifier son avatar 
+
+Coverage 
+
+
+

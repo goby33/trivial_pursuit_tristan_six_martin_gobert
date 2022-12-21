@@ -1,36 +1,38 @@
 import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_app/presentation/ui/home/home.dart';
-import 'package:trivial_pursuit_app/presentation/ui/login/login.dart';
-import 'package:trivial_pursuit_app/presentation/ui/register/register.dart';
-import 'package:trivial_pursuit_app/presentation/ui/user_forgot/user_forgot.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/home_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_in/sign_in_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_up/sign_up_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/splash/splash_page.dart';
 
 abstract class AppRoutes {
   static const root = '/';
+  static const home = '/home';
+  static const signIn = '/sign-in';
+  static const signUp = '/sign-up';
 
-  static GoRouter buildRouter() => GoRouter(routes: [
+  static GoRouter buildRouter() => GoRouter(
+      initialLocation: '/home',
+      routes: [
         GoRoute(
-            path: '/',
-            name: 'home',
-            builder: (context, state) {
-              return const Home();
-            }),
+          path: root,
+          builder: (context, state) => const SplashPage(),
+          routes: const [],
+        ),
         GoRoute(
-            path: '/login',
-            name: 'login',
-            builder: (context, state) {
-              return const Login();
-            }),
+          path: signIn,
+          builder: (context, state) => const SignInPage(),
+          routes: const [],
+        ),
         GoRoute(
-            path: '/subscription',
-            name: 'subscription',
-            builder: (context, state) {
-              return const Register();
-            }),
+          path: signUp,
+          builder: (context, state) => const SignUpPage(),
+          routes: const [],
+        ),
         GoRoute(
-            path: '/forgot',
-            name: 'forgot',
-            builder: (context, state) {
-              return const UserForgot();
-            }),
-      ], initialLocation: '/login', debugLogDiagnostics: true);
+          path: home,
+          builder: (context, state) => const HomePage(),
+          routes: const [],
+        ),
+      ]
+  );
 }
