@@ -3,11 +3,18 @@ import 'package:flutter/material.dart';
 import 'card_statistiques.dart';
 
 class ProfilePageMain extends StatelessWidget {
-  const ProfilePageMain({Key? key}) : super(key: key);
+  final int score;
+  final int numberGoodAnswers;
+  final int numberDayLogged;
+  const ProfilePageMain({
+    Key? key,
+    required this.score,
+    required this.numberGoodAnswers,
+    required this.numberDayLogged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Expanded(
       child: GridView.count(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -16,8 +23,8 @@ class ProfilePageMain extends StatelessWidget {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         childAspectRatio: 2,
-        children: const [
-          CardStatistiques(
+        children:  [
+          const CardStatistiques(
             text: "fois dans le top 3",
             value: 1,
             icon: Icons.emoji_events,
@@ -25,21 +32,21 @@ class ProfilePageMain extends StatelessWidget {
           ),
           CardStatistiques(
             text: "question réussites",
-            value: 10,
+            value: numberGoodAnswers,
             icon: Icons.access_alarm,
-            colorIcons: Color.fromARGB(10, 10, 10, 1),
+            colorIcons: const Color.fromARGB(10, 10, 10, 1),
           ),
           CardStatistiques(
-            text: "XP gagnés",
-            value: 1100,
+            text: "Scores",
+            value: score,
             icon: Icons.bolt,
-            colorIcons: Color.fromARGB(252, 246, 189, 1),
+            colorIcons: const Color.fromARGB(252, 246, 189, 1),
           ),
           CardStatistiques(
             text: "Jours d'activité",
-            value: 1,
+            value: numberDayLogged,
             icon: Icons.access_alarm,
-            colorIcons: Color.fromRGBO(76, 201, 240, 1),
+            colorIcons: const Color.fromRGBO(76, 201, 240, 1),
           ),
         ],
       ),

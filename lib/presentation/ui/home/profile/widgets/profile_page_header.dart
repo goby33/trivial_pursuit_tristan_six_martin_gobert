@@ -28,10 +28,11 @@ class ProfilePageHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              const Positioned(
+               Positioned(
                 top: 100,
                 child: ContainerInfoUser(
-                  name: "Tristan",
+                  name: state.user?.name ?? '',
+                  uid: state.user?.uid ?? "",
                 ),
               ),
               const Positioned(

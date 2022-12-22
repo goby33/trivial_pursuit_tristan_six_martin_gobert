@@ -31,7 +31,11 @@ class ProfilePage extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  return const ProfilePageMain();
+                  return  const ProfilePageMain(
+                    score: 0,
+                    numberDayLogged:  0,
+                    numberGoodAnswers:  0,
+                  );
                 }
               },
             )

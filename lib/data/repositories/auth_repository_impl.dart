@@ -93,4 +93,9 @@ class AuthRepositoryImpl {
       return FailResponse(e.code, failure: e.message);
     }
   }
+
+  Future<void> deleteUser() async {
+     //await _authFirebase?.deleteUser();
+     //await _userFirebase?.deleteUser();
+  }
 }

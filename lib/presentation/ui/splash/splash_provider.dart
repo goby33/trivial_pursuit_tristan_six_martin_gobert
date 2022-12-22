@@ -18,6 +18,6 @@ class SplashProvider extends StatelessWidget {
         )..isConnected(),
         child: child,
       ),
-    );;
+    );
   }
 }

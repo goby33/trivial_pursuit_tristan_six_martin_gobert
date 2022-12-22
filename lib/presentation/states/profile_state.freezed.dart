@@ -21,7 +21,7 @@ mixin _$ProfileState {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(User user) signIn,
+    required TResult Function(UserModel user) signIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ProfileState {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(User user)? signIn,
+    TResult? Function(UserModel user)? signIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ProfileState {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(User user)? signIn,
+    TResult Function(UserModel user)? signIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(User user) signIn,
+    required TResult Function(UserModel user) signIn,
   }) {
     return loading();
   }
@@ -138,7 +138,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(User user)? signIn,
+    TResult? Function(UserModel user)? signIn,
   }) {
     return loading?.call();
   }
@@ -149,7 +149,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(User user)? signIn,
+    TResult Function(UserModel user)? signIn,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -242,7 +242,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(User user) signIn,
+    required TResult Function(UserModel user) signIn,
   }) {
     return noSignIn();
   }
@@ -253,7 +253,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(User user)? signIn,
+    TResult? Function(UserModel user)? signIn,
   }) {
     return noSignIn?.call();
   }
@@ -264,7 +264,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(User user)? signIn,
+    TResult Function(UserModel user)? signIn,
     required TResult orElse(),
   }) {
     if (noSignIn != null) {
@@ -394,7 +394,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(User user) signIn,
+    required TResult Function(UserModel user) signIn,
   }) {
     return failed(dateTime, message);
   }
@@ -405,7 +405,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(User user)? signIn,
+    TResult? Function(UserModel user)? signIn,
   }) {
     return failed?.call(dateTime, message);
   }
@@ -416,7 +416,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(User user)? signIn,
+    TResult Function(UserModel user)? signIn,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -482,7 +482,9 @@ abstract class _$$ProfileStateSignInCopyWith<$Res> {
           $Res Function(_$ProfileStateSignIn) then) =
       __$$ProfileStateSignInCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
+  $Res call({UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -502,8 +504,16 @@ class __$$ProfileStateSignInCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -513,7 +523,7 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
   _$ProfileStateSignIn({required this.user}) : super._();
 
   @override
-  final User user;
+  final UserModel user;
 
   @override
   String toString() {
@@ -544,7 +554,7 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(User user) signIn,
+    required TResult Function(UserModel user) signIn,
   }) {
     return signIn(user);
   }
@@ -555,7 +565,7 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(User user)? signIn,
+    TResult? Function(UserModel user)? signIn,
   }) {
     return signIn?.call(user);
   }
@@ -566,7 +576,7 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(User user)? signIn,
+    TResult Function(UserModel user)? signIn,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -614,10 +624,11 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
 }
 
 abstract class ProfileStateSignIn extends ProfileState {
-  factory ProfileStateSignIn({required final User user}) = _$ProfileStateSignIn;
+  factory ProfileStateSignIn({required final UserModel user}) =
+      _$ProfileStateSignIn;
   ProfileStateSignIn._() : super._();
 
-  User get user;
+  UserModel get user;
   @JsonKey(ignore: true)
   _$$ProfileStateSignInCopyWith<_$ProfileStateSignIn> get copyWith =>
       throw _privateConstructorUsedError;
