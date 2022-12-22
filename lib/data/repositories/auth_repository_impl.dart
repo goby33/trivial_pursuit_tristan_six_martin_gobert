@@ -85,7 +85,7 @@ class AuthRepositoryImpl {
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
-        return SuccessResponse(404.toString(),  false);
+        return SuccessResponse(404.toString(), false);
       } else {
         return SuccessResponse(402.toString(), true);
       }
@@ -95,7 +95,7 @@ class AuthRepositoryImpl {
   }
 
   Future<void> deleteUser() async {
-     //await _authFirebase?.deleteUser();
-     //await _userFirebase?.deleteUser();
+    //await _authFirebase?.deleteUser();
+    //await _userFirebase?.deleteUser();
   }
 }

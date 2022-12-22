@@ -13,6 +13,5 @@ class SplashState with _$SplashState {
 
   factory SplashState.failed(
       {required DateTime dateTime,
-        required String message}) = SplashStateFailed;
-
+      required String message}) = SplashStateFailed;
 }

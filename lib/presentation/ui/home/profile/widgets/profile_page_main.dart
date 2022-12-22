@@ -23,7 +23,7 @@ class ProfilePageMain extends StatelessWidget {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         childAspectRatio: 2,
-        children:  [
+        children: [
           const CardStatistiques(
             text: "fois dans le top 3",
             value: 1,

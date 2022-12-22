@@ -5,7 +5,7 @@ class SignUpMainHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: Text(
         "Sign Up",

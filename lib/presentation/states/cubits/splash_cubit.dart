@@ -23,6 +23,4 @@ class SplashCubit extends Cubit<SplashState> {
       ));
     }
   }
-
-
 }

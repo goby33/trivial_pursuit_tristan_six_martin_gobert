@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/style/theme_service.dart';
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
@@ -78,6 +79,8 @@ class ContainerInfoUser extends StatelessWidget {
               onSelected: (value) {
                 if (value == 1) {
                   context.read<ProfileCubit>().signOut();
+                } else {
+                  ThemeService().switchTheme();
                 }
               },
               icon: const Icon(Icons.settings),
