@@ -14,7 +14,7 @@ class RankingProvider extends StatelessWidget {
       child: BlocProvider(
         create: (context) => RankingCubit(
           userRepository: context.read<UserRepositoryImpl>(),
-        ),
+        )..getProfiles(),
         child: child,
       ),
     );
