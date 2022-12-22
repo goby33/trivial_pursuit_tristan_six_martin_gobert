@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CirclePhoto extends StatelessWidget {
   final String urlPhoto;
 
- const CirclePhoto({Key? key, required this.urlPhoto}) : super(key: key);
+  const CirclePhoto({Key? key, required this.urlPhoto}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

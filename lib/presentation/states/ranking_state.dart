@@ -11,14 +11,11 @@ class RankingState with _$RankingState {
 
   factory RankingState.failed(
       {required DateTime dateTime,
-        required String message}) = RankingStateFailed;
+      required String message}) = RankingStateFailed;
 
-  factory RankingState.ready(
-  {
-    required ListUsersModel? listUsersModel
-  }) = RankingStateReady;
+  factory RankingState.ready({required ListUsersModel? listUsersModel}) =
+      RankingStateReady;
 
-  ListUsersModel? get listUsersModel => maybeMap(
-    ready: (value) => value.listUsersModel, orElse: () => null);
-
+  ListUsersModel? get listUsersModel =>
+      maybeMap(ready: (value) => value.listUsersModel, orElse: () => null);
 }

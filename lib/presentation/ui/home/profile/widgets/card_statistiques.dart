@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CardStatistiques extends StatelessWidget {
-  CardStatistiques({
-    required this.text,
-    required this.value,
-    required this.icon,
-    required this.colorIcons,
-    Key? key}) : super(key: key);
-
+  const CardStatistiques(
+      {required this.text,
+      required this.value,
+      required this.icon,
+      required this.colorIcons,
+      Key? key})
+      : super(key: key);
 
   final String text;
   final int value;
   final IconData icon;
   final Color colorIcons;
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class CardStatistiques extends StatelessWidget {
               Text(
                 value.toString(),
                 style:
-                const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               Text(text),
             ],

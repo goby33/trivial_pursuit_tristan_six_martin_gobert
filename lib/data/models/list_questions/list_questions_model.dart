@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/question_model.dart';
 

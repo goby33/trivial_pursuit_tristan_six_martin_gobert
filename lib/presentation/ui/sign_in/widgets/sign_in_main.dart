@@ -8,9 +8,7 @@ class SignInMain extends StatefulWidget {
   const SignInMain({Key? key}) : super(key: key);
 
   @override
-  _SignInMainState createState() {
-    return _SignInMainState();
-  }
+  State<SignInMain> createState() => _SignInMainState();
 }
 
 class _SignInMainState extends State<SignInMain> {
@@ -107,7 +105,9 @@ class _SignInMainState extends State<SignInMain> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     alignment: Alignment.centerLeft,
                     child: InkWell(
-                      onTap: () => context.read<SignInCubit>().signIn(email: emailController.text, password: passwordController.text),
+                      onTap: () => context.read<SignInCubit>().signIn(
+                          email: emailController.text,
+                          password: passwordController.text),
                       child: const CircleAvatar(
                         backgroundColor: Color.fromRGBO(0, 109, 119, 1),
                         radius: 40,

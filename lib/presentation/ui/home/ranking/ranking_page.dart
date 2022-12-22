@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/ranking/ranking_provider.dart';
 
-class RankingPage extends StatelessWidget {
-  RankingPage({Key? key}) : super(key: key);
+class RankingPage extends StatefulWidget {
+  const RankingPage({Key? key}) : super(key: key);
+
+  @override
+  State<RankingPage> createState() => _RankingPageState();
+}
+
+class _RankingPageState extends State<RankingPage> {
   var items = List<String>.generate(10000, (i) => 'Item $i');
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

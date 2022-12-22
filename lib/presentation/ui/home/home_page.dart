@@ -7,15 +7,13 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() {
-    return _HomePageState();
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   int _pageIndex = 0;
 
-  final pages = [const GamePage(), RankingPage(), ProfilePage()];
+  final pages = [const GamePage(), const RankingPage(), const ProfilePage()];
 
   final titlesPage = ["Jeux", "Ranking", "profile"];
 
