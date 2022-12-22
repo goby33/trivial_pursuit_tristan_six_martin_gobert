@@ -14,6 +14,7 @@ class SignUpMain extends StatefulWidget {
 class _SignUpMainState extends State<SignUpMain> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final nameController = TextEditingController();
 
   @override
   void initState() {
@@ -25,6 +26,7 @@ class _SignUpMainState extends State<SignUpMain> {
     // Clean up the controller when the widget is disposed.
     emailController.dispose();
     passwordController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
@@ -38,7 +40,7 @@ class _SignUpMainState extends State<SignUpMain> {
         children: [
           const SignUpMainHeader(),
           SizedBox(
-            height: 115,
+            height: 150,
             child: Stack(
               children: [
                 Align(
@@ -66,12 +68,30 @@ class _SignUpMainState extends State<SignUpMain> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextField(
+                          controller: nameController,
+                          decoration: const InputDecoration(
+                              hintText: "Name",
+                              hintStyle: TextStyle(color: Colors.grey),
+                              icon: Icon(
+                                Icons.person,
+                                size: 23,
+                              ),
+                              iconColor: Colors.green,
+                              border: InputBorder.none),
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                        const Divider(
+                          color: Colors.black,
+                          height: 2,
+                          endIndent: 45,
+                        ),
+                        TextField(
                           controller: emailController,
                           decoration: const InputDecoration(
                               hintText: "Email",
                               hintStyle: TextStyle(color: Colors.grey),
                               icon: Icon(
-                                Icons.person,
+                                Icons.alternate_email,
                                 size: 23,
                               ),
                               iconColor: Colors.green,
@@ -104,7 +124,7 @@ class _SignUpMainState extends State<SignUpMain> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.40,
                     alignment: Alignment.centerLeft,
                     child: InkWell(
                       onTap: () {
@@ -114,7 +134,7 @@ class _SignUpMainState extends State<SignUpMain> {
                       },
                       child: const CircleAvatar(
                         backgroundColor: Color.fromRGBO(0, 109, 119, 1),
-                        radius: 40,
+                        radius: 50,
                         child: Icon(
                           Icons.arrow_forward,
                           color: Color.fromRGBO(237, 246, 249, 1),

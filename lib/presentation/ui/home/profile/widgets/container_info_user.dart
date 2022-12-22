@@ -44,9 +44,9 @@ class ContainerInfoUser extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:  const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: RichText(
-              text:  TextSpan(
+              text: TextSpan(
                 text: "Player n°",
                 style: const TextStyle(
                   color: Colors.black,
@@ -68,7 +68,8 @@ class ContainerInfoUser extends StatelessWidget {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromRGBO(131, 197, 190, 1)),
+                  Theme.of(context).primaryColor,
+                ),
               ),
               onPressed: () {},
               child: const Text("Modifier le profil"),

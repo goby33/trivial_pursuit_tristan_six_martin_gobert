@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BottomPainter extends CustomPainter {
+  final Color color;
+
+  BottomPainter({required this.color});
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint();
@@ -10,7 +14,7 @@ class BottomPainter extends CustomPainter {
 
     // Path number 1
 
-    paint.color = const Color.fromRGBO(131, 197, 190, 1);
+    paint.color = color;
     path = Path();
     path.lineTo(size.width, size.height * 0.03);
     path.cubicTo(size.width * 0.89, -0.03, size.width * 0.75, 0,

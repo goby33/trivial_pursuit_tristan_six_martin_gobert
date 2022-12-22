@@ -21,12 +21,12 @@ class SignUpPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomPaint(
-                painter: HeaderPainter(),
+                painter: HeaderPainter(color: Theme.of(context).primaryColor),
                 child: SizedBox(width: widthPage, height: heightPage * 0.3),
               ),
               const SignUpMain(),
               CustomPaint(
-                painter: BottomPainter(),
+                painter: BottomPainter(color: Theme.of(context).primaryColor),
                 child: SizedBox(width: widthPage, height: heightPage * 0.2),
               ),
             ],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HeaderPainter extends CustomPainter {
+  final Color color;
+
+  HeaderPainter({required this.color});
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint();
@@ -8,7 +11,7 @@ class HeaderPainter extends CustomPainter {
 
     // Path number 1
 
-    paint.color = const Color.fromRGBO(131, 197, 190, 1);
+    paint.color = color;
     path = Path();
     path.lineTo(0, 0);
     path.cubicTo(0, 0, 0, size.height, 0, size.height);
