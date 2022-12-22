@@ -23,7 +23,11 @@ class UserFirebase {
   }
 
   Future<ListUsersModel?> getListUsers() async {
-    return null;
+    return ListUsersModel(
+      list_users: await _listUsers.get().then((value) => value.docs
+          .map((e) => e.data())
+          .toList(growable: false)),
+    );
   }
 
   Future<void> addUser(UserModel user) async {

@@ -80,4 +80,17 @@ class AuthRepositoryImpl {
       return FailResponse(e.code, failure: e.message);
     }
   }
+
+  Future<ApiResponse<bool>> isConnected() async {
+    try {
+      final response = await _authFirebase?.getCurrentUser();
+      if (response == null) {
+        return FailResponse(404.toString(), failure: "user not found");
+      } else {
+        return SuccessResponse(402.toString(), true);
+      }
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
+  }
 }
