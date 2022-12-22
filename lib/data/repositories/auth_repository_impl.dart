@@ -85,7 +85,7 @@ class AuthRepositoryImpl {
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
-        return FailResponse(404.toString(), failure: "user not found");
+        return SuccessResponse(404.toString(),  false);
       } else {
         return SuccessResponse(402.toString(), true);
       }

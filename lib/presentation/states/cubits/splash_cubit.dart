@@ -11,7 +11,11 @@ class SplashCubit extends Cubit<SplashState> {
   Future<void> isConnected() async {
     final response = await authRepository.isConnected();
     if (response is SuccessResponse<bool>) {
-      emit(SplashStateConnected());
+      if (response.data == true) {
+        emit(SplashStateConnected());
+      } else {
+        emit(SplashStateNoConnected());
+      }
     } else if (response is FailResponse) {
       emit(SplashStateFailed(
         message: response.failure ?? "Error",
