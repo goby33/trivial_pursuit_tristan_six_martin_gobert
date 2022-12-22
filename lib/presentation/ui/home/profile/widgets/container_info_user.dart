@@ -20,7 +20,7 @@ class ContainerInfoUser extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 50, bottom: 5),
             child: RichText(
-              text:  TextSpan(
+              text: TextSpan(
                 text: "Hello ",
                 style: const TextStyle(
                   color: Colors.black,
@@ -59,39 +59,35 @@ class ContainerInfoUser extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton( style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(131, 197, 190, 1)),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    const Color.fromRGBO(131, 197, 190, 1)),
               ),
-                onPressed: () {},
-                child: const Text("Modifier le profil"),
-              ),
-              PopupMenuButton<int>(
-                onSelected: (value) {
-                  if (value == 1) {
-                    context.read<ProfileCubit>().signOut();
-                  } else {
-                    print("test");
-                  }
-                },
-                icon: const Icon(Icons.settings),
-                itemBuilder: (context) => [
-                  const PopupMenuItem(
-                    value: 1,
-                    child: Text("Log out"),
-                  ),
-                  const PopupMenuItem(
-                    value: 2,
-                    child: Text("Changer de thème"),
-                  ),
-                ],
-              )
-            ]
-          )
+              onPressed: () {},
+              child: const Text("Modifier le profil"),
+            ),
+            PopupMenuButton<int>(
+              onSelected: (value) {
+                if (value == 1) {
+                  context.read<ProfileCubit>().signOut();
+                }
+              },
+              icon: const Icon(Icons.settings),
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 1,
+                  child: Text("Log out"),
+                ),
+                const PopupMenuItem(
+                  value: 2,
+                  child: Text("Changer de thème"),
+                ),
+              ],
+            )
+          ])
         ],
-
       ),
     );
   }

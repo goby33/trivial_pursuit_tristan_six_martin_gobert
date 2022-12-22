@@ -4,7 +4,6 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cu
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/profile_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/profile_listeners.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/profile_provider.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/widgets/card_statistiques.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/widgets/profile_page_header.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/widgets/profile_page_main.dart';
 

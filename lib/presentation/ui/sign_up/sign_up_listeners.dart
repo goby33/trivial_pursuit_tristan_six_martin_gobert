@@ -12,7 +12,7 @@ class SignUpListeners extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) => state.maybeMap(
-        signUp: (value) => context.push('/home'),
+        signUp: (value) => context.push('/sign-up/welcome'),
         failed: (value) => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             action: SnackBarAction(

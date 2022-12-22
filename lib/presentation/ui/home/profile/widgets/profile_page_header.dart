@@ -38,7 +38,7 @@ class ProfilePageHeader extends StatelessWidget {
                 top: 20,
                 child: CirclePhoto(
                     urlPhoto:
-                    "https://banner2.cleanpng.com/20180625/req/kisspng-computer-icons-avatar-business-computer-software-user-avatar-5b3097fcae25c3.3909949015299112927133.jpg"),
+                        "https://banner2.cleanpng.com/20180625/req/kisspng-computer-icons-avatar-business-computer-software-user-avatar-5b3097fcae25c3.3909949015299112927133.jpg"),
               ),
             ],
           ),

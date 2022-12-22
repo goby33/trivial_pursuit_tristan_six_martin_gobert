@@ -10,7 +10,7 @@ class SignInState with _$SignInState {
 
   factory SignInState.failed(
       {required DateTime dateTime,
-        required String message}) = SignInStateFailed;
+      required String message}) = SignInStateFailed;
 
   factory SignInState.signIn() = SignInStateSignIn;
 }

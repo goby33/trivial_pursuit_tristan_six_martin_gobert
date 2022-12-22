@@ -12,9 +12,7 @@ class GamePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GamePageState createState() {
-    return _GamePageState();
-  }
+  State<GamePage> createState() => _GamePageState();
 }
 
 late SwipingCardDeck? _deck;
@@ -42,8 +40,6 @@ class _GamePageState extends State<GamePage> {
         child: BlocConsumer<GameCubit, GameState>(
             listener: (context, state) => state.maybeMap(
                   nextQuestion: (value) => _deck?.swipeRight(),
-                  rightAnswer: (value) => print("Right"),
-                  wrongAnswer: (value) => print("Wrong"),
                   orElse: () => null,
                 ),
             builder: (context, state) {

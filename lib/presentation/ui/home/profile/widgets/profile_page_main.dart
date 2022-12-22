@@ -16,30 +16,30 @@ class ProfilePageMain extends StatelessWidget {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         childAspectRatio: 2,
-        children: [
+        children: const [
           CardStatistiques(
             text: "fois dans le top 3",
             value: 1,
             icon: Icons.emoji_events,
-            colorIcons: const Color.fromARGB(252, 191, 73, 1),
+            colorIcons: Color.fromARGB(252, 191, 73, 1),
           ),
           CardStatistiques(
             text: "question réussites",
             value: 10,
             icon: Icons.access_alarm,
-            colorIcons: const Color.fromARGB(10, 10, 10, 1),
+            colorIcons: Color.fromARGB(10, 10, 10, 1),
           ),
           CardStatistiques(
             text: "XP gagnés",
             value: 1100,
             icon: Icons.bolt,
-            colorIcons: const Color.fromARGB(252, 246, 189, 1),
+            colorIcons: Color.fromARGB(252, 246, 189, 1),
           ),
           CardStatistiques(
             text: "Jours d'activité",
             value: 1,
             icon: Icons.access_alarm,
-            colorIcons: const Color.fromRGBO(76, 201, 240, 1),
+            colorIcons: Color.fromRGBO(76, 201, 240, 1),
           ),
         ],
       ),

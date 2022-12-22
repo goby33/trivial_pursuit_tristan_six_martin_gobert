@@ -12,9 +12,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     final response = await authRepository.getCurrentUser();
     if (response is SuccessResponse) {
       if (response.data != null) {
-        emit(
-          ProfileStateSignIn(user: response.data!),
-        );
       } else {
         emit(
           ProfileStateNoSignIn(),
