@@ -4,7 +4,12 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cu
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
-  const ContainerInfoUser({Key? key, required this.name}) : super(key: key);
+  final String uid;
+  const ContainerInfoUser({
+    Key? key,
+    required this.name,
+    required this.uid,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +44,18 @@ class ContainerInfoUser extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding:  const EdgeInsets.only(bottom: 10),
             child: RichText(
-              text: const TextSpan(
-                text: "Joueur n°",
-                style: TextStyle(
+              text:  TextSpan(
+                text: "Player n°",
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 15,
                 ),
                 children: <TextSpan>[
                   TextSpan(
-                    text: '6789054567890',
-                    style: TextStyle(
+                    text: uid,
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 12,
                         fontWeight: FontWeight.bold),

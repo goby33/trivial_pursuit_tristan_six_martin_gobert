@@ -37,6 +37,7 @@ class AuthFirebase {
   Future<User?> getCurrentUser() async {
     return _authFirebase!.currentUser;
   }
+
 }
 
 // 3 -> hard

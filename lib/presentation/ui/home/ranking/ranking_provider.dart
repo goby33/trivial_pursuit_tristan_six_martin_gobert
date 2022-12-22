@@ -9,7 +9,6 @@ class RankingProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RepositoryProvider(
       create: (context) => UserRepositoryImpl.getInstance(),
       child: BlocProvider(
