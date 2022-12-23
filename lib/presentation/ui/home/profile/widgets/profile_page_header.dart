@@ -20,15 +20,15 @@ class ProfilePageHeader extends StatelessWidget {
             children: [
               Container(
                 height: 150,
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(131, 197, 190, 1),
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(100),
                     bottomRight: Radius.circular(100),
                   ),
                 ),
               ),
-               Positioned(
+              Positioned(
                 top: 100,
                 child: ContainerInfoUser(
                   name: state.user?.name ?? '',

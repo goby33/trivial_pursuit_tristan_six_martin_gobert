@@ -13,7 +13,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (response is SuccessResponse) {
       if (response.data != null) {
         emit(ProfileStateSignIn(user: response.data!));
-      }  else {
+      } else {
         emit(
           ProfileStateNoSignIn(),
         );

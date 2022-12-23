@@ -5,16 +5,12 @@ class SignUpMainHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 20.0),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
       child: Text(
         "Sign Up",
         textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.bold,
-          color: Color.fromRGBO(173, 185, 227, 1),
-        ),
+        style: Theme.of(context).textTheme.headline3,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/style/theme_service.dart';
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
@@ -44,9 +45,9 @@ class ContainerInfoUser extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:  const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: RichText(
-              text:  TextSpan(
+              text: TextSpan(
                 text: "Player n°",
                 style: const TextStyle(
                   color: Colors.black,
@@ -68,7 +69,8 @@ class ContainerInfoUser extends StatelessWidget {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromRGBO(131, 197, 190, 1)),
+                  Theme.of(context).primaryColor,
+                ),
               ),
               onPressed: () {},
               child: const Text("Modifier le profil"),
@@ -77,17 +79,27 @@ class ContainerInfoUser extends StatelessWidget {
               onSelected: (value) {
                 if (value == 1) {
                   context.read<ProfileCubit>().signOut();
+                } else {
+                  ThemeService().switchTheme();
                 }
               },
               icon: const Icon(Icons.settings),
-              itemBuilder: (context) => [
+              itemBuilder: (BuildContext context) => [
                 const PopupMenuItem(
                   value: 1,
-                  child: Text("Log out"),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.all(0),
+                    leading: Icon(Icons.logout),
+                    title: Text('Log Out'),
+                  ),
                 ),
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 2,
-                  child: Text("Changer de thème"),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(0),
+                    leading: const Icon(Icons.dark_mode),
+                    title: Text(ThemeService().getStringTheme()),
+                  ),
                 ),
               ],
             )
