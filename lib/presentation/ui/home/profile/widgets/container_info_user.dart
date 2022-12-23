@@ -84,14 +84,22 @@ class ContainerInfoUser extends StatelessWidget {
                 }
               },
               icon: const Icon(Icons.settings),
-              itemBuilder: (context) => [
+              itemBuilder: (BuildContext context) => [
                 const PopupMenuItem(
                   value: 1,
-                  child: Text("Log out"),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.all(0),
+                    leading: Icon(Icons.logout),
+                    title: Text('Log Out'),
+                  ),
                 ),
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 2,
-                  child: Text("Changer de thème"),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(0),
+                    leading: const Icon(Icons.dark_mode),
+                    title: Text(ThemeService().getStringTheme()),
+                  ),
                 ),
               ],
             )

@@ -21,8 +21,8 @@ class AppTheme {
   );
 
   ThemeData darkTheme = ThemeData(
-    primaryColor: Colors.black,
-    scaffoldBackgroundColor: Colors.black,
+    primaryColor: const Color.fromRGBO(42, 89, 84, 1),
+    scaffoldBackgroundColor: const Color.fromRGBO(102, 102, 102, 1),
     appBarTheme: const AppBarTheme(
       color: Colors.black,
       elevation: 0,
