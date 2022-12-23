@@ -27,7 +27,8 @@ class UserRepositoryImpl {
     }
   }
 
-  Future<ApiResponse<ListUsersModel>> searchUsers({required String text}) async {
+  Future<ApiResponse<ListUsersModel>> searchUsers(
+      {required String text}) async {
     try {
       final response = await _userFirebase?.searchUsers(text: text);
       if (response == null) {
@@ -39,5 +40,4 @@ class UserRepositoryImpl {
       return FailResponse(e.toString(), failure: e.toString());
     }
   }
-
 }

@@ -3,13 +3,13 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_quest
 
 class ListQuestionsFirebase {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  static  late final  CollectionReference<ListQuestionsModel>
+  static late final CollectionReference<ListQuestionsModel>
       _listQuestionsCollection;
-  static   ListQuestionsFirebase? _instanceListQuestionsFirebase;
+  static ListQuestionsFirebase? _instanceListQuestionsFirebase;
 
   ListQuestionsFirebase._();
 
-  static ListQuestionsFirebase  getInstance() {
+  static ListQuestionsFirebase getInstance() {
     if (_instanceListQuestionsFirebase == null) {
       _listQuestionsCollection = _firestore
           .collection('questions')

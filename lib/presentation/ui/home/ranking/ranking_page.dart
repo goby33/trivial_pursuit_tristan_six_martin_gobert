@@ -42,7 +42,9 @@ class _RankingPageState extends State<RankingPage> {
                 children: [
                   TextField(
                       controller: searchController,
-                      onChanged: (text) => context.read<RankingCubit>().searchProfiles(text: searchController.text),
+                      onChanged: (text) => context
+                          .read<RankingCubit>()
+                          .searchProfiles(text: searchController.text),
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(),

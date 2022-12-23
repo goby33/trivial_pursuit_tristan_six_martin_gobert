@@ -12,7 +12,6 @@ class ThemeService {
   _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
 
   void switchTheme() {
-    print("ppp");
     Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
     _saveThemeToBox(!_loadThemeFromBox());
   }

@@ -30,7 +30,11 @@ class UserFirebase {
 
   Future<ListUsersModel?> searchUsers({required String text}) async {
     final response = await _listUsers.orderBy("score", descending: true).get();
-    final listUsers = response.docs.map((e) => e.data()).where((element) => element.name.toLowerCase().contains(text.toLowerCase())).toList();
+    final listUsers = response.docs
+        .map((e) => e.data())
+        .where((element) =>
+            element.name.toLowerCase().contains(text.toLowerCase()))
+        .toList();
 
     return ListUsersModel(list_users: listUsers);
   }

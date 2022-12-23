@@ -3,8 +3,6 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_respon
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/list_questions_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_api.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_firebase.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/list_questions.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/question.dart';
 
 class ListQuestionsRepositoryImpl {
   static ListQuestionsRepositoryImpl? _listQuestionsRepositoryImpl;
@@ -31,7 +29,8 @@ class ListQuestionsRepositoryImpl {
           await _listQuestionFirebase!.post(listQuestionsModel);
           return SuccessResponse(200.toString(), listQuestionsModel);
         } else {
-          return FailResponse(404.toString(), failure: "ListQuestionsModel from API null");
+          return FailResponse(404.toString(),
+              failure: "ListQuestionsModel from API null");
         }
       }
     } on FirebaseAuthException catch (e) {
