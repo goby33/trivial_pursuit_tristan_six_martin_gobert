@@ -13,6 +13,19 @@ class RankingPage extends StatefulWidget {
 }
 
 class _RankingPageState extends State<RankingPage> {
+  final searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return RankingProvider(
@@ -28,7 +41,8 @@ class _RankingPageState extends State<RankingPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextField(
-                      onChanged: (text) {},
+                      controller: searchController,
+                      onChanged: (text) => context.read<RankingCubit>().searchProfiles(text: searchController.text),
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(),

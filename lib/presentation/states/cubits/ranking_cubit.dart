@@ -23,4 +23,20 @@ class RankingCubit extends Cubit<RankingState> {
       );
     }
   }
+
+  Future<void> searchProfiles({required String text}) async {
+    final response = await userRepository.searchUsers(text: text);
+    if (response is SuccessResponse) {
+      emit(
+        RankingState.ready(listUsersModel: response.data),
+      );
+    } else if (response is FailResponse) {
+      emit(
+        RankingStateFailed(
+          message: response.toString(),
+          dateTime: DateTime.now(),
+        ),
+      );
+    }
+  }
 }

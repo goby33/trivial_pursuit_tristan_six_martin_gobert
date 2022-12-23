@@ -26,4 +26,18 @@ class UserRepositoryImpl {
       return FailResponse(e.toString(), failure: e.toString());
     }
   }
+
+  Future<ApiResponse<ListUsersModel>> searchUsers({required String text}) async {
+    try {
+      final response = await _userFirebase?.searchUsers(text: text);
+      if (response == null) {
+        return FailResponse(0.toString(), failure: "Error user null");
+      } else {
+        return SuccessResponse(1.toString(), response);
+      }
+    } catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
 }
