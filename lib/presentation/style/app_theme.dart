@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 class AppTheme {
   ThemeData lightTheme = ThemeData(
     primaryColor: const Color.fromRGBO(131, 197, 190, 1),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: const Color.fromRGBO(237, 246, 249, 1),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Color.fromRGBO(131, 197, 190, 1),
+      selectedItemColor: Color.fromRGBO(0, 109, 119, 1),
+      unselectedItemColor: Color.fromRGBO(237, 246, 249, 1),
+    ),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      color: Color.fromRGBO(131, 197, 190, 1),
+    ),
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       elevation: 0,
