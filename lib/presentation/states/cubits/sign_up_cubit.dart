@@ -9,22 +9,35 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   SignUpCubit({required this.authRepository}) : super(SignUpStateNoSignUp());
 
-  Future<void> signUp({required String email, required String password}) async {
-    final response = await authRepository.signUp(
-      email: email,
-      password: password,
-    );
-    if (response is SuccessResponse<User>) {
-      emit(
-        SignUpStateSignUp(),
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
+    String nameWithOutWhiteSpace = name.trim();
+    if (email.isEmpty || password.isEmpty || nameWithOutWhiteSpace.isEmpty) {
+      emit(SignUpStateFailed(
+        message: "Please fill all the fields",
+        dateTime: DateTime.now(),
+      ));
+    } else {
+      final response = await authRepository.signUp(
+        email: email,
+        password: password,
+        name: nameWithOutWhiteSpace,
       );
-    } else if (response is FailResponse) {
-      emit(
-        SignUpStateFailed(
-          message: response.failure ?? "Error",
-          dateTime: DateTime.now(),
-        ),
-      );
+      if (response is SuccessResponse<User>) {
+        emit(
+          SignUpStateSignUp(),
+        );
+      } else if (response is FailResponse) {
+        emit(
+          SignUpStateFailed(
+            message: response.failure ?? "Error",
+            dateTime: DateTime.now(),
+          ),
+        );
+      }
     }
   }
 }
