@@ -35,6 +35,7 @@ class AuthRepositoryImpl {
   Future<ApiResponse<User>> signUp({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
       final responseAuth = await _authFirebase?.signUp(email, password);
@@ -45,7 +46,7 @@ class AuthRepositoryImpl {
           UserModel(
             email: responseAuth.email ?? "",
             uid: responseAuth.uid,
-            name: responseAuth.displayName ?? "",
+            name: name,
             numberGoodAnswer: 0,
             numberDayLogged: 0,
             dateOfLastConnexion: 0,

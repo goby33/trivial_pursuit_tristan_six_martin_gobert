@@ -45,7 +45,7 @@ app.*.map.json
 .metadata
 pubspec.lock
 
-assets/config/config.json
+lib/config/assets/config/config.json
 
 .phrase.yml
 

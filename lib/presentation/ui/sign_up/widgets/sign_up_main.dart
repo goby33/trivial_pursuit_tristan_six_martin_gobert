@@ -129,8 +129,10 @@ class _SignUpMainState extends State<SignUpMain> {
                     child: InkWell(
                       onTap: () {
                         context.read<SignUpCubit>().signUp(
-                            email: emailController.text,
-                            password: passwordController.text);
+                              email: emailController.text,
+                              password: passwordController.text,
+                              name: nameController.text,
+                            );
                       },
                       child: const CircleAvatar(
                         backgroundColor: Color.fromRGBO(0, 109, 119, 1),
