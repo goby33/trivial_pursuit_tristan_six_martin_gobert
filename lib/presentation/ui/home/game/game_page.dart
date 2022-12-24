@@ -50,7 +50,7 @@ class _GamePageState extends State<GamePage> {
                   children: [
                     _swipingDeck = SwipingCardDeck(
                       cardDeck: getCardDeck(listQuestions: state.listQuestions),
-                      onDeckEmpty: () => debugPrint("Card deck empty"),
+                      onDeckEmpty: () => null,
                       onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
                       onRightSwipe: (Card card) => debugPrint("Swiped right!"),
                       cardWidth: 200,
@@ -59,11 +59,11 @@ class _GamePageState extends State<GamePage> {
                       rotationFactor: 0.8 / 3.14,
                       swipeAnimationDuration: const Duration(milliseconds: 500),
                     ),
-                    Container(
+                    /*Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 3,
-                      color: Colors.transparent,
-                    ),
+                      color: Colors.red,
+                    ),*/
                   ],
                 );
               },
@@ -73,6 +73,21 @@ class _GamePageState extends State<GamePage> {
                 if (state is GameStateLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
+                  );
+                } else if (state is GameStateFinished) {
+                  return Column(
+                    children: [
+                      Text(
+                        "You have finished the game with ${state.score} points",
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          print("pp");
+                        },
+                        child: const Text("Play again"),
+                      ),
+                    ],
                   );
                 } else {
                   List<String> listQuestions = [

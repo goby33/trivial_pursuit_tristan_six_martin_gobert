@@ -24,6 +24,10 @@ class GameState with _$GameState {
     required int index,
   }) = GameStateRightAnswer;
 
+  factory GameState.finished({
+    required int score,
+  }) = GameStateFinished;
+
   factory GameState.failed({required String failed}) = GameStateFailed;
 
   List<QuestionModel> get listQuestions => maybeMap(

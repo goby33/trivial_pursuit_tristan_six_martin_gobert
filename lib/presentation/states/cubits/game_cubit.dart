@@ -40,14 +40,20 @@ class GameCubit extends Cubit<GameState> {
     int index = state.index;
     if (state.listQuestions[index].correct_answer == answer) {
       score++;
+    }
+
+    if (index == state.listQuestions.length - 1) {
       emit(
-        GameStateRightAnswer(
-            index: index += 1, listQuestions: state.listQuestions),
+        GameStateFinished(
+          score: score,
+        ),
       );
     } else {
       emit(
-        GameStateWrongAnswer(
-            index: index += 1, listQuestions: state.listQuestions),
+        GameStateRightAnswer(
+          index: index + 1,
+          listQuestions: state.listQuestions,
+        ),
       );
     }
   }
