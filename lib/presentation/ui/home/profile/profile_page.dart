@@ -14,34 +14,67 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProfileProvider(
       child: ProfileListeners(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const ProfilePageHeader(),
-            //FIN DU HEADER DE LA PAGE
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10, left: 15),
-              child: Text("Mes Statistiques : ",
-                  style: Theme.of(context).textTheme.headline5),
-            ),
-            BlocBuilder<ProfileCubit, ProfileState>(
-              builder: (context, state) {
-                if (state is ProfileStateLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else {
-                  return ProfilePageMain(
-                    score: state.user?.score ?? 0,
-                    numberDayLogged: state.user?.numberDayLogged ?? 0,
-                    numberGoodAnswers: state.user?.numberGoodAnswer ?? 0,
-                  );
-                }
-              },
-            )
-          ],
+        child: BlocBuilder<ProfileCubit, ProfileState>(
+          builder: (context, state) {
+            if (state is ProfileStateLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context.read<ProfileCubit>().getProfile();
+                },
+                child: ListView(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  children: [
+                    ProfilePageHeader(
+                      name: state.user!.name,
+                      uid: state.user!.uid,
+                      photoUrl: null,
+                    ),
+                    ProfilePageMain(
+                      score: state.user!.score,
+                      numberGoodAnswers: state.user!.numberGoodAnswer,
+                      numberDayLogged: state.user!.numberDayLogged,
+                    ),
+                  ],
+                ),
+              );
+            }
+          },
         ),
       ),
     );
   }
 }
+
+/*
+
+Column(
+crossAxisAlignment: CrossAxisAlignment.start,
+children: [
+const ProfilePageHeader(),
+//FIN DU HEADER DE LA PAGE
+Padding(
+padding: const EdgeInsets.only(bottom: 10, left: 15),
+child: Text("Mes Statistiques : ",
+style: Theme.of(context).textTheme.headline5),
+),
+BlocBuilder<ProfileCubit, ProfileState>(
+builder: (context, state) {
+if (state is ProfileStateLoading) {
+return const Center(
+child: CircularProgressIndicator(),
+);
+} else {
+return ProfilePageMain(
+score: state.user?.score ?? 0,
+numberDayLogged: state.user?.numberDayLogged ?? 0,
+numberGoodAnswers: state.user?.numberGoodAnswer ?? 0,
+);
+}
+},
+)
+],
+)*/
