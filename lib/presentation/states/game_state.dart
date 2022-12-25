@@ -12,16 +12,19 @@ class GameState with _$GameState {
   factory GameState.loaded({
     required List<QuestionModel> listQuestions,
     required int index,
+    required int score,
   }) = GameStateLoaded;
 
   factory GameState.wrongAnswer({
     required List<QuestionModel> listQuestions,
     required int index,
+    required int score,
   }) = GameStateWrongAnswer;
 
   factory GameState.rightAnswer({
     required List<QuestionModel> listQuestions,
     required int index,
+    required int score,
   }) = GameStateRightAnswer;
 
   factory GameState.finished({
@@ -41,6 +44,14 @@ class GameState with _$GameState {
         loaded: (state) => state.index,
         rightAnswer: (state) => state.index,
         wrongAnswer: (state) => state.index,
+        orElse: () => 0,
+      );
+
+  int get score => maybeMap(
+        loaded: (state) => state.score,
+        rightAnswer: (state) => state.score,
+        wrongAnswer: (state) => state.score,
+        finished: (state) => state.score,
         orElse: () => 0,
       );
 }

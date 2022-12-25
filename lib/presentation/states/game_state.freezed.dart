@@ -19,11 +19,14 @@ mixin _$GameState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
@@ -32,10 +35,11 @@ mixin _$GameState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
@@ -44,9 +48,12 @@ mixin _$GameState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
@@ -141,11 +148,14 @@ class _$GameStateLoading extends GameStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
@@ -157,10 +167,11 @@ class _$GameStateLoading extends GameStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
@@ -172,9 +183,12 @@ class _$GameStateLoading extends GameStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
@@ -240,7 +254,7 @@ abstract class _$$GameStateLoadedCopyWith<$Res> {
           _$GameStateLoaded value, $Res Function(_$GameStateLoaded) then) =
       __$$GameStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<QuestionModel> listQuestions, int index});
+  $Res call({List<QuestionModel> listQuestions, int index, int score});
 }
 
 /// @nodoc
@@ -256,6 +270,7 @@ class __$$GameStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? listQuestions = null,
     Object? index = null,
+    Object? score = null,
   }) {
     return _then(_$GameStateLoaded(
       listQuestions: null == listQuestions
@@ -266,6 +281,10 @@ class __$$GameStateLoadedCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      score: null == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -273,17 +292,20 @@ class __$$GameStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GameStateLoaded extends GameStateLoaded {
-  _$GameStateLoaded({required this.listQuestions, required this.index})
+  _$GameStateLoaded(
+      {required this.listQuestions, required this.index, required this.score})
       : super._();
 
   @override
   final List<QuestionModel> listQuestions;
   @override
   final int index;
+  @override
+  final int score;
 
   @override
   String toString() {
-    return 'GameState.loaded(listQuestions: $listQuestions, index: $index)';
+    return 'GameState.loaded(listQuestions: $listQuestions, index: $index, score: $score)';
   }
 
   @override
@@ -293,12 +315,13 @@ class _$GameStateLoaded extends GameStateLoaded {
             other is _$GameStateLoaded &&
             const DeepCollectionEquality()
                 .equals(other.listQuestions, listQuestions) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.score, score) || other.score == score));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(listQuestions), index);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(listQuestions), index, score);
 
   @JsonKey(ignore: true)
   @override
@@ -310,46 +333,53 @@ class _$GameStateLoaded extends GameStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
   }) {
-    return loaded(listQuestions, index);
+    return loaded(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
   }) {
-    return loaded?.call(listQuestions, index);
+    return loaded?.call(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(listQuestions, index);
+      return loaded(listQuestions, index, score);
     }
     return orElse();
   }
@@ -401,11 +431,13 @@ class _$GameStateLoaded extends GameStateLoaded {
 abstract class GameStateLoaded extends GameState {
   factory GameStateLoaded(
       {required final List<QuestionModel> listQuestions,
-      required final int index}) = _$GameStateLoaded;
+      required final int index,
+      required final int score}) = _$GameStateLoaded;
   GameStateLoaded._() : super._();
 
   List<QuestionModel> get listQuestions;
   int get index;
+  int get score;
   @JsonKey(ignore: true)
   _$$GameStateLoadedCopyWith<_$GameStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -417,7 +449,7 @@ abstract class _$$GameStateWrongAnswerCopyWith<$Res> {
           $Res Function(_$GameStateWrongAnswer) then) =
       __$$GameStateWrongAnswerCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<QuestionModel> listQuestions, int index});
+  $Res call({List<QuestionModel> listQuestions, int index, int score});
 }
 
 /// @nodoc
@@ -433,6 +465,7 @@ class __$$GameStateWrongAnswerCopyWithImpl<$Res>
   $Res call({
     Object? listQuestions = null,
     Object? index = null,
+    Object? score = null,
   }) {
     return _then(_$GameStateWrongAnswer(
       listQuestions: null == listQuestions
@@ -443,6 +476,10 @@ class __$$GameStateWrongAnswerCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      score: null == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -450,17 +487,20 @@ class __$$GameStateWrongAnswerCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GameStateWrongAnswer extends GameStateWrongAnswer {
-  _$GameStateWrongAnswer({required this.listQuestions, required this.index})
+  _$GameStateWrongAnswer(
+      {required this.listQuestions, required this.index, required this.score})
       : super._();
 
   @override
   final List<QuestionModel> listQuestions;
   @override
   final int index;
+  @override
+  final int score;
 
   @override
   String toString() {
-    return 'GameState.wrongAnswer(listQuestions: $listQuestions, index: $index)';
+    return 'GameState.wrongAnswer(listQuestions: $listQuestions, index: $index, score: $score)';
   }
 
   @override
@@ -470,12 +510,13 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
             other is _$GameStateWrongAnswer &&
             const DeepCollectionEquality()
                 .equals(other.listQuestions, listQuestions) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.score, score) || other.score == score));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(listQuestions), index);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(listQuestions), index, score);
 
   @JsonKey(ignore: true)
   @override
@@ -488,46 +529,53 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
   }) {
-    return wrongAnswer(listQuestions, index);
+    return wrongAnswer(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
   }) {
-    return wrongAnswer?.call(listQuestions, index);
+    return wrongAnswer?.call(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
     if (wrongAnswer != null) {
-      return wrongAnswer(listQuestions, index);
+      return wrongAnswer(listQuestions, index, score);
     }
     return orElse();
   }
@@ -579,11 +627,13 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
 abstract class GameStateWrongAnswer extends GameState {
   factory GameStateWrongAnswer(
       {required final List<QuestionModel> listQuestions,
-      required final int index}) = _$GameStateWrongAnswer;
+      required final int index,
+      required final int score}) = _$GameStateWrongAnswer;
   GameStateWrongAnswer._() : super._();
 
   List<QuestionModel> get listQuestions;
   int get index;
+  int get score;
   @JsonKey(ignore: true)
   _$$GameStateWrongAnswerCopyWith<_$GameStateWrongAnswer> get copyWith =>
       throw _privateConstructorUsedError;
@@ -595,7 +645,7 @@ abstract class _$$GameStateRightAnswerCopyWith<$Res> {
           $Res Function(_$GameStateRightAnswer) then) =
       __$$GameStateRightAnswerCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<QuestionModel> listQuestions, int index});
+  $Res call({List<QuestionModel> listQuestions, int index, int score});
 }
 
 /// @nodoc
@@ -611,6 +661,7 @@ class __$$GameStateRightAnswerCopyWithImpl<$Res>
   $Res call({
     Object? listQuestions = null,
     Object? index = null,
+    Object? score = null,
   }) {
     return _then(_$GameStateRightAnswer(
       listQuestions: null == listQuestions
@@ -621,6 +672,10 @@ class __$$GameStateRightAnswerCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      score: null == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -628,17 +683,20 @@ class __$$GameStateRightAnswerCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GameStateRightAnswer extends GameStateRightAnswer {
-  _$GameStateRightAnswer({required this.listQuestions, required this.index})
+  _$GameStateRightAnswer(
+      {required this.listQuestions, required this.index, required this.score})
       : super._();
 
   @override
   final List<QuestionModel> listQuestions;
   @override
   final int index;
+  @override
+  final int score;
 
   @override
   String toString() {
-    return 'GameState.rightAnswer(listQuestions: $listQuestions, index: $index)';
+    return 'GameState.rightAnswer(listQuestions: $listQuestions, index: $index, score: $score)';
   }
 
   @override
@@ -648,12 +706,13 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
             other is _$GameStateRightAnswer &&
             const DeepCollectionEquality()
                 .equals(other.listQuestions, listQuestions) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.score, score) || other.score == score));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(listQuestions), index);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(listQuestions), index, score);
 
   @JsonKey(ignore: true)
   @override
@@ -666,46 +725,53 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
   }) {
-    return rightAnswer(listQuestions, index);
+    return rightAnswer(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
   }) {
-    return rightAnswer?.call(listQuestions, index);
+    return rightAnswer?.call(listQuestions, index, score);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
     if (rightAnswer != null) {
-      return rightAnswer(listQuestions, index);
+      return rightAnswer(listQuestions, index, score);
     }
     return orElse();
   }
@@ -757,11 +823,13 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
 abstract class GameStateRightAnswer extends GameState {
   factory GameStateRightAnswer(
       {required final List<QuestionModel> listQuestions,
-      required final int index}) = _$GameStateRightAnswer;
+      required final int index,
+      required final int score}) = _$GameStateRightAnswer;
   GameStateRightAnswer._() : super._();
 
   List<QuestionModel> get listQuestions;
   int get index;
+  int get score;
   @JsonKey(ignore: true)
   _$$GameStateRightAnswerCopyWith<_$GameStateRightAnswer> get copyWith =>
       throw _privateConstructorUsedError;
@@ -832,11 +900,14 @@ class _$GameStateFinished extends GameStateFinished {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
@@ -848,10 +919,11 @@ class _$GameStateFinished extends GameStateFinished {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
@@ -863,9 +935,12 @@ class _$GameStateFinished extends GameStateFinished {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),
@@ -995,11 +1070,14 @@ class _$GameStateFailed extends GameStateFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         loaded,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         wrongAnswer,
-    required TResult Function(List<QuestionModel> listQuestions, int index)
+    required TResult Function(
+            List<QuestionModel> listQuestions, int index, int score)
         rightAnswer,
     required TResult Function(int score) finished,
     required TResult Function(String failed) failed,
@@ -1011,10 +1089,11 @@ class _$GameStateFailed extends GameStateFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         wrongAnswer,
-    TResult? Function(List<QuestionModel> listQuestions, int index)?
+    TResult? Function(List<QuestionModel> listQuestions, int index, int score)?
         rightAnswer,
     TResult? Function(int score)? finished,
     TResult? Function(String failed)? failed,
@@ -1026,9 +1105,12 @@ class _$GameStateFailed extends GameStateFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<QuestionModel> listQuestions, int index)? loaded,
-    TResult Function(List<QuestionModel> listQuestions, int index)? wrongAnswer,
-    TResult Function(List<QuestionModel> listQuestions, int index)? rightAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        loaded,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        wrongAnswer,
+    TResult Function(List<QuestionModel> listQuestions, int index, int score)?
+        rightAnswer,
     TResult Function(int score)? finished,
     TResult Function(String failed)? failed,
     required TResult orElse(),

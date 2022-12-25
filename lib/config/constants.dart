@@ -1,9 +1,9 @@
 //Game
 // how many questions in the game
-const int nbQuestions = 10;
+const int NB_QUESTIONS = 10;
 // how many point for an easy question
-const int pointEasy = 1;
+const int EASY_SCORE = 1;
 // how many point for a medium question
-const int pointMedium = 2;
+const int MEDIUM_SCORE = 2;
 // how many point for a hard question
-const int pointHard = 3;
+const int HARD_SCORE = 3;

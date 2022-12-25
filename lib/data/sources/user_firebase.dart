@@ -43,7 +43,9 @@ class UserFirebase {
     await _listUsers.doc(user.uid).set(user);
   }
 
-  Future<void> updateUser(UserModel user) async {
+  Future<void> updateUser({
+    required UserModel user,
+  }) async {
     await _listUsers.doc(user.uid).update(user.toJson());
   }
 
