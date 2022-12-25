@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/ranking_cubit.dart';
 
 class RankingProvider extends StatelessWidget {
@@ -10,10 +10,10 @@ class RankingProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
-      create: (context) => UserRepositoryImpl.getInstance(),
+      create: (context) => AuthRepositoryImpl.getInstance(),
       child: BlocProvider(
         create: (context) => RankingCubit(
-          userRepository: context.read<UserRepositoryImpl>(),
+          authRepository: context.read<AuthRepositoryImpl>(),
         )..getProfiles(),
         child: child,
       ),

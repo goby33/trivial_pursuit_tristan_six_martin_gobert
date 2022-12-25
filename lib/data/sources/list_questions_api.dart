@@ -11,7 +11,7 @@ class ListQuestionsApi {
     return _instanceQuestionApi!;
   }
 
-  static const url = "https://opentdb.com/api.php?amount=$nbQuestions";
+  static const url = "https://opentdb.com/api.php?amount=$NB_QUESTIONS";
 
   Future<ListQuestionsModel?> getQuestions() async {
     var responseApi = await Dio().get(url);

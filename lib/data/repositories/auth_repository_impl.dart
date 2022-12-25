@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/list_users_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/auth_firebase.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
@@ -16,6 +18,7 @@ class AuthRepositoryImpl {
     return AuthRepositoryImpl._();
   }
 
+  //AUTH METHODS
   Future<ApiResponse<User>> signIn({
     required String email,
     required String password,
@@ -95,8 +98,49 @@ class AuthRepositoryImpl {
     }
   }
 
+  //USER METHODS
+
   Future<void> deleteUser() async {
     //await _authFirebase?.deleteUser();
     //await _userFirebase?.deleteUser();
+  }
+
+  Future<ApiResponse<ListUsersModel>> getListUsers() async {
+    try {
+      final response = await _userFirebase?.getListUsers();
+      if (response == null) {
+        return FailResponse(0.toString(), failure: "Error user null");
+      } else {
+        return SuccessResponse(1.toString(), response);
+      }
+    } catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  Future<ApiResponse<ListUsersModel>> searchUsers({
+    required String text,
+  }) async {
+    try {
+      final response = await _userFirebase?.searchUsers(text: text);
+      if (response == null) {
+        return FailResponse(0.toString(), failure: "Error user null");
+      } else {
+        return SuccessResponse(1.toString(), response);
+      }
+    } catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  Future<ApiResponse<void>> updateUser({
+    required UserModel user,
+  }) async {
+    try {
+      final response = await _userFirebase?.updateUser(user: user);
+      return SuccessResponse(1.toString(), response);
+    } on Firebase catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:html_unescape/html_unescape.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/question_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
@@ -16,6 +17,7 @@ class GamePage extends StatefulWidget {
 }
 
 late SwipingDeck _swipingDeck;
+var unescape = HtmlUnescape();
 
 class _GamePageState extends State<GamePage> {
   @override
@@ -115,7 +117,9 @@ class _GamePageState extends State<GamePage> {
                               ),
                               child: ListTile(
                                 leading: const Icon(Icons.arrow_forward_ios),
-                                title: Text(e),
+                                title: Text(
+                                  unescape.convert(e),
+                                ),
                               ),
                             ),
                           ),
@@ -147,7 +151,7 @@ class _GamePageState extends State<GamePage> {
             width: 250,
             height: 250,
             child: Text(
-              question.question,
+              unescape.convert(question.question),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline5,
             ),
