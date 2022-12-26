@@ -60,6 +60,10 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
+  int consecutiveDateCalculation(String from) {
+    final date = DateTime.parse(from);
+    return DateTime.now().difference(date).inDays;
+  }
 
   void updateUserScore({required int score, required int goodAnswer}) async {
     //loading
@@ -74,6 +78,10 @@ class GameCubit extends Cubit<GameState> {
           score: result.data!.score + score,
           numberGoodAnswer: result.data!.numberGoodAnswer + goodAnswer,
           dateOfLastGame: "${date.year}-${date.month}-${date.day}",
+          numberDayLogged:
+              (consecutiveDateCalculation(result.data!.dateOfLastGame) > 1)
+                  ? result.data!.numberDayLogged + 1
+                  : 0,
         );
         final resultUpdate = await authRepository.updateUser(user: user);
         if (resultUpdate is SuccessResponse) {
