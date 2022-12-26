@@ -5,6 +5,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_quest
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/game_entity.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
@@ -22,9 +23,12 @@ class GameCubit extends Cubit<GameState> {
       if (result.data != null) {
         emit(
           GameStateLoaded(
-            index: 0,
-            listQuestions: result.data!.results,
-            score: 0,
+            gameEntity: GameEntity(
+              listQuestions: result.data!.results,
+              index: 0,
+              score: 0,
+              goodAnswer: 0,
+            ),
           ),
         );
       } else {
@@ -56,20 +60,29 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  void updateUserScore({required int score}) async {
+
+  void updateUserScore({required int score, required int goodAnswer}) async {
     //loading
     emit(
       GameStateLoading(),
     );
     final result = await authRepository.getCurrentUser();
     if (result is SuccessResponse) {
+      var date = DateTime.now();
       if (result.data != null) {
         UserModel user = result.data!.copyWith(
           score: result.data!.score + score,
+          numberGoodAnswer: result.data!.numberGoodAnswer + goodAnswer,
+          dateOfLastGame: "${date.year}-${date.month}-${date.day}",
         );
         final resultUpdate = await authRepository.updateUser(user: user);
         if (resultUpdate is SuccessResponse) {
-          emit(GameStateFinished(score: user.score));
+          emit(
+            GameStateFinished(
+              score: user.score,
+              goodAnswer: state.goodAnswer,
+            ),
+          );
         }
       }
     } else {
@@ -90,30 +103,38 @@ class GameCubit extends Cubit<GameState> {
       if (isFinished) {
         updateUserScore(
           score: scoreCalculation(questionModel.difficulty),
+          goodAnswer: state.goodAnswer,
         );
       } else {
         emit(
           GameStateRightAnswer(
-            index: index + 1,
-            listQuestions: state.listQuestions,
-            score: scoreCalculation(questionModel.difficulty),
+            gameEntity: GameEntity(
+              listQuestions: state.listQuestions,
+              index: index + 1,
+              score: scoreCalculation(questionModel.difficulty),
+              goodAnswer: state.goodAnswer + 1,
+            ),
           ),
         );
       }
     } else {
       if (isFinished) {
-        updateUserScore(score: 0);
+        updateUserScore(
+          score: 0,
+          goodAnswer: state.goodAnswer,
+        );
       } else {
         emit(
-          GameStateWrongAnswer(
-            index: index + 1,
-            listQuestions: state.listQuestions,
-            score: state.score,
+          GameStateRightAnswer(
+            gameEntity: GameEntity(
+              listQuestions: state.listQuestions,
+              index: index + 1,
+              score: scoreCalculation(questionModel.difficulty),
+              goodAnswer: state.goodAnswer,
+            ),
           ),
         );
       }
     }
   }
 }
-
-//splashPage

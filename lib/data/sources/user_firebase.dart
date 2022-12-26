@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/list_users_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 
 class UserFirebase {
@@ -23,13 +22,13 @@ class UserFirebase {
     return _instanceUserFirebase!;
   }
 
-  Future<ListUsersModel?> getListUsers() async {
+  Future<List<UserModel>?> getListUsers() async {
     final response = await _listUsers.orderBy("score", descending: true).get();
     final listUsers = response.docs.map((e) => e.data()).toList();
-    return ListUsersModel(list_users: listUsers);
+    return listUsers;
   }
 
-  Future<ListUsersModel?> searchUsers({required String text}) async {
+  Future<List<UserModel>?> searchUsers({required String text}) async {
     final response = await _listUsers.orderBy("score", descending: true).get();
     final listUsers = response.docs
         .map((e) => e.data())
@@ -37,7 +36,7 @@ class UserFirebase {
             element.name.toLowerCase().contains(text.toLowerCase()))
         .toList();
 
-    return ListUsersModel(list_users: listUsers);
+    return listUsers;
   }
 
   Future<void> addUser(UserModel user) async {

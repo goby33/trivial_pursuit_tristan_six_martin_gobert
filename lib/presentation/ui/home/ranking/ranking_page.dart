@@ -52,7 +52,7 @@ class _RankingPageState extends State<RankingPage> {
                       )),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: state.listUsersModel!.list_users.length,
+                      itemCount: state.listUsersModel!.length,
                       itemBuilder: (context, index) {
                         return ListTile(
                           leading: const CircleAvatar(
@@ -61,9 +61,9 @@ class _RankingPageState extends State<RankingPage> {
                             ),
                           ),
                           title: Text(
-                              state.listUsersModel!.list_users[index].name),
+                              state.listUsersModel![index].name),
                           subtitle: Text(
-                              "Score : ${state.listUsersModel!.list_users[index].score}"),
+                              "Score : ${state.listUsersModel![index].score}"),
                         );
                       },
                     ),

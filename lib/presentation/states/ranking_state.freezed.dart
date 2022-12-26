@@ -20,21 +20,21 @@ mixin _$RankingState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(ListUsersModel? listUsersModel) ready,
+    required TResult Function(List<UserModel>? listUsersModel) ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(ListUsersModel? listUsersModel)? ready,
+    TResult? Function(List<UserModel>? listUsersModel)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(ListUsersModel? listUsersModel)? ready,
+    TResult Function(List<UserModel>? listUsersModel)? ready,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$RankingStateLoading extends RankingStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(ListUsersModel? listUsersModel) ready,
+    required TResult Function(List<UserModel>? listUsersModel) ready,
   }) {
     return loading();
   }
@@ -130,7 +130,7 @@ class _$RankingStateLoading extends RankingStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(ListUsersModel? listUsersModel)? ready,
+    TResult? Function(List<UserModel>? listUsersModel)? ready,
   }) {
     return loading?.call();
   }
@@ -140,7 +140,7 @@ class _$RankingStateLoading extends RankingStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(ListUsersModel? listUsersModel)? ready,
+    TResult Function(List<UserModel>? listUsersModel)? ready,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -266,7 +266,7 @@ class _$RankingStateFailed extends RankingStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(ListUsersModel? listUsersModel) ready,
+    required TResult Function(List<UserModel>? listUsersModel) ready,
   }) {
     return failed(dateTime, message);
   }
@@ -276,7 +276,7 @@ class _$RankingStateFailed extends RankingStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(ListUsersModel? listUsersModel)? ready,
+    TResult? Function(List<UserModel>? listUsersModel)? ready,
   }) {
     return failed?.call(dateTime, message);
   }
@@ -286,7 +286,7 @@ class _$RankingStateFailed extends RankingStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(ListUsersModel? listUsersModel)? ready,
+    TResult Function(List<UserModel>? listUsersModel)? ready,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -349,9 +349,7 @@ abstract class _$$RankingStateReadyCopyWith<$Res> {
           _$RankingStateReady value, $Res Function(_$RankingStateReady) then) =
       __$$RankingStateReadyCopyWithImpl<$Res>;
   @useResult
-  $Res call({ListUsersModel? listUsersModel});
-
-  $ListUsersModelCopyWith<$Res>? get listUsersModel;
+  $Res call({List<UserModel>? listUsersModel});
 }
 
 /// @nodoc
@@ -371,20 +369,8 @@ class __$$RankingStateReadyCopyWithImpl<$Res>
       listUsersModel: freezed == listUsersModel
           ? _value.listUsersModel
           : listUsersModel // ignore: cast_nullable_to_non_nullable
-              as ListUsersModel?,
+              as List<UserModel>?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ListUsersModelCopyWith<$Res>? get listUsersModel {
-    if (_value.listUsersModel == null) {
-      return null;
-    }
-
-    return $ListUsersModelCopyWith<$Res>(_value.listUsersModel!, (value) {
-      return _then(_value.copyWith(listUsersModel: value));
-    });
   }
 }
 
@@ -394,7 +380,7 @@ class _$RankingStateReady extends RankingStateReady {
   _$RankingStateReady({required this.listUsersModel}) : super._();
 
   @override
-  final ListUsersModel? listUsersModel;
+  final List<UserModel>? listUsersModel;
 
   @override
   String toString() {
@@ -406,12 +392,13 @@ class _$RankingStateReady extends RankingStateReady {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RankingStateReady &&
-            (identical(other.listUsersModel, listUsersModel) ||
-                other.listUsersModel == listUsersModel));
+            const DeepCollectionEquality()
+                .equals(other.listUsersModel, listUsersModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, listUsersModel);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(listUsersModel));
 
   @JsonKey(ignore: true)
   @override
@@ -424,7 +411,7 @@ class _$RankingStateReady extends RankingStateReady {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(ListUsersModel? listUsersModel) ready,
+    required TResult Function(List<UserModel>? listUsersModel) ready,
   }) {
     return ready(listUsersModel);
   }
@@ -434,7 +421,7 @@ class _$RankingStateReady extends RankingStateReady {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(ListUsersModel? listUsersModel)? ready,
+    TResult? Function(List<UserModel>? listUsersModel)? ready,
   }) {
     return ready?.call(listUsersModel);
   }
@@ -444,7 +431,7 @@ class _$RankingStateReady extends RankingStateReady {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(ListUsersModel? listUsersModel)? ready,
+    TResult Function(List<UserModel>? listUsersModel)? ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -489,11 +476,11 @@ class _$RankingStateReady extends RankingStateReady {
 }
 
 abstract class RankingStateReady extends RankingState {
-  factory RankingStateReady({required final ListUsersModel? listUsersModel}) =
+  factory RankingStateReady({required final List<UserModel>? listUsersModel}) =
       _$RankingStateReady;
   RankingStateReady._() : super._();
 
-  ListUsersModel? get listUsersModel;
+  List<UserModel>? get listUsersModel;
   @JsonKey(ignore: true)
   _$$RankingStateReadyCopyWith<_$RankingStateReady> get copyWith =>
       throw _privateConstructorUsedError;

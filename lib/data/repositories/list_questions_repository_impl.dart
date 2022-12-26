@@ -39,4 +39,19 @@ class ListQuestionsRepositoryImpl {
       return FailResponse(0.toString(), failure: e.toString());
     }
   }
+
+  Future<ApiResponse<ListQuestionsModel>> getQuestionsByDifficulty(String difficulty) async {
+    try {
+      final listQuestionsModel = await _listQuestionApi?.getQuestionsByDifficulty(difficulty);
+      if (listQuestionsModel != null) {
+        await _listQuestionFirebase!.post(listQuestionsModel);
+        return SuccessResponse(200.toString(), listQuestionsModel);
+      } else {
+        return FailResponse(404.toString(),
+            failure: "ListQuestionsModel from API null");
+      }
+    } catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
 }

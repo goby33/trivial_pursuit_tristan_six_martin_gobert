@@ -40,7 +40,7 @@ class _GamePageState extends State<GamePage> {
           failed: (value) => debugPrint(value.failed),
           orElse: () => null,
         ),
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 16,
@@ -61,11 +61,11 @@ class _GamePageState extends State<GamePage> {
                       rotationFactor: 0.8 / 3.14,
                       swipeAnimationDuration: const Duration(milliseconds: 500),
                     ),
-                    /*Container(
+                    Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 3,
-                      color: Colors.red,
-                    ),*/
+                      color: Colors.transparent,
+                    ),
                   ],
                 );
               },

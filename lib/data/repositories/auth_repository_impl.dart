@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/list_users_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/auth_firebase.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
@@ -52,7 +51,7 @@ class AuthRepositoryImpl {
             name: name,
             numberGoodAnswer: 0,
             numberDayLogged: 0,
-            dateOfLastConnexion: 0,
+            dateOfLastGame: "",
             score: 0,
           ),
         );
@@ -105,7 +104,7 @@ class AuthRepositoryImpl {
     //await _userFirebase?.deleteUser();
   }
 
-  Future<ApiResponse<ListUsersModel>> getListUsers() async {
+  Future<ApiResponse<List<UserModel>>> getListUsers() async {
     try {
       final response = await _userFirebase?.getListUsers();
       if (response == null) {
@@ -118,7 +117,7 @@ class AuthRepositoryImpl {
     }
   }
 
-  Future<ApiResponse<ListUsersModel>> searchUsers({
+  Future<ApiResponse<List<UserModel>>> searchUsers({
     required String text,
   }) async {
     try {

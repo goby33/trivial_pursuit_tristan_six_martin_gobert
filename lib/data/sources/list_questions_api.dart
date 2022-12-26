@@ -21,4 +21,13 @@ class ListQuestionsApi {
     }
     return null;
   }
+
+  Future<ListQuestionsModel?> getQuestionsByDifficulty(String difficulty) async {
+    var responseApi = await Dio().get(url + "&difficulty=$difficulty");
+    if (responseApi.statusCode == 200) {
+      final questions = ListQuestionsModel.fromJson(responseApi.data);
+      return questions;
+    }
+    return null;
+  }
 }
