@@ -6,6 +6,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_quest
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/game_provider.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/game_page_main.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({
@@ -35,16 +36,13 @@ class _GamePageState extends State<GamePage> {
     return GameProvider(
       child: BlocListener<GameCubit, GameState>(
         listener: (context, state) => state.maybeMap(
-          wrongAnswer: (value) => debugPrint("Wrong answer"),
-          rightAnswer: (value) => debugPrint("Right answer"),
+          wrongAnswer: (value) =>  _swipingDeck.swipeLeft(),
+          rightAnswer: (value) => _swipingDeck.swipeRight(),
           failed: (value) => debugPrint(value.failed),
           orElse: () => null,
         ),
         child: ListView(
           children: [
-            const SizedBox(
-              height: 16,
-            ),
             BlocBuilder<GameCubit, GameState>(
               buildWhen: (previous, current) => current is GameStateLoaded,
               builder: (context, state) {
@@ -52,7 +50,7 @@ class _GamePageState extends State<GamePage> {
                   children: [
                     _swipingDeck = SwipingCardDeck(
                       cardDeck: getCardDeck(listQuestions: state.listQuestions),
-                      onDeckEmpty: () => null,
+                      onDeckEmpty: () => context.read<GameCubit>().endGame(),
                       onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
                       onRightSwipe: (Card card) => debugPrint("Swiped right!"),
                       cardWidth: 200,
@@ -70,65 +68,7 @@ class _GamePageState extends State<GamePage> {
                 );
               },
             ),
-            BlocBuilder<GameCubit, GameState>(
-              builder: (context, state) {
-                if (state is GameStateLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state is GameStateFinished) {
-                  return Column(
-                    children: [
-                      Text(
-                        "You have finished the game with ${state.score} points",
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          print("pp");
-                        },
-                        child: const Text("Play again"),
-                      ),
-                    ],
-                  );
-                } else {
-                  List<String> listQuestions = [
-                    ...state.listQuestions[state.index].incorrect_answers,
-                    state.listQuestions[state.index].correct_answer
-                  ]
-                    ..shuffle()
-                    ..toList();
-                  return Column(
-                    children: listQuestions
-                        .map(
-                          (e) => InkWell(
-                            onTap: () {
-                              _swipingDeck.swipeRight();
-                              context.read<GameCubit>().checkAnswer(e);
-                            },
-                            child: Card(
-                              margin: const EdgeInsets.all(10),
-                              color: const Color.fromRGBO(226, 149, 120, 1),
-                              shadowColor:
-                                  const Color.fromRGBO(255, 221, 210, 1),
-                              elevation: 10,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                              child: ListTile(
-                                leading: const Icon(Icons.arrow_forward_ios),
-                                title: Text(
-                                  unescape.convert(e),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  );
-                }
-              },
-            ),
+            GamePageMain(),
           ],
         ),
       ),

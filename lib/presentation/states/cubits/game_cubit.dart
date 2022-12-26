@@ -60,13 +60,12 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  int consecutiveDateCalculation(String from) {
+  int consecutiveDateCalculation({required String from}) {
     final date = DateTime.parse(from);
     return DateTime.now().difference(date).inDays;
   }
 
-  void updateUserScore({required int score, required int goodAnswer}) async {
-    //loading
+  void endGame() async {
     emit(
       GameStateLoading(),
     );
@@ -74,20 +73,23 @@ class GameCubit extends Cubit<GameState> {
     if (result is SuccessResponse) {
       var date = DateTime.now();
       if (result.data != null) {
-        UserModel user = result.data!.copyWith(
-          score: result.data!.score + score,
-          numberGoodAnswer: result.data!.numberGoodAnswer + goodAnswer,
+        var userBdd = result.data!;
+        int numberDayLogged = consecutiveDateCalculation(
+          from: userBdd.dateOfLastGame,
+        );
+        UserModel user = userBdd.copyWith(
+          score: userBdd.score + state.score,
+          numberGoodAnswer: userBdd.numberGoodAnswer + state.goodAnswer,
           dateOfLastGame: "${date.year}-${date.month}-${date.day}",
-          numberDayLogged:
-              (consecutiveDateCalculation(result.data!.dateOfLastGame) > 1)
-                  ? result.data!.numberDayLogged + 1
-                  : 0,
+          numberDayLogged: (numberDayLogged > 1)
+              ? userBdd.numberDayLogged + numberDayLogged
+              : 0,
         );
         final resultUpdate = await authRepository.updateUser(user: user);
         if (resultUpdate is SuccessResponse) {
           emit(
             GameStateFinished(
-              score: user.score,
+              score: state.score,
               goodAnswer: state.goodAnswer,
             ),
           );
@@ -105,44 +107,29 @@ class GameCubit extends Cubit<GameState> {
   void checkAnswer(String answer) {
     int index = state.index;
     QuestionModel questionModel = state.listQuestions[index];
-    bool isFinished = index == NB_QUESTIONS - 1;
 
     if (questionModel.correct_answer == answer) {
-      if (isFinished) {
-        updateUserScore(
-          score: scoreCalculation(questionModel.difficulty),
-          goodAnswer: state.goodAnswer,
-        );
-      } else {
-        emit(
-          GameStateRightAnswer(
-            gameEntity: GameEntity(
-              listQuestions: state.listQuestions,
-              index: index + 1,
-              score: scoreCalculation(questionModel.difficulty),
-              goodAnswer: state.goodAnswer + 1,
-            ),
+      emit(
+        GameStateRightAnswer(
+          gameEntity: GameEntity(
+            listQuestions: state.listQuestions,
+            index: index + 1,
+            score: scoreCalculation(questionModel.difficulty),
+            goodAnswer: state.goodAnswer + 1,
           ),
-        );
-      }
+        ),
+      );
     } else {
-      if (isFinished) {
-        updateUserScore(
-          score: 0,
-          goodAnswer: state.goodAnswer,
-        );
-      } else {
-        emit(
-          GameStateRightAnswer(
-            gameEntity: GameEntity(
-              listQuestions: state.listQuestions,
-              index: index + 1,
-              score: scoreCalculation(questionModel.difficulty),
-              goodAnswer: state.goodAnswer,
-            ),
+      emit(
+        GameStateWrongAnswer(
+          gameEntity: GameEntity(
+            listQuestions: state.listQuestions,
+            index: index + 1,
+            score: scoreCalculation(questionModel.difficulty),
+            goodAnswer: state.goodAnswer,
           ),
-        );
-      }
+        ),
+      );
     }
   }
 }
