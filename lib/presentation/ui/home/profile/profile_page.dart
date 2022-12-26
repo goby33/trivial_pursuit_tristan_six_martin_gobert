@@ -48,33 +48,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
-/*
-
-Column(
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-const ProfilePageHeader(),
-//FIN DU HEADER DE LA PAGE
-Padding(
-padding: const EdgeInsets.only(bottom: 10, left: 15),
-child: Text("Mes Statistiques : ",
-style: Theme.of(context).textTheme.headline5),
-),
-BlocBuilder<ProfileCubit, ProfileState>(
-builder: (context, state) {
-if (state is ProfileStateLoading) {
-return const Center(
-child: CircularProgressIndicator(),
-);
-} else {
-return ProfilePageMain(
-score: state.user?.score ?? 0,
-numberDayLogged: state.user?.numberDayLogged ?? 0,
-numberGoodAnswers: state.user?.numberGoodAnswer ?? 0,
-);
-}
-},
-)
-],
-)*/
