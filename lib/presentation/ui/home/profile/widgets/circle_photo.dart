@@ -13,9 +13,21 @@ class CirclePhoto extends StatelessWidget {
         backgroundColor: Colors.brown,
         child: CircleAvatar(
           radius: 68.0,
-          backgroundImage: NetworkImage(
+          backgroundImage: Image.network(
             urlPhoto,
-          ),
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!
+                      : null,
+                ),
+              );
+            },
+          ).image,
           child: const Align(
             alignment: Alignment.bottomRight,
             child: CircleAvatar(

@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   final pages = [const GamePage(), const RankingPage(), const ProfilePage()];
 
-  final titlesPage = ["Jeux", "Ranking", "profile"];
+  final titlesPage = ["Jeux", "Ranking", "Profile"];
 
   @override
   void initState() {

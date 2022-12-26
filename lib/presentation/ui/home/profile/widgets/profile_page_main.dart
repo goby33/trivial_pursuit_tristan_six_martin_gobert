@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'card_statistiques.dart';
+import 'statistics_card.dart';
 
 class ProfilePageMain extends StatelessWidget {
   final int score;
@@ -15,39 +15,52 @@ class ProfilePageMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.count(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        primary: false,
-        crossAxisCount: 2,
-        crossAxisSpacing: 5,
-        mainAxisSpacing: 5,
-        childAspectRatio: 2,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CardStatistiques(
-            text: "fois dans le top 3",
-            value: 1,
-            icon: Icons.emoji_events,
-            colorIcons: Color.fromARGB(252, 191, 73, 1),
+          Text("Statistics : ", style: Theme.of(context).textTheme.headline5),
+          const SizedBox(height: 15),
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(),
+              ),
+              Expanded(
+                flex: 3,
+                child: StatisticsCard(
+                  text: 'Score',
+                  value: score,
+                  icon: Icons.emoji_events,
+                  colorIcons: const Color.fromRGBO(214, 159, 126, 1),
+                ),
+              ),
+              Expanded(
+                child: SizedBox(),
+              ),
+            ],
           ),
-          CardStatistiques(
-            text: "question réussites",
-            value: numberGoodAnswers,
-            icon: Icons.access_alarm,
-            colorIcons: const Color.fromARGB(10, 10, 10, 1),
-          ),
-          CardStatistiques(
-            text: "Scores",
-            value: score,
-            icon: Icons.bolt,
-            colorIcons: const Color.fromARGB(252, 246, 189, 1),
-          ),
-          CardStatistiques(
-            text: "Jours d'activité",
-            value: numberDayLogged,
-            icon: Icons.access_alarm,
-            colorIcons: const Color.fromRGBO(76, 201, 240, 1),
-          ),
+          Row(
+            children: [
+              Expanded(
+                child: StatisticsCard(
+                  text: 'Good answers',
+                  value: numberGoodAnswers,
+                  icon: Icons.bolt,
+                  colorIcons: const Color.fromARGB(252, 246, 189, 1),
+                ),
+              ),
+              Expanded(
+                child: StatisticsCard(
+                  text: 'Days logged',
+                  value: numberDayLogged,
+                  icon: Icons.access_alarm,
+                  colorIcons: const Color.fromRGBO(76, 201, 240, 1),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

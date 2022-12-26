@@ -15,6 +15,7 @@ class ContainerInfoUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
       decoration: BoxDecoration(
           color: const Color.fromRGBO(255, 221, 210, 1),
           borderRadius: BorderRadius.circular(30)),
@@ -44,26 +45,22 @@ class ContainerInfoUser extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: RichText(
-              text: TextSpan(
-                text: "Player n°",
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: uid,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("Player n° : ",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  )),
+              Flexible(
+                child: Text(uid,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 12,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+                        fontWeight: FontWeight.bold)),
               ),
-            ),
+            ],
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             ElevatedButton(

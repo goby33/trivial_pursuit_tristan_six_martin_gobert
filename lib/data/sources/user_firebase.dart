@@ -11,6 +11,7 @@ class UserFirebase {
 
   static UserFirebase getInstance() {
     if (_instanceUserFirebase == null) {
+      print("UserFirebase instance created");
       _listUsers = _firebaseFirestore
           .collection('users')
           .withConverter<UserModel>(
