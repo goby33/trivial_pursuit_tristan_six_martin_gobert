@@ -52,8 +52,7 @@ class GameCubit extends Cubit<GameState> {
     emit(
       GameStateLoading(),
     );
-    final result =
-        await listQuestionsRepository.getQuestionsByDifficulty();
+    final result = await listQuestionsRepository.getQuestionsByDifficulty();
     if (result is SuccessResponse) {
       if (result.data != null) {
         emit(
@@ -101,6 +100,8 @@ class GameCubit extends Cubit<GameState> {
   }
 
   void endGame() async {
+    int currentScore = state.score;
+    int currentGoodAnswer = state.goodAnswer;
     emit(
       GameStateLoading(),
     );
@@ -113,8 +114,8 @@ class GameCubit extends Cubit<GameState> {
           from: userBdd.dateOfLastGame,
         );
         UserModel user = userBdd.copyWith(
-          score: userBdd.score + state.score,
-          numberGoodAnswer: userBdd.numberGoodAnswer + state.goodAnswer,
+          score: userBdd.score + currentScore,
+          numberGoodAnswer: userBdd.numberGoodAnswer + currentGoodAnswer,
           dateOfLastGame: "${date.year}-${date.month}-${date.day}",
           numberDayLogged: (numberDayLogged > 1)
               ? userBdd.numberDayLogged + numberDayLogged
@@ -124,8 +125,8 @@ class GameCubit extends Cubit<GameState> {
         if (resultUpdate is SuccessResponse) {
           emit(
             GameStateFinished(
-              score: state.score,
-              goodAnswer: state.goodAnswer,
+              score: currentScore,
+              goodAnswer: currentGoodAnswer,
             ),
           );
         }
@@ -155,12 +156,13 @@ class GameCubit extends Cubit<GameState> {
         ),
       );
     } else {
+      int score = scoreCalculation(questionModel.difficulty);
       emit(
         GameStateWrongAnswer(
           gameEntity: GameEntity(
             listQuestions: state.listQuestions,
             index: index + 1,
-            score: scoreCalculation(questionModel.difficulty),
+            score: score,
             goodAnswer: state.goodAnswer,
           ),
         ),

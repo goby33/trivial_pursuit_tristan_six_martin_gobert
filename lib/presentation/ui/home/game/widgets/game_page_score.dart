@@ -67,7 +67,7 @@ class GamePageScore extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text("10"),
+                Text(score.toString()),
               ],
             ),
             Column(
@@ -76,7 +76,7 @@ class GamePageScore extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text("1"),
+                Text(goodAnswers.toString()),
               ],
             ),
             Column(

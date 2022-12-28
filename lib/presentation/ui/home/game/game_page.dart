@@ -36,7 +36,7 @@ class _GamePageState extends State<GamePage> {
     return GameProvider(
       child: BlocListener<GameCubit, GameState>(
         listener: (context, state) => state.maybeMap(
-          wrongAnswer: (value) =>  _swipingDeck.swipeLeft(),
+          wrongAnswer: (value) => _swipingDeck.swipeLeft(),
           rightAnswer: (value) => _swipingDeck.swipeRight(),
           failed: (value) => debugPrint(value.failed),
           orElse: () => null,
@@ -44,21 +44,25 @@ class _GamePageState extends State<GamePage> {
         child: ListView(
           children: [
             BlocBuilder<GameCubit, GameState>(
-              buildWhen: (previous, current) => current is GameStateLoaded || current is GameStateFinished,
+              buildWhen: (previous, current) =>
+                  current is GameStateLoaded || current is GameStateFinished,
               builder: (context, state) {
                 if (state is GameStateLoaded) {
                   return Stack(
                     children: [
                       _swipingDeck = SwipingCardDeck(
-                        cardDeck: getCardDeck(listQuestions: state.listQuestions),
+                        cardDeck:
+                            getCardDeck(listQuestions: state.listQuestions),
                         onDeckEmpty: () => context.read<GameCubit>().endGame(),
                         onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-                        onRightSwipe: (Card card) => debugPrint("Swiped right!"),
+                        onRightSwipe: (Card card) =>
+                            debugPrint("Swiped right!"),
                         cardWidth: 200,
                         swipeThreshold: MediaQuery.of(context).size.width / 3,
                         minimumVelocity: 1000,
                         rotationFactor: 0.8 / 3.14,
-                        swipeAnimationDuration: const Duration(milliseconds: 500),
+                        swipeAnimationDuration:
+                            const Duration(milliseconds: 500),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -67,8 +71,10 @@ class _GamePageState extends State<GamePage> {
                       ),
                     ],
                   );
-                } else  {
-                  return SizedBox(height: 10,);
+                } else {
+                  return SizedBox(
+                    height: 10,
+                  );
                 }
               },
             ),

@@ -3,13 +3,15 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthFirebase {
+  static  FirebaseAuth? _authFirebase;
   static AuthFirebase? _instanceAuthFirebase;
-  static FirebaseAuth? _authFirebase;
 
   AuthFirebase._();
 
   static AuthFirebase getInstance() {
-    _authFirebase ??= FirebaseAuth.instance;
+    if (_instanceAuthFirebase == null) {
+      _authFirebase = FirebaseAuth.instance;
+    }
     _instanceAuthFirebase ??= AuthFirebase._();
     return _instanceAuthFirebase!;
   }
