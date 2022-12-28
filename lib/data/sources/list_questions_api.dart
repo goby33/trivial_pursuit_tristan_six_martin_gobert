@@ -13,8 +13,9 @@ class ListQuestionsApi {
 
   static const url = "https://opentdb.com/api.php?amount=$NB_QUESTIONS";
 
-  Future<ListQuestionsModel?> getQuestions() async {
-    var responseApi = await Dio().get(url);
+
+  Future<ListQuestionsModel?> getQuestions(String params) async {
+    var responseApi = await Dio().get(url + params);
     if (responseApi.statusCode == 200) {
       final questions = ListQuestionsModel.fromJson(responseApi.data);
       return questions;
@@ -22,12 +23,4 @@ class ListQuestionsApi {
     return null;
   }
 
-  Future<ListQuestionsModel?> getQuestionsByDifficulty(String difficulty) async {
-    var responseApi = await Dio().get(url + "&difficulty=$difficulty");
-    if (responseApi.statusCode == 200) {
-      final questions = ListQuestionsModel.fromJson(responseApi.data);
-      return questions;
-    }
-    return null;
-  }
 }

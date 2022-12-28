@@ -5,6 +5,8 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_quest
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 
+import 'game_page_score.dart';
+
 class GamePageMain extends StatefulWidget {
   GamePageMain({Key? key}) : super(key: key);
 
@@ -24,19 +26,9 @@ class _GamePageMainState extends State<GamePageMain> {
             child: CircularProgressIndicator(),
           );
         } else if (state is GameStateFinished) {
-          return Column(
-            children: [
-              Text(
-                "You have finished the game with ${state.score} points",
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              TextButton(
-                onPressed: () {
-                  print("pp");
-                },
-                child: const Text("Play again"),
-              ),
-            ],
+          return GamePageScore(
+            score: state.score,
+            goodAnswers: state.goodAnswer,
           );
         } else {
           return Column(

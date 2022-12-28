@@ -4,12 +4,12 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_respon
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/question_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/game_entity.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
-  ListQuestionsRepositoryImpl listQuestionsRepository;
+  GameRepositoryImpl listQuestionsRepository;
   AuthRepositoryImpl authRepository;
 
   GameCubit({
@@ -19,6 +19,41 @@ class GameCubit extends Cubit<GameState> {
 
   Future<void> getQuestions() async {
     final result = await listQuestionsRepository.getQuestions();
+    if (result is SuccessResponse) {
+      if (result.data != null) {
+        emit(
+          GameStateLoaded(
+            gameEntity: GameEntity(
+              listQuestions: result.data!.results,
+              index: 0,
+              score: 0,
+              goodAnswer: 0,
+            ),
+          ),
+        );
+      } else {
+        emit(
+          GameStateFailed(
+            failed: "No data",
+          ),
+        );
+      }
+    } else if (result is FailResponse) {
+      emit(
+        GameStateFailed(
+          failed: result.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> getQuestionsWithDifficulty() async {
+    //loading
+    emit(
+      GameStateLoading(),
+    );
+    final result =
+        await listQuestionsRepository.getQuestionsByDifficulty();
     if (result is SuccessResponse) {
       if (result.data != null) {
         emit(

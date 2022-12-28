@@ -44,28 +44,32 @@ class _GamePageState extends State<GamePage> {
         child: ListView(
           children: [
             BlocBuilder<GameCubit, GameState>(
-              buildWhen: (previous, current) => current is GameStateLoaded,
+              buildWhen: (previous, current) => current is GameStateLoaded || current is GameStateFinished,
               builder: (context, state) {
-                return Stack(
-                  children: [
-                    _swipingDeck = SwipingCardDeck(
-                      cardDeck: getCardDeck(listQuestions: state.listQuestions),
-                      onDeckEmpty: () => context.read<GameCubit>().endGame(),
-                      onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-                      onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-                      cardWidth: 200,
-                      swipeThreshold: MediaQuery.of(context).size.width / 3,
-                      minimumVelocity: 1000,
-                      rotationFactor: 0.8 / 3.14,
-                      swipeAnimationDuration: const Duration(milliseconds: 500),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 3,
-                      color: Colors.transparent,
-                    ),
-                  ],
-                );
+                if (state is GameStateLoaded) {
+                  return Stack(
+                    children: [
+                      _swipingDeck = SwipingCardDeck(
+                        cardDeck: getCardDeck(listQuestions: state.listQuestions),
+                        onDeckEmpty: () => context.read<GameCubit>().endGame(),
+                        onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
+                        onRightSwipe: (Card card) => debugPrint("Swiped right!"),
+                        cardWidth: 200,
+                        swipeThreshold: MediaQuery.of(context).size.width / 3,
+                        minimumVelocity: 1000,
+                        rotationFactor: 0.8 / 3.14,
+                        swipeAnimationDuration: const Duration(milliseconds: 500),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 3,
+                        color: Colors.transparent,
+                      ),
+                    ],
+                  );
+                } else  {
+                  return SizedBox(height: 10,);
+                }
               },
             ),
             GamePageMain(),
