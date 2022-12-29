@@ -9,13 +9,9 @@ class HomeProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(providers: [
-      RepositoryProvider(
-        create: (context) => GameRepositoryImpl.getInstance(),
-      ),
-      RepositoryProvider(
-        create: (context) => AuthRepositoryImpl.getInstance(),
-      ),
-    ], child: child);
+    return RepositoryProvider(
+      create: (context) => GameRepositoryImpl.getInstance(),
+      child: child,
+    );
   }
 }

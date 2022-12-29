@@ -39,6 +39,10 @@ class AuthFirebase {
   Future<User?> getCurrentUser() async {
     return _authFirebase!.currentUser;
   }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    await _authFirebase!.sendPasswordResetEmail(email: email);
+  }
 }
 
 // 3 -> hard

@@ -97,6 +97,15 @@ class AuthRepositoryImpl {
     }
   }
 
+  Future<ApiResponse<void>> resetPassword({required String email}) async {
+    try {
+      await _authFirebase?.sendPasswordResetEmail(email);
+      return SuccessResponse(402.toString(), null);
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
+  }
+
   //USER METHODS
 
   Future<void> deleteUser() async {

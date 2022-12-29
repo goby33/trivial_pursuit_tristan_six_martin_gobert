@@ -9,7 +9,7 @@ class SignInMainBottom extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        GestureDetector(
+        InkWell(
           onTap: () {
             context.push('/sign-up');
           },
@@ -47,7 +47,7 @@ class SignInMainBottom extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 30),
           child: InkWell(
-            onTap: () {},
+            onTap: () => context.push("/forgot-password"),
             child: const Text(
               "Forgot ? ",
               style: TextStyle(
