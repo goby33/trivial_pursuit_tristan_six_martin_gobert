@@ -14,6 +14,7 @@ class ContainerInfoUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ProfileCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       decoration: BoxDecoration(
@@ -75,7 +76,10 @@ class ContainerInfoUser extends StatelessWidget {
             PopupMenuButton<int>(
               onSelected: (value) {
                 if (value == 1) {
-                  context.read<ProfileCubit>().signOut();
+                  bloc.signOut();
+                }
+                 else if (value == 2) {
+                  bloc.deleteAccount();
                 } else {
                   ThemeService().switchTheme();
                 }
@@ -90,8 +94,16 @@ class ContainerInfoUser extends StatelessWidget {
                     title: Text('Log Out'),
                   ),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   value: 2,
+                  child: ListTile(
+                    contentPadding: EdgeInsets.all(0),
+                    leading: Icon(Icons.delete_forever),
+                    title: Text('Delete Account'),
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 3,
                   child: ListTile(
                     contentPadding: const EdgeInsets.all(0),
                     leading: const Icon(Icons.dark_mode),

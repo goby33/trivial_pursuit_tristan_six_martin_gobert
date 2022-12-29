@@ -43,6 +43,10 @@ class AuthFirebase {
   Future<void> sendPasswordResetEmail(String email) async {
     await _authFirebase!.sendPasswordResetEmail(email: email);
   }
+
+  Future<void> deleteUser() async {
+    await _authFirebase!.currentUser!.delete();
+  }
 }
 
 // 3 -> hard

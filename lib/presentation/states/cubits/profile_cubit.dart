@@ -32,4 +32,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     await authRepository.signOut();
     emit(ProfileStateNoSignIn());
   }
+  
+  Future<void> deleteAccount() async {
+    await authRepository.deleteUser(uid: state.user!.uid);
+    emit(ProfileStateNoSignIn());
+  }
 }
