@@ -8,6 +8,8 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_fire
 class AuthRepositoryImpl {
   static AuthFirebase? _authFirebase;
   static UserFirebase? _userFirebase;
+  static UserModel? _userModel;
+  static User? _user;
 
   AuthRepositoryImpl._();
 
@@ -23,11 +25,12 @@ class AuthRepositoryImpl {
     required String password,
   }) async {
     try {
-      final response = await _authFirebase?.signIn(email, password);
-      if (response == null) {
+      final response_user = await _authFirebase?.signIn(email, password);
+      if (response_user == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
-        return SuccessResponse(1.toString(), response);
+        _user = response_user;
+        return SuccessResponse(1.toString(), response_user);
       }
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
@@ -55,6 +58,7 @@ class AuthRepositoryImpl {
             score: 0,
           ),
         );
+        _user = responseAuth;
         return SuccessResponse(1.toString(), responseAuth);
       }
     } on FirebaseAuthException catch (e) {
@@ -67,6 +71,9 @@ class AuthRepositoryImpl {
   }
 
   Future<ApiResponse<UserModel?>> getCurrentUser() async {
+    if (_userModel != null) {
+      return  SuccessResponse(402.toString(), _userModel);
+    }
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
