@@ -9,14 +9,11 @@ class SignInProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepositoryImpl.getInstance(),
-      child: BlocProvider(
+    return BlocProvider(
         create: (context) => SignInCubit(
           authRepository: context.read<AuthRepositoryImpl>(),
         ),
         child: child,
-      ),
-    );
+      );
   }
 }

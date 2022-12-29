@@ -8,9 +8,10 @@ class SignUpState with _$SignUpState {
 
   factory SignUpState.noSignIn() = SignUpStateNoSignUp;
 
-  factory SignUpState.failed(
-      {required DateTime dateTime,
-      required String message}) = SignUpStateFailed;
+  factory SignUpState.failed({
+    required DateTime dateTime,
+    required String message,
+  }) = SignUpStateFailed;
 
   factory SignUpState.signUp() = SignUpStateSignUp;
 }

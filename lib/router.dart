@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/forgot_password/forgot_password_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/home_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_in/sign_in_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_up/sign_up_page.dart';
@@ -10,6 +11,7 @@ abstract class AppRoutes {
   static const home = '/home';
   static const signIn = '/sign-in';
   static const signUp = '/sign-up';
+  static const forgot = '/forgot-password';
   static const welcome = '/welcome';
 
   static GoRouter buildRouter() => GoRouter(initialLocation: '/', routes: [
@@ -21,6 +23,11 @@ abstract class AppRoutes {
         GoRoute(
           path: signIn,
           builder: (context, state) => const SignInPage(),
+          routes: const [],
+        ),
+        GoRoute(
+          path: forgot,
+          builder: (context, state) => const ForgotPasswordPage(),
           routes: const [],
         ),
         GoRoute(
@@ -37,7 +44,7 @@ abstract class AppRoutes {
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
-          routes:  [],
+          routes: [],
         ),
       ]);
 }
