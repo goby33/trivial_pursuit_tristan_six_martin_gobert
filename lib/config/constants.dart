@@ -7,3 +7,16 @@ const int EASY_SCORE = 1;
 const int MEDIUM_SCORE = 2;
 // how many point for a hard question
 const int HARD_SCORE = 3;
+
+enum DIFFICULTY_QUESTION {
+  any,
+  easy,
+  medium,
+  hard,
+}
+
+enum TYPE_QUESTION {
+  any,
+  multiple,
+  boolean,
+}

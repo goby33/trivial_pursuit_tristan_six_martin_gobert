@@ -37,7 +37,7 @@ abstract class AppRoutes {
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
-          routes: const [],
+          routes:  [],
         ),
       ]);
 }

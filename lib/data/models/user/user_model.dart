@@ -15,7 +15,7 @@ class UserModel with _$UserModel {
     required String name,
     required int numberGoodAnswer,
     required int numberDayLogged,
-    required int dateOfLastConnexion,
+    required String dateOfLastGame,
     required int score,
   }) = _UserModel;
 

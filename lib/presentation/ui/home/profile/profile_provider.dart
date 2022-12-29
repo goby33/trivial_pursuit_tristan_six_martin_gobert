@@ -9,14 +9,11 @@ class ProfileProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepositoryImpl.getInstance(),
-      child: BlocProvider(
+    return  BlocProvider(
         create: (context) => ProfileCubit(
           authRepository: context.read<AuthRepositoryImpl>(),
         )..getProfile(),
         child: child,
-      ),
-    );
+      );
   }
 }

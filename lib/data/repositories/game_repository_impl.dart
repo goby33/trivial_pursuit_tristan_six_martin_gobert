@@ -1,20 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/list_questions_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_api.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_firebase.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/params_game_entity.dart';
 
-class ListQuestionsRepositoryImpl {
-  static ListQuestionsRepositoryImpl? _listQuestionsRepositoryImpl;
+class GameRepositoryImpl {
+  static GameRepositoryImpl? _listQuestionsRepositoryImpl;
   static ListQuestionsApi? _listQuestionApi;
   static ListQuestionsFirebase? _listQuestionFirebase;
+  static ParamsGameEntity? _paramsGameEntity;
 
-  ListQuestionsRepositoryImpl._();
+  GameRepositoryImpl._();
 
-  static ListQuestionsRepositoryImpl getInstance() {
+  static GameRepositoryImpl getInstance() {
     _listQuestionApi ??= ListQuestionsApi.getInstance();
     _listQuestionFirebase ??= ListQuestionsFirebase.getInstance();
-    _listQuestionsRepositoryImpl ??= ListQuestionsRepositoryImpl._();
+    _paramsGameEntity ??= ParamsGameEntity(difficulty_question: DIFFICULTY_QUESTION.any, type_question: TYPE_QUESTION.any);
+    _listQuestionsRepositoryImpl ??= GameRepositoryImpl._();
     return _listQuestionsRepositoryImpl!;
   }
 
@@ -24,7 +28,7 @@ class ListQuestionsRepositoryImpl {
       if (resultFirebase != null) {
         return SuccessResponse(202.toString(), resultFirebase);
       } else {
-        final listQuestionsModel = await _listQuestionApi?.getQuestions();
+        final listQuestionsModel = await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
         if (listQuestionsModel != null) {
           await _listQuestionFirebase!.post(listQuestionsModel);
           return SuccessResponse(200.toString(), listQuestionsModel);
@@ -38,5 +42,27 @@ class ListQuestionsRepositoryImpl {
     } catch (e) {
       return FailResponse(0.toString(), failure: e.toString());
     }
+  }
+
+  Future<ApiResponse<ListQuestionsModel>> getQuestionsByDifficulty() async {
+    try {
+      final listQuestionsModel = await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
+      if (listQuestionsModel != null) {
+        return SuccessResponse(200.toString(), listQuestionsModel);
+      } else {
+        return FailResponse(404.toString(),
+            failure: "ListQuestionsModel from API null");
+      }
+    } catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  void setDifficultyQuestion(DIFFICULTY_QUESTION difficulty_question) {
+    _paramsGameEntity!.setDifficultyQuestion(difficulty_question);
+  }
+
+  void setTypeQuestion(TYPE_QUESTION type_question) {
+    _paramsGameEntity!.setTypeQuestion(type_question);
   }
 }

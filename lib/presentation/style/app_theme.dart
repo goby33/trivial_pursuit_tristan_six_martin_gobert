@@ -12,6 +12,14 @@ class AppTheme {
     bottomAppBarTheme: const BottomAppBarTheme(
       color: Color.fromRGBO(131, 197, 190, 1),
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color.fromRGBO(0, 109, 119, 1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+    ),
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       elevation: 0,

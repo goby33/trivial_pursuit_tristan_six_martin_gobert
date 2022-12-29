@@ -12,7 +12,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       name: json['name'] as String,
       numberGoodAnswer: json['numberGoodAnswer'] as int,
       numberDayLogged: json['numberDayLogged'] as int,
-      dateOfLastConnexion: json['dateOfLastConnexion'] as int,
+      dateOfLastGame: json['dateOfLastGame'] as String,
       score: json['score'] as int,
     );
 
@@ -23,6 +23,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'name': instance.name,
       'numberGoodAnswer': instance.numberGoodAnswer,
       'numberDayLogged': instance.numberDayLogged,
-      'dateOfLastConnexion': instance.dateOfLastConnexion,
+      'dateOfLastGame': instance.dateOfLastGame,
       'score': instance.score,
     };

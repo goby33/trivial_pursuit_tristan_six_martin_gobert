@@ -9,14 +9,11 @@ class RankingProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepositoryImpl.getInstance(),
-      child: BlocProvider(
+    return BlocProvider(
         create: (context) => RankingCubit(
           authRepository: context.read<AuthRepositoryImpl>(),
         )..getProfiles(),
         child: child,
-      ),
-    );
+      );
   }
 }

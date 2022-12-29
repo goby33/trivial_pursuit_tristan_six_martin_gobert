@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 
 class GameProvider extends StatelessWidget {
@@ -10,22 +10,12 @@ class GameProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider(
-          create: (context) => ListQuestionsRepositoryImpl.getInstance(),
-        ),
-        RepositoryProvider(
-          create: (context) => AuthRepositoryImpl.getInstance(),
-        ),
-      ],
-      child: BlocProvider(
+    return BlocProvider(
         create: (context) => GameCubit(
-          listQuestionsRepository: context.read<ListQuestionsRepositoryImpl>(),
+          listQuestionsRepository: context.read<GameRepositoryImpl>(),
           authRepository: context.read<AuthRepositoryImpl>(),
         )..getQuestions(),
         child: child,
-      ),
-    );
+      );
   }
 }
