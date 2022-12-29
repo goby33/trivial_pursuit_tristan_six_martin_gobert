@@ -39,6 +39,6 @@ class ChoiceTypeQuestion extends StatelessWidget {
               .setType(TYPE_QUESTION.boolean),
         ),
       ],
-    );;
+    );
   }
 }

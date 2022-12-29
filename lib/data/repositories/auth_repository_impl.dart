@@ -115,9 +115,9 @@ class AuthRepositoryImpl {
 
   //USER METHODS
 
-  Future<void> deleteUser() async {
-    //await _authFirebase?.deleteUser();
-    //await _userFirebase?.deleteUser();
+  Future<void> deleteUser({ required String uid}) async {
+    await _userFirebase?.deleteUser(uid : uid);
+    await _authFirebase?.deleteUser();
   }
 
   Future<ApiResponse<List<UserModel>>> getListUsers() async {

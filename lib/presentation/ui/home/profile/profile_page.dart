@@ -16,12 +16,8 @@ class ProfilePage extends StatelessWidget {
       child: ProfileListeners(
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
-            if (state is ProfileStateLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else {
-              return RefreshIndicator(
+            if (state is ProfileStateSignIn) {
+             return  RefreshIndicator(
                 onRefresh: () async {
                   context.read<ProfileCubit>().getProfile();
                 },
@@ -29,17 +25,21 @@ class ProfilePage extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   children: [
                     ProfilePageHeader(
-                      name: state.user!.name,
-                      uid: state.user!.uid,
+                      name: state.user.name,
+                      uid: state.user.uid,
                       photoUrl: null,
                     ),
                     ProfilePageMain(
-                      score: state.user!.score,
-                      numberGoodAnswers: state.user!.numberGoodAnswer,
-                      numberDayLogged: state.user!.numberDayLogged,
+                      score: state.user.score,
+                      numberGoodAnswers: state.user.numberGoodAnswer,
+                      numberDayLogged: state.user.numberDayLogged,
                     ),
                   ],
                 ),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
             }
           },

@@ -53,7 +53,7 @@ class UserFirebase {
     return _listUsers.doc(uid).get().then((value) => value.data());
   }
 
-  Future<void> deleteUser(String uid) async {
+  Future<void> deleteUser({required String uid}) async {
     await _listUsers.doc(uid).delete();
   }
 }
