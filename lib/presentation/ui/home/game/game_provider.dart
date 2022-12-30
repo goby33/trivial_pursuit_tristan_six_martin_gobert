@@ -6,16 +6,19 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cu
 
 class GameProvider extends StatelessWidget {
   final Widget child;
-  const GameProvider({Key? key, required this.child}) : super(key: key);
+  const GameProvider({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => GameCubit(
-          listQuestionsRepository: context.read<GameRepositoryImpl>(),
-          authRepository: context.read<AuthRepositoryImpl>(),
-        )..getQuestions(),
-        child: child,
-      );
+      create: (context) => GameCubit(
+        listQuestionsRepository: context.read<GameRepositoryImpl>(),
+        authRepository: context.read<AuthRepositoryImpl>(),
+      )..getQuestions(),
+      child: child,
+    );
   }
 }
