@@ -31,32 +31,42 @@ class _GamePageMainState extends State<GamePageMain> {
             goodAnswers: state.goodAnswer,
           );
         } else {
-          return Column(
-            children: getListAnswers(
-                    listQuestions: state.listQuestions, index: state.index)
-                .map(
-                  (e) => InkWell(
-                    onTap: () {
-                      context.read<GameCubit>().checkAnswer(e);
-                    },
-                    child: Card(
-                      margin: const EdgeInsets.all(10),
-                      color: const Color.fromRGBO(226, 149, 120, 1),
-                      shadowColor: const Color.fromRGBO(255, 221, 210, 1),
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: ListTile(
-                        leading: const Icon(Icons.arrow_forward_ios),
-                        title: Text(
-                          unescape.convert(e),
-                        ),
+          final answer = getListAnswers(
+              listQuestions: state.listQuestions, index: state.index);
+          return Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(8),
+              itemCount: answer.length,
+              separatorBuilder: (BuildContext context, int index) => SizedBox(
+                height: 15,
+              ),
+              itemBuilder: (context, index) {
+                bool isCorrect =
+                    state.listQuestions[index].correct_answer == answer[index];
+                return ListTile(
+                    dense: true,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                    visualDensity: VisualDensity(vertical: -2),
+                    onTap: () => context.read<GameCubit>().checkAnswer(answer[index]),
+                    selectedColor: Colors.green,
+                    tileColor: const Color.fromRGBO(226, 149, 120, 1.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: const BorderSide(
+                        color: Colors.grey,
                       ),
                     ),
-                  ),
-                )
-                .toList(),
+                    title: Text(
+                      unescape.convert(answer[index]),
+                      style: const TextStyle(
+                        color: Color.fromRGBO(255, 221, 210, 1.0),
+                        fontSize: 20,
+                      ),
+                    ),
+                    leading: const Icon(Icons.arrow_forward_ios),
+                  );
+              },
+            ),
           );
         }
       },
