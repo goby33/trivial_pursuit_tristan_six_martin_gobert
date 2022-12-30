@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/choice_params_game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/choice_params_modal.dart';
+
+import 'container_result_score.dart';
 
 class GamePageScore extends StatelessWidget {
   final int score;
@@ -13,18 +16,17 @@ class GamePageScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            'Finis !',
-            style: Theme.of(context).textTheme.headline3,
+            'Congratulations !',
+            style: Theme.of(context).textTheme.headline4,
           ),
-          Text(
-            'Good answers : ',
-            style: Theme.of(context).textTheme.headline5,
+          SizedBox(
+            height: 50,
           ),
           SizedBox(
             height: 200.0,
@@ -35,7 +37,7 @@ class GamePageScore extends StatelessWidget {
                     width: 200,
                     height: 200,
                     child: TweenAnimationBuilder<double>(
-                      tween: Tween<double>(begin: 0.0, end: goodAnswers / 10),
+                      tween: Tween<double>(begin: 0.0, end: score / (HARD_SCORE * NB_QUESTIONS)),
                       duration: const Duration(milliseconds: 3500),
                       builder: (context, value, _) => CircularProgressIndicator(
                         value: value,
@@ -51,11 +53,11 @@ class GamePageScore extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        goodAnswers.toString(),
+                        score.toString(),
                         style: TextStyle(
                           fontSize: 80.0,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(0, 109, 119, 1),
+                          color: Color.fromRGBO(226, 149, 120, 1),
                         ),
                       ),
                     ],
@@ -67,42 +69,38 @@ class GamePageScore extends StatelessWidget {
           const SizedBox(
             height: 40.0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+          Column(
             children: [
-              Column(
-                children: [
-                  Text("Score"),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(score.toString()),
-                ],
+              ContainerResultScore(
+                label: 'Score : ',
+                value: score,
+                icon: Icons.stars,
               ),
-              Column(
-                children: [
-                  Text("Good Answer"),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(goodAnswers.toString()),
-                ],
+              SizedBox(
+                height: 20.0,
+              ),
+              ContainerResultScore(
+                label: 'Good answers : ',
+                value: goodAnswers,
+                icon: Icons.emoji_emotions,
               ),
             ],
           ),
-          Text(
-            "Do you want to play again ?",
-            style: Theme.of(context).textTheme.headline6,
+          SizedBox(
+            height: 40.0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () => _showModal(buildContext: context),
-                child: Text("Select your difficulty"),
+          ElevatedButton(
+            style: Theme.of(context).elevatedButtonTheme.style,
+            onPressed: () => _showModal(buildContext: context),
+            child: SizedBox(
+              width: double.infinity,
+              height: 42.0,
+              child: Center(
+                child: Text("do you want to replay ?", style: TextStyle(fontSize: 18),),
               ),
-            ],
-          )
+            ),
+          ),
         ],
       ),
     );
