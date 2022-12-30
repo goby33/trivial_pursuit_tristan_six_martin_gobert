@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/choice_params_game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
@@ -36,7 +37,7 @@ class GamePageScore extends StatelessWidget {
                     width: 200,
                     height: 200,
                     child: TweenAnimationBuilder<double>(
-                      tween: Tween<double>(begin: 0.0, end: goodAnswers / 10),
+                      tween: Tween<double>(begin: 0.0, end: score / (HARD_SCORE * NB_QUESTIONS)),
                       duration: const Duration(milliseconds: 3500),
                       builder: (context, value, _) => CircularProgressIndicator(
                         value: value,
@@ -52,7 +53,7 @@ class GamePageScore extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        goodAnswers.toString(),
+                        score.toString(),
                         style: TextStyle(
                           fontSize: 80.0,
                           fontWeight: FontWeight.bold,

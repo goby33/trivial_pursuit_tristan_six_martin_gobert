@@ -13,7 +13,6 @@ class ContainerResultScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 20.0,
