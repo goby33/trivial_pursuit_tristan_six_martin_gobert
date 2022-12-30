@@ -41,45 +41,50 @@ class _GamePageState extends State<GamePage> {
           failed: (value) => debugPrint(value.failed),
           orElse: () => null,
         ),
-        child: ListView(
-          children: [
-            BlocBuilder<GameCubit, GameState>(
-              buildWhen: (previous, current) =>
-                  current is GameStateLoaded || current is GameStateFinished,
-              builder: (context, state) {
-                if (state is GameStateLoaded) {
-                  return Stack(
-                    children: [
-                      _swipingDeck = SwipingCardDeck(
-                        cardDeck:
-                            getCardDeck(listQuestions: state.listQuestions),
-                        onDeckEmpty: () => context.read<GameCubit>().endGame(),
-                        onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-                        onRightSwipe: (Card card) =>
-                            debugPrint("Swiped right!"),
-                        cardWidth: 200,
-                        swipeThreshold: MediaQuery.of(context).size.width / 3,
-                        minimumVelocity: 1000,
-                        rotationFactor: 0.8 / 3.14,
-                        swipeAnimationDuration:
-                            const Duration(milliseconds: 500),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 3,
-                        color: Colors.transparent,
-                      ),
-                    ],
-                  );
-                } else {
-                  return SizedBox(
-                    height: 10,
-                  );
-                }
-              },
-            ),
-            GamePageMain(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              BlocBuilder<GameCubit, GameState>(
+                buildWhen: (previous, current) =>
+                    current is GameStateLoaded || current is GameStateFinished,
+                builder: (context, state) {
+                  if (state is GameStateLoaded) {
+                    return Stack(
+                      children: [
+                        _swipingDeck = SwipingCardDeck(
+                          cardDeck:
+                              getCardDeck(listQuestions: state.listQuestions),
+                          onDeckEmpty: () =>
+                              context.read<GameCubit>().endGame(),
+                          onLeftSwipe: (Card card) => context.read<GameCubit>().nextQuestion(),
+                          onRightSwipe: (Card card) =>
+                              context.read<GameCubit>().nextQuestion(),
+                          cardWidth: 200,
+                          swipeThreshold:
+                              MediaQuery.of(context).size.width / 10,
+                          minimumVelocity: 10,
+                          rotationFactor: 0.8 / 3.14,
+                          swipeAnimationDuration:
+                              const Duration(milliseconds: 400),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height / 3,
+                          color: Colors.transparent,
+                        ),
+                      ],
+                    );
+                  } else {
+                    return SizedBox(
+                      height: 10,
+                    );
+                  }
+                },
+              ),
+              GamePageMain(),
+            ],
+          ),
         ),
       ),
     );
@@ -96,14 +101,14 @@ class _GamePageState extends State<GamePage> {
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            height: MediaQuery.of(context).size.height * 0.3,
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
-            width: 250,
-            height: 250,
             child: Text(
               unescape.convert(question.question),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
         ),

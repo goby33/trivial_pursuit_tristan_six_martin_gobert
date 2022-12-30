@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ChoiceChipModal extends StatelessWidget {
   final bool isSelected;
   final String label;
+  final IconData  icon;
   final Function(bool isSelected)? onSelected;
 
   ChoiceChipModal({
@@ -10,6 +11,7 @@ class ChoiceChipModal extends StatelessWidget {
     required this.isSelected,
     required this.label,
     this.onSelected,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class ChoiceChipModal extends StatelessWidget {
       selectedColor: Color.fromRGBO(226, 149, 120, 1),
       padding: const EdgeInsets.all(10.0),
       label: Text(label),
-      avatar: Icon(Icons.ice_skating),
+      avatar: Icon(icon),
       onSelected: (bool selected) {
         if (selected) {
           onSelected!(selected);

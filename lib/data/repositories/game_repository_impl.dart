@@ -11,6 +11,7 @@ class GameRepositoryImpl {
   static ListQuestionsApi? _listQuestionApi;
   static ListQuestionsFirebase? _listQuestionFirebase;
   static ParamsGameEntity? _paramsGameEntity;
+  static ListQuestionsModel? _listQuestionsModel;
 
   GameRepositoryImpl._();
 
@@ -18,9 +19,12 @@ class GameRepositoryImpl {
     _listQuestionApi ??= ListQuestionsApi.getInstance();
     _listQuestionFirebase ??= ListQuestionsFirebase.getInstance();
     _paramsGameEntity ??= ParamsGameEntity(difficulty_question: DIFFICULTY_QUESTION.any, type_question: TYPE_QUESTION.any);
+    _listQuestionsModel ??= null;
     _listQuestionsRepositoryImpl ??= GameRepositoryImpl._();
     return _listQuestionsRepositoryImpl!;
   }
+
+
 
   Future<ApiResponse<ListQuestionsModel>> getQuestions() async {
     try {

@@ -15,6 +15,13 @@ class GameState with _$GameState {
     required GameEntity gameEntity,
   }) = GameStateLoaded;
 
+
+  //next question
+  factory GameState.nextQuestion({
+    required GameEntity gameEntity,
+  }) = GameStateNextQuestion;
+
+
   factory GameState.wrongAnswer({
     required GameEntity gameEntity,
   }) = GameStateWrongAnswer;
@@ -34,6 +41,7 @@ class GameState with _$GameState {
         loaded: (state) => state.gameEntity.listQuestions,
         rightAnswer: (state) => state.gameEntity.listQuestions,
         wrongAnswer: (state) => state.gameEntity.listQuestions,
+        nextQuestion: (state) => state.gameEntity.listQuestions,
         orElse: () => [],
       );
 
@@ -41,6 +49,7 @@ class GameState with _$GameState {
         loaded: (state) => state.gameEntity.index,
         rightAnswer: (state) => state.gameEntity.index,
         wrongAnswer: (state) => state.gameEntity.index,
+        nextQuestion: (state) => state.gameEntity.index,
         orElse: () => 0,
       );
 
@@ -48,6 +57,7 @@ class GameState with _$GameState {
         loaded: (state) => state.gameEntity.score,
         rightAnswer: (state) => state.gameEntity.score,
         wrongAnswer: (state) => state.gameEntity.score,
+        nextQuestion: (state) => state.gameEntity.score,
         finished: (state) => state.score,
         orElse: () => 0,
       );
@@ -56,7 +66,16 @@ class GameState with _$GameState {
         loaded: (state) => state.gameEntity.goodAnswer,
         rightAnswer: (state) => state.gameEntity.goodAnswer,
         wrongAnswer: (state) => state.gameEntity.goodAnswer,
+        nextQuestion: (state) => state.gameEntity.goodAnswer,
         finished: (state) => state.goodAnswer,
         orElse: () => 0,
+      );
+
+  List<String> get listAnswers => maybeMap(
+        loaded: (state) => state.gameEntity.listAnswers,
+        rightAnswer: (state) => state.gameEntity.listAnswers,
+        wrongAnswer: (state) => state.gameEntity.listAnswers,
+        nextQuestion: (state) => state.gameEntity.listAnswers,
+        orElse: () => [],
       );
 }

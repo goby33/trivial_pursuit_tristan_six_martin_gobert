@@ -6,6 +6,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cu
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 
 import 'game_page_score.dart';
+import 'list_tile_game.dart';
 
 class GamePageMain extends StatefulWidget {
   GamePageMain({Key? key}) : super(key: key);
@@ -31,51 +32,24 @@ class _GamePageMainState extends State<GamePageMain> {
             goodAnswers: state.goodAnswer,
           );
         } else {
-          return Column(
-            children: getListAnswers(
-                    listQuestions: state.listQuestions, index: state.index)
-                .map(
-                  (e) => InkWell(
-                    onTap: () {
-                      context.read<GameCubit>().checkAnswer(e);
-                    },
-                    child: Card(
-                      margin: const EdgeInsets.all(10),
-                      color: const Color.fromRGBO(226, 149, 120, 1),
-                      shadowColor: const Color.fromRGBO(255, 221, 210, 1),
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: ListTile(
-                        leading: const Icon(Icons.arrow_forward_ios),
-                        title: Text(
-                          unescape.convert(e),
-                        ),
-                      ),
-                    ),
+          return Expanded(
+            child: ListView.separated(
+              itemCount: state.listAnswers.length,
+              padding: const EdgeInsets.all(8),
+              separatorBuilder: (BuildContext context, int index) =>
+                  SizedBox(
+                    height: 15,
                   ),
-                )
-                .toList(),
+              itemBuilder: (context, index) {
+                return ListTileGame(
+                  isSelected: (state is GameStateRightAnswer || state is GameStateWrongAnswer) ? state.listAnswers[index] == state.listQuestions[state.index].correct_answer : false,
+                  title: unescape.convert(state.listAnswers[index]),
+                );
+              },
+            ),
           );
         }
       },
     );
-  }
-
-  List<String> getListAnswers({
-    required List<QuestionModel> listQuestions,
-    required int index,
-  }) {
-    if (index > listQuestions.length - 1) {
-      return [];
-    }
-    List<String>? listAnswers = [
-      ...listQuestions[index].incorrect_answers,
-      listQuestions[index].correct_answer
-    ]
-      ..shuffle()
-      ..toList();
-    return listAnswers;
   }
 }

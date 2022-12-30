@@ -14,11 +14,13 @@ class ChoiceParamsModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
+      height: 350,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             "Choose your parameters :",
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.headline5,
           ),
           BlocBuilder<ChoiceParamsGameCubit, ChoiceParamsGameState>(
             builder: (contextChoiceParams, stateChoiceParams) {
@@ -27,34 +29,50 @@ class ChoiceParamsModal extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               else
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Your difficulty : "),
-                    ChoiceDifficulty(
-                      difficultyChoose:
-                          stateChoiceParams.params!.difficulty_question,
-                    ),
-                    SizedBox(height: 20),
-                    Text("Your type of question : "),
-                    ChoiceTypeQuestion(
-                      typeQuestionChoose:
-                          stateChoiceParams.params!.type_question,
-                    ),
-                    ElevatedButton(
-                      style: Theme.of(context).elevatedButtonTheme.style,
-                      onPressed: () => {
-                        Navigator.pop(context),
-                        context.read<GameCubit>().getQuestionsWithDifficulty(),
-                      },
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Center(
-                          child: Text("Start"),
+                return Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Your difficulty : ",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(0, 109, 119, 1),
                         ),
                       ),
-                    ),
-                  ],
+                      ChoiceDifficulty(
+                        difficultyChoose:
+                            stateChoiceParams.params!.difficulty_question,
+                      ),
+                      Text("Your type of question : ",  style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(0, 109, 119, 1),
+                      ),),
+                      ChoiceTypeQuestion(
+                        typeQuestionChoose:
+                            stateChoiceParams.params!.type_question,
+                      ),
+                      ElevatedButton(
+                        style: Theme.of(context).elevatedButtonTheme.style,
+                        onPressed: () => {
+                          Navigator.pop(context),
+                          context
+                              .read<GameCubit>()
+                              .getQuestionsWithDifficulty(),
+                        },
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Center(
+                            child: Text("Start"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 );
             },
           ),
