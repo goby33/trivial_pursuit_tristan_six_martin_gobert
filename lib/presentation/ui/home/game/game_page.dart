@@ -55,8 +55,7 @@ class _GamePageState extends State<GamePage> {
                         _swipingDeck = SwipingCardDeck(
                           cardDeck:
                               getCardDeck(listQuestions: state.listQuestions),
-                          onDeckEmpty: () =>
-                              context.read<GameCubit>().endGame(),
+                          onDeckEmpty: () => debugPrint('Deck is empty'),
                           onLeftSwipe: (Card card) => context.read<GameCubit>().nextQuestion(),
                           onRightSwipe: (Card card) =>
                               context.read<GameCubit>().nextQuestion(),

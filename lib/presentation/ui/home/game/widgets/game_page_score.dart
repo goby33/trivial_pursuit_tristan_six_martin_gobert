@@ -74,6 +74,7 @@ class GamePageScore extends StatelessWidget {
               ContainerResultScore(
                 label: 'Score : ',
                 value: score,
+                icon: Icons.stars,
               ),
               SizedBox(
                 height: 20.0,
@@ -81,6 +82,7 @@ class GamePageScore extends StatelessWidget {
               ContainerResultScore(
                 label: 'Good answers : ',
                 value: goodAnswers,
+                icon: Icons.emoji_emotions,
               ),
             ],
           ),

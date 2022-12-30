@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class ContainerResultScore extends StatelessWidget {
   final String label;
   final int value;
+  final IconData icon;
   ContainerResultScore({
     Key? key,
     required this.label,
     required this.value,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -30,10 +32,15 @@ class ContainerResultScore extends StatelessWidget {
             label,
             style: Theme.of(context).textTheme.headline6,
           ),
-          Text(
-            "+" + value.toString(),
-            style: Theme.of(context).textTheme.headline5,
-          ),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(text: "+" , style: Theme.of(context).textTheme.headline6),
+                TextSpan(text: value.toString() +" ", style: Theme.of(context).textTheme.headline5),
+                WidgetSpan(child: Icon(icon, color: Color.fromRGBO(250, 192, 94, 1),)),
+              ],
+            ),
+          )
         ],
       ),
     );
