@@ -57,10 +57,9 @@ class _GamePageState extends State<GamePage> {
                               getCardDeck(listQuestions: state.listQuestions),
                           onDeckEmpty: () =>
                               context.read<GameCubit>().endGame(),
-                          onLeftSwipe: (Card card) =>
-                              debugPrint("Swiped left!"),
+                          onLeftSwipe: (Card card) => context.read<GameCubit>().nextQuestion(),
                           onRightSwipe: (Card card) =>
-                              debugPrint("Swiped right!"),
+                              context.read<GameCubit>().nextQuestion(),
                           cardWidth: 200,
                           swipeThreshold:
                               MediaQuery.of(context).size.width / 10,

@@ -20,6 +20,7 @@ mixin _$GameState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -30,6 +31,7 @@ mixin _$GameState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -40,6 +42,7 @@ mixin _$GameState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -51,6 +54,7 @@ mixin _$GameState {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -61,6 +65,7 @@ mixin _$GameState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -71,6 +76,7 @@ mixin _$GameState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -137,6 +143,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -150,6 +157,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -163,6 +171,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -180,6 +189,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -193,6 +203,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -206,6 +217,7 @@ class _$GameStateLoading extends GameStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -291,6 +303,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -304,6 +317,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -317,6 +331,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -334,6 +349,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -347,6 +363,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -360,6 +377,7 @@ class _$GameStateLoaded extends GameStateLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -381,6 +399,173 @@ abstract class GameStateLoaded extends GameState {
   GameEntity get gameEntity;
   @JsonKey(ignore: true)
   _$$GameStateLoadedCopyWith<_$GameStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GameStateNextQuestionCopyWith<$Res> {
+  factory _$$GameStateNextQuestionCopyWith(_$GameStateNextQuestion value,
+          $Res Function(_$GameStateNextQuestion) then) =
+      __$$GameStateNextQuestionCopyWithImpl<$Res>;
+  @useResult
+  $Res call({GameEntity gameEntity});
+}
+
+/// @nodoc
+class __$$GameStateNextQuestionCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateNextQuestion>
+    implements _$$GameStateNextQuestionCopyWith<$Res> {
+  __$$GameStateNextQuestionCopyWithImpl(_$GameStateNextQuestion _value,
+      $Res Function(_$GameStateNextQuestion) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? gameEntity = null,
+  }) {
+    return _then(_$GameStateNextQuestion(
+      gameEntity: null == gameEntity
+          ? _value.gameEntity
+          : gameEntity // ignore: cast_nullable_to_non_nullable
+              as GameEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GameStateNextQuestion extends GameStateNextQuestion {
+  _$GameStateNextQuestion({required this.gameEntity}) : super._();
+
+  @override
+  final GameEntity gameEntity;
+
+  @override
+  String toString() {
+    return 'GameState.nextQuestion(gameEntity: $gameEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GameStateNextQuestion &&
+            (identical(other.gameEntity, gameEntity) ||
+                other.gameEntity == gameEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, gameEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GameStateNextQuestionCopyWith<_$GameStateNextQuestion> get copyWith =>
+      __$$GameStateNextQuestionCopyWithImpl<_$GameStateNextQuestion>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
+    required TResult Function(GameEntity gameEntity) wrongAnswer,
+    required TResult Function(GameEntity gameEntity) rightAnswer,
+    required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function(String failed) failed,
+  }) {
+    return nextQuestion(gameEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
+    TResult? Function(GameEntity gameEntity)? wrongAnswer,
+    TResult? Function(GameEntity gameEntity)? rightAnswer,
+    TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function(String failed)? failed,
+  }) {
+    return nextQuestion?.call(gameEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
+    TResult Function(GameEntity gameEntity)? wrongAnswer,
+    TResult Function(GameEntity gameEntity)? rightAnswer,
+    TResult Function(int score, int goodAnswer)? finished,
+    TResult Function(String failed)? failed,
+    required TResult orElse(),
+  }) {
+    if (nextQuestion != null) {
+      return nextQuestion(gameEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameStateLoading value) loading,
+    required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
+    required TResult Function(GameStateWrongAnswer value) wrongAnswer,
+    required TResult Function(GameStateRightAnswer value) rightAnswer,
+    required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateFailed value) failed,
+  }) {
+    return nextQuestion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
+    TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
+    TResult? Function(GameStateRightAnswer value)? rightAnswer,
+    TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateFailed value)? failed,
+  }) {
+    return nextQuestion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
+    TResult Function(GameStateWrongAnswer value)? wrongAnswer,
+    TResult Function(GameStateRightAnswer value)? rightAnswer,
+    TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (nextQuestion != null) {
+      return nextQuestion(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameStateNextQuestion extends GameState {
+  factory GameStateNextQuestion({required final GameEntity gameEntity}) =
+      _$GameStateNextQuestion;
+  GameStateNextQuestion._() : super._();
+
+  GameEntity get gameEntity;
+  @JsonKey(ignore: true)
+  _$$GameStateNextQuestionCopyWith<_$GameStateNextQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -452,6 +637,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -465,6 +651,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -478,6 +665,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -495,6 +683,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -508,6 +697,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -521,6 +711,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -613,6 +804,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -626,6 +818,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -639,6 +832,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -656,6 +850,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -669,6 +864,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -682,6 +878,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -782,6 +979,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -795,6 +993,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -808,6 +1007,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -825,6 +1025,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -838,6 +1039,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -851,6 +1053,7 @@ class _$GameStateFinished extends GameStateFinished {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
@@ -943,6 +1146,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
@@ -956,6 +1160,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
@@ -969,6 +1174,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
@@ -986,6 +1192,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(GameStateLoading value) loading,
     required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
@@ -999,6 +1206,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GameStateLoading value)? loading,
     TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
@@ -1012,6 +1220,7 @@ class _$GameStateFailed extends GameStateFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GameStateLoading value)? loading,
     TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,

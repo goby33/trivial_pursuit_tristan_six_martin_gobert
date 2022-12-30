@@ -2,6 +2,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_quest
 
 class GameEntity {
   List<QuestionModel> listQuestions;
+  List<String> listAnswers;
   int index;
   int score;
   int goodAnswer;
@@ -11,5 +12,6 @@ class GameEntity {
     required this.index,
     required this.score,
     required this.goodAnswer,
+    required this.listAnswers,
   });
 }

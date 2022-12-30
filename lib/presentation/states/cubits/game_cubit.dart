@@ -28,6 +28,7 @@ class GameCubit extends Cubit<GameState> {
               index: 0,
               score: 0,
               goodAnswer: 0,
+              listAnswers: shuffleAnswers(result.data!.results[0]),
             ),
           ),
         );
@@ -62,6 +63,7 @@ class GameCubit extends Cubit<GameState> {
               index: 0,
               score: 0,
               goodAnswer: 0,
+              listAnswers: shuffleAnswers(result.data!.results[0]),
             ),
           ),
         );
@@ -149,9 +151,10 @@ class GameCubit extends Cubit<GameState> {
         GameStateRightAnswer(
           gameEntity: GameEntity(
             listQuestions: state.listQuestions,
-            index: index + 1,
+            index: index,
             score: scoreCalculation(questionModel.difficulty),
             goodAnswer: state.goodAnswer + 1,
+            listAnswers: state.listAnswers,
           ),
         ),
       );
@@ -161,12 +164,40 @@ class GameCubit extends Cubit<GameState> {
         GameStateWrongAnswer(
           gameEntity: GameEntity(
             listQuestions: state.listQuestions,
-            index: index + 1,
+            index: index,
             score: score,
             goodAnswer: state.goodAnswer,
+            listAnswers: state.listAnswers,
           ),
         ),
       );
+    }
+  }
+
+  List<String> shuffleAnswers(QuestionModel questionModel) {
+    List<String> answers = [];
+    answers.add(questionModel.correct_answer);
+    answers.addAll(questionModel.incorrect_answers);
+    answers.shuffle();
+    return answers;
+  }
+  void nextQuestion() {
+    int index = state.index;
+    if (index < state.listQuestions.length - 1) {
+      //next question
+      emit(
+        GameStateNextQuestion(
+          gameEntity: GameEntity(
+            listQuestions: state.listQuestions,
+            index: index + 1,
+            score: state.score,
+            goodAnswer: state.goodAnswer,
+            listAnswers: shuffleAnswers(state.listQuestions[index + 1]),
+          ),
+        ),
+      );
+    } else {
+      endGame();
     }
   }
 }
