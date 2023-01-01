@@ -3,19 +3,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/auth_firebase.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/picture_firebase.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
 
 class AuthRepositoryImpl {
   static AuthFirebase? _authFirebase;
   static UserFirebase? _userFirebase;
+  static PictureFirebase? _pictureFirebase;
   static UserModel? _userModel;
-  static User? _user;
 
   AuthRepositoryImpl._();
 
   static AuthRepositoryImpl getInstance() {
     _authFirebase ??= AuthFirebase.getInstance();
     _userFirebase ??= UserFirebase.getInstance();
+    _pictureFirebase ??= PictureFirebase.getInstance();
     return AuthRepositoryImpl._();
   }
 
@@ -29,7 +31,6 @@ class AuthRepositoryImpl {
       if (response_user == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
-        _user = response_user;
         return SuccessResponse(1.toString(), response_user);
       }
     } on FirebaseAuthException catch (e) {
@@ -58,7 +59,6 @@ class AuthRepositoryImpl {
             score: 0,
           ),
         );
-        _user = responseAuth;
         return SuccessResponse(1.toString(), responseAuth);
       }
     } on FirebaseAuthException catch (e) {
@@ -155,6 +155,23 @@ class AuthRepositoryImpl {
       final response = await _userFirebase?.updateUser(user: user);
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  //PICTURE METHODS
+
+  Future<ApiResponse<String>> uploadPicture({
+    required String file,
+  }) async {
+    try {
+      final response = await _pictureFirebase?.uploadPicture(filePath: file);
+      if (response == null) {
+        return FailResponse(0.toString(), failure: "Error user null");
+      } else {
+        return SuccessResponse(1.toString(), response);
+      }
+    } catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
     }
   }
