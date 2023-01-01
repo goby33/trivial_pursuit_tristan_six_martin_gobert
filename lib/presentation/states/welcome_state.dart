@@ -6,6 +6,14 @@ part 'welcome_state.freezed.dart';
 class WelcomeState with _$WelcomeState {
   const WelcomeState._();
 
+  //initial state
+  factory WelcomeState.initial() = WelcomeStateInitial;
+
+  // picture chosen
+  factory WelcomeState.pictureChosen({
+    required String path,
+  }) = WelcomeStatePictureChoosen;
+
   factory WelcomeState.loading() = WelcomeStateLoading;
 
   factory WelcomeState.uploaded() = WelcomeStateUploaded;
@@ -13,4 +21,13 @@ class WelcomeState with _$WelcomeState {
   factory WelcomeState.failed(
       {required DateTime dateTime,
         required String message}) = WelcomeStateFailed;
+
+  //get path
+  String? get path => when(
+        initial: () => null,
+        pictureChosen: (path) => path,
+        loading: () => null,
+        uploaded: () => null,
+        failed: (dateTime, message) => null,
+      );
 }

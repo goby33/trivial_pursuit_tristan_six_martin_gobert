@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/widgets/container_info_user.dart';
 
-import 'circle_photo.dart';
+import 'circle_photo_profile.dart';
 
 class ProfilePageHeader extends StatelessWidget {
   final String? name;
