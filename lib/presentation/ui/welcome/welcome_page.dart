@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/welcome_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/welcome_state.dart';
@@ -83,13 +84,7 @@ class WelcomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: () async {
-                            final image = await ImagePicker()
-                                .pickImage(source: ImageSource.gallery);
-                            context
-                                .read<WelcomeCubit>()
-                                .checkImage(image: image!);
-                          },
+                          onPressed: () => print("from camera"),
                           child: Text.rich(
                             TextSpan(
                               children: [
@@ -109,7 +104,11 @@ class WelcomePage extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () async {
-                            getImage(context: context);
+                            final image = await ImagePicker()
+                                .pickImage(source: ImageSource.gallery);
+                            context
+                                .read<WelcomeCubit>()
+                                .checkImage(image: image!);
                           },
                           child: Text.rich(
                             TextSpan(
@@ -132,11 +131,7 @@ class WelcomePage extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () async {
-                            final image = await ImagePicker()
-                                .pickImage(source: ImageSource.gallery);
-                            context
-                                .read<WelcomeCubit>()
-                                .uploadPicture(image!.path);
+                            context.push('/home');
                           },
                           child: Text.rich(
                             TextSpan(
@@ -159,7 +154,7 @@ class WelcomePage extends StatelessWidget {
                           onPressed: () async {
                             context
                                 .read<WelcomeCubit>()
-                                .uploadPicture(state.path!);
+                                .uploadPicture(path: state.path!);
                           },
                           child: Text.rich(
                             TextSpan(

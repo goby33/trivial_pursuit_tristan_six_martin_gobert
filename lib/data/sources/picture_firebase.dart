@@ -15,25 +15,18 @@ class PictureFirebase {
     return _instancePictureFirebase!;
   }
 
-  Future<String> uploadPicture({required String filePath}) async {
+  Future<TaskSnapshot> uploadPicture({
+    required File file,
+    required String folderName,
+  }) async {
+    final path = file.path;
+    final name = path.split('/').last;
     final storageRef = FirebaseStorage.instance.ref();
-    final mountainsRef = storageRef.child("mountains.jpg");
-    final mountainImagesRef = storageRef.child("images/mountains.jpg");
+    final mountainsRef = storageRef.child(name);
+    final mountainImagesRef = storageRef.child("images/"+folderName+"/"+name);
     assert(mountainsRef.name == mountainImagesRef.name);
     assert(mountainsRef.fullPath != mountainImagesRef.fullPath);
-    try {
-      File file = File(filePath);
-      await mountainImagesRef.putFile(file);
-    } on FirebaseException catch (e) {
-      print(e);
-    }
-
-
-    /*final StorageReference ref = _storage.ref().child(pictureName);
-    final StorageUploadTask uploadTask = ref.putFile(picture);
-    final StorageTaskSnapshot downloadUrl = (await uploadTask.onComplete);
-    final String url = (await downloadUrl.ref.getDownloadURL());*/
-    return "good";
+    return await mountainImagesRef.putFile(file);
   }
 
   /*Future<void> deletePicture(String url) async {

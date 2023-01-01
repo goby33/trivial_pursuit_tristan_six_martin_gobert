@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
@@ -18,6 +21,7 @@ class AuthRepositoryImpl {
     _authFirebase ??= AuthFirebase.getInstance();
     _userFirebase ??= UserFirebase.getInstance();
     _pictureFirebase ??= PictureFirebase.getInstance();
+    _userModel ??= null;
     return AuthRepositoryImpl._();
   }
 
@@ -48,17 +52,17 @@ class AuthRepositoryImpl {
       if (responseAuth == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
-        await _userFirebase?.addUser(
-          UserModel(
-            email: responseAuth.email ?? "",
-            uid: responseAuth.uid,
-            name: name,
-            numberGoodAnswer: 0,
-            numberDayLogged: 0,
-            dateOfLastGame: "",
-            score: 0,
-          ),
+        final responseUser = UserModel(
+          email: responseAuth.email ?? "",
+          uid: responseAuth.uid,
+          name: name,
+          numberGoodAnswer: 0,
+          numberDayLogged: 0,
+          dateOfLastGame: "",
+          score: 0,
         );
+        await _userFirebase?.addUser(responseUser);
+        _userModel = responseUser;
         return SuccessResponse(1.toString(), responseAuth);
       }
     } on FirebaseAuthException catch (e) {
@@ -83,6 +87,7 @@ class AuthRepositoryImpl {
         if (responseUser == null) {
           return FailResponse(404.toString(), failure: "user not found");
         } else {
+          _userModel = responseUser;
           return SuccessResponse(402.toString(), responseUser);
         }
       }
@@ -162,17 +167,20 @@ class AuthRepositoryImpl {
   //PICTURE METHODS
 
   Future<ApiResponse<String>> uploadPicture({
-    required String file,
+    required File file,
   }) async {
     try {
-      final response = await _pictureFirebase?.uploadPicture(filePath: file);
+      final response = await _pictureFirebase?.uploadPicture(file: file, folderName: "toto");
       if (response == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
-        return SuccessResponse(1.toString(), response);
+        return SuccessResponse(1.toString(), "ppppp");
       }
     } catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
     }
   }
 }
+
+
+

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
@@ -9,9 +11,10 @@ class WelcomeCubit extends Cubit<WelcomeState> {
 
   WelcomeCubit({required this.authRepository}) : super(WelcomeStateInitial());
 
-  Future<void> uploadPicture(String path) async {
+  Future<void> uploadPicture({required String path}) async {
     emit(WelcomeStateLoading());
-    final response = await authRepository.uploadPicture(file: path);
+    File image = File(path);
+    final response = await authRepository.uploadPicture(file: image);
     if (response is SuccessResponse) {
       emit(WelcomeStateUploaded());
     } else {
