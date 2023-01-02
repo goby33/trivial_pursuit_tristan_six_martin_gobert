@@ -21,9 +21,13 @@ class PictureFirebase {
   }) async {
     final path = file.path;
     final name = path.split('/').last;
+    final format = name.split(".").last;
+    final photoName = "profile."+format;
+
+
     final storageRef = FirebaseStorage.instance.ref();
-    final mountainsRef = storageRef.child(name);
-    final mountainImagesRef = storageRef.child("images/"+folderName+"/"+name);
+    final mountainsRef = storageRef.child(photoName);
+    final mountainImagesRef = storageRef.child("images/"+folderName+"/"+photoName);
     assert(mountainsRef.name == mountainImagesRef.name);
     assert(mountainsRef.fullPath != mountainImagesRef.fullPath);
     return await mountainImagesRef.putFile(file);

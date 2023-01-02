@@ -75,9 +75,6 @@ class AuthRepositoryImpl {
   }
 
   Future<ApiResponse<UserModel?>> getCurrentUser() async {
-    if (_userModel != null) {
-      return  SuccessResponse(402.toString(), _userModel);
-    }
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
@@ -85,6 +82,7 @@ class AuthRepositoryImpl {
       } else {
         final responseUser = await _userFirebase?.getUser(response.uid);
         if (responseUser == null) {
+          _userModel = null;
           return FailResponse(404.toString(), failure: "user not found");
         } else {
           _userModel = responseUser;

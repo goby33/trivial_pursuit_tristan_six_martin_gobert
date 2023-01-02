@@ -18,13 +18,13 @@ class GameRepositoryImpl {
   static GameRepositoryImpl getInstance() {
     _listQuestionApi ??= ListQuestionsApi.getInstance();
     _listQuestionFirebase ??= ListQuestionsFirebase.getInstance();
-    _paramsGameEntity ??= ParamsGameEntity(difficulty_question: DIFFICULTY_QUESTION.any, type_question: TYPE_QUESTION.any);
+    _paramsGameEntity ??= ParamsGameEntity(
+        difficulty_question: DIFFICULTY_QUESTION.any,
+        type_question: TYPE_QUESTION.any);
     _listQuestionsModel ??= null;
     _listQuestionsRepositoryImpl ??= GameRepositoryImpl._();
     return _listQuestionsRepositoryImpl!;
   }
-
-
 
   Future<ApiResponse<ListQuestionsModel>> getQuestions() async {
     try {
@@ -32,8 +32,10 @@ class GameRepositoryImpl {
       if (resultFirebase != null) {
         return SuccessResponse(202.toString(), resultFirebase);
       } else {
-        final listQuestionsModel = await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
+        final listQuestionsModel =
+            await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
         if (listQuestionsModel != null) {
+          //await _listQuestionFirebase!.delete();
           await _listQuestionFirebase!.post(listQuestionsModel);
           return SuccessResponse(200.toString(), listQuestionsModel);
         } else {
@@ -50,7 +52,8 @@ class GameRepositoryImpl {
 
   Future<ApiResponse<ListQuestionsModel>> getQuestionsByDifficulty() async {
     try {
-      final listQuestionsModel = await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
+      final listQuestionsModel =
+          await _listQuestionApi?.getQuestions(_paramsGameEntity!.getPath());
       if (listQuestionsModel != null) {
         return SuccessResponse(200.toString(), listQuestionsModel);
       } else {
