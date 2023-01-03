@@ -49,6 +49,13 @@ class UserFirebase {
     await _listUsers.doc(user.uid).update(user.toJson());
   }
 
+  Future<void> updatePathPhoto({
+    required String uid,
+    required String pathPhoto,
+  }) async {
+    await _listUsers.doc(uid).update({"pathPhoto": pathPhoto});
+  }
+
   Future<UserModel?> getUser(String uid) async {
     return _listUsers.doc(uid).get().then((value) => value.data());
   }

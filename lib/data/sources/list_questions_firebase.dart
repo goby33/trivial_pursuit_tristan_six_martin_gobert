@@ -39,4 +39,8 @@ class ListQuestionsFirebase {
   Future<void> post(ListQuestionsModel listQuestions) async {
     _listQuestionsCollection.doc(_getDate()).set(listQuestions);
   }
+
+  Future<void> delete() async {
+  }
+
 }

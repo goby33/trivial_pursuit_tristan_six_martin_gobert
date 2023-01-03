@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/question_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 

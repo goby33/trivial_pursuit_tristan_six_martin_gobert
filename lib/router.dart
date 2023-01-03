@@ -14,7 +14,8 @@ abstract class AppRoutes {
   static const forgot = '/forgot-password';
   static const welcome = '/welcome';
 
-  static GoRouter buildRouter() => GoRouter(initialLocation: '/', routes: [
+  static GoRouter buildRouter() =>
+      GoRouter(initialLocation: '/', routes: [
         GoRoute(
           path: root,
           builder: (context, state) => const SplashPage(),
@@ -48,3 +49,6 @@ abstract class AppRoutes {
         ),
       ]);
 }
+
+
+
