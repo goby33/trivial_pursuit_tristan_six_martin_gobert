@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/params_game_entity.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/choice_params_game_state.dart';
 
 class ChoiceParamsGameCubit extends Cubit<ChoiceParamsGameState> {
-  GameRepositoryImpl gameRepositoryImpl;
+  ListQuestionsRepositoryImpl gameRepositoryImpl;
   ChoiceParamsGameCubit({required this.gameRepositoryImpl})
       : super(
           ChoiceParamsGameStateLoading(),

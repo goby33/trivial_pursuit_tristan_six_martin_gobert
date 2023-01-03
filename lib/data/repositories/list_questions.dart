@@ -6,24 +6,26 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_ques
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_firebase.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/params_game_entity.dart';
 
-class GameRepositoryImpl {
-  static GameRepositoryImpl? _listQuestionsRepositoryImpl;
+class ListQuestionsRepositoryImpl {
   static ListQuestionsApi? _listQuestionApi;
   static ListQuestionsFirebase? _listQuestionFirebase;
+  static ListQuestionsRepositoryImpl? _instanceGameRepositoryImpl;
+
+  // save the instance of the class
   static ParamsGameEntity? _paramsGameEntity;
   static ListQuestionsModel? _listQuestionsModel;
 
-  GameRepositoryImpl._();
+  ListQuestionsRepositoryImpl._();
 
-  static GameRepositoryImpl getInstance() {
+  static ListQuestionsRepositoryImpl getInstance() {
     _listQuestionApi ??= ListQuestionsApi.getInstance();
     _listQuestionFirebase ??= ListQuestionsFirebase.getInstance();
     _paramsGameEntity ??= ParamsGameEntity(
         difficulty_question: DIFFICULTY_QUESTION.any,
         type_question: TYPE_QUESTION.any);
     _listQuestionsModel ??= null;
-    _listQuestionsRepositoryImpl ??= GameRepositoryImpl._();
-    return _listQuestionsRepositoryImpl!;
+    _instanceGameRepositoryImpl ??= ListQuestionsRepositoryImpl._();
+    return _instanceGameRepositoryImpl!;
   }
 
   Future<ApiResponse<ListQuestionsModel>> getQuestions() async {
