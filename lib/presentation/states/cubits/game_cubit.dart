@@ -2,14 +2,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/question_model.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/game_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/domain/entities/game_entity.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
-  GameRepositoryImpl listQuestionsRepository;
+  ListQuestionsRepositoryImpl listQuestionsRepository;
   AuthRepositoryImpl authRepository;
 
   GameCubit({
@@ -101,45 +100,16 @@ class GameCubit extends Cubit<GameState> {
     return DateTime.now().difference(date).inDays;
   }
 
+  //TODO Save data
   void endGame() async {
     int currentScore = state.score;
     int currentGoodAnswer = state.goodAnswer;
     emit(
-      GameStateLoading(),
+      GameStateFinished(
+        score: currentScore,
+        goodAnswer: currentGoodAnswer,
+      ),
     );
-    final result = await authRepository.getCurrentUser();
-    if (result is SuccessResponse) {
-      var date = DateTime.now();
-      if (result.data != null) {
-        var userBdd = result.data!;
-        int numberDayLogged = consecutiveDateCalculation(
-          from: userBdd.dateOfLastGame,
-        );
-        UserModel user = userBdd.copyWith(
-          score: userBdd.score + currentScore,
-          numberGoodAnswer: userBdd.numberGoodAnswer + currentGoodAnswer,
-          dateOfLastGame: "${date.year}-${date.month}-${date.day}",
-          numberDayLogged: (numberDayLogged > 1)
-              ? userBdd.numberDayLogged + numberDayLogged
-              : 0,
-        );
-        final resultUpdate = await authRepository.updateUser(user: user);
-        if (resultUpdate is SuccessResponse) {
-          emit(
-            GameStateFinished(
-              score: currentScore,
-              goodAnswer: currentGoodAnswer,
-            ),
-          );
-        }
-      }
-    } else {
-      emit(
-        GameStateFailed(
-          failed: result.toString(),
-        ),
-      );
-    }
   }
 
   void checkAnswer(String answer) {
@@ -181,6 +151,7 @@ class GameCubit extends Cubit<GameState> {
     answers.shuffle();
     return answers;
   }
+
   void nextQuestion() {
     int index = state.index;
     if (index < state.listQuestions.length - 1) {

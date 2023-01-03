@@ -51,7 +51,7 @@ class WelcomePage extends StatelessWidget {
                       const CircularProgressIndicator(),
                     if (state is WelcomeStatePictureChoosen)
                       CirclePhotoWelcome(
-                        urlPhoto: state.path!,
+                        urlPhoto: state.path,
                       ),
                     if (state is WelcomeStateInitial)
                       Image.asset(

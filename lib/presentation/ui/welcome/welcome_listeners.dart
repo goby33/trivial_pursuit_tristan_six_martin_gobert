@@ -27,6 +27,6 @@ class WelcomeListeners extends StatelessWidget {
         orElse: () => null,
       ),
       child: child,
-    );;
+    );
   }
 }

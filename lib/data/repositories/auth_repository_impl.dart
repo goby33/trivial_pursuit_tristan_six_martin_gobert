@@ -1,30 +1,21 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/auth_firebase.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/picture_firebase.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
 
 class AuthRepositoryImpl {
   static AuthFirebase? _authFirebase;
-  static UserFirebase? _userFirebase;
-  static PictureFirebase? _pictureFirebase;
-  static AuthRepositoryImpl? _authRepositoryImpl;
+  static User? _user;
+  static  AuthRepositoryImpl? _instanceAuthRepositoryImpl;
 
   AuthRepositoryImpl._();
 
-  static AuthRepositoryImpl getInstance()  {
+  static AuthRepositoryImpl get instance{
     _authFirebase ??= AuthFirebase.getInstance();
-    _userFirebase ??= UserFirebase.getInstance();
-    _pictureFirebase ??= PictureFirebase.getInstance();
-    _authRepositoryImpl ??= AuthRepositoryImpl._();
-    return _authRepositoryImpl!;
+    _user ??= null;
+    _instanceAuthRepositoryImpl ??= AuthRepositoryImpl._();
+    return _instanceAuthRepositoryImpl!;
   }
 
-  //AUTH METHODS
   Future<ApiResponse<User>> signIn({
     required String email,
     required String password,
@@ -34,6 +25,7 @@ class AuthRepositoryImpl {
       if (response_user == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
+        _user = response_user;
         return SuccessResponse(1.toString(), response_user);
       }
     } on FirebaseAuthException catch (e) {
@@ -51,17 +43,7 @@ class AuthRepositoryImpl {
       if (responseAuth == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
-        final responseUser = UserModel(
-          email: responseAuth.email ?? "",
-          uid: responseAuth.uid,
-          name: name,
-          numberGoodAnswer: 0,
-          numberDayLogged: 0,
-          dateOfLastGame: "",
-          score: 0,
-          pathPhoto: "",
-        );
-        await _userFirebase?.addUser(responseUser);
+        _user = responseAuth;
         return SuccessResponse(1.toString(), responseAuth);
       }
     } on FirebaseAuthException catch (e) {
@@ -69,40 +51,34 @@ class AuthRepositoryImpl {
     }
   }
 
-  Future<void> signOut() async {
-    return await _authFirebase?.logOut();
+  Future<ApiResponse<bool>> signOut() async {
+    try {
+      await _authFirebase?.logOut();
+      return SuccessResponse(402.toString(), true);
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
   }
 
-  Future<ApiResponse<UserModel?>> getCurrentUser() async {
+  Future<ApiResponse<User?>> getCurrentUser() async {
+    if (_user != null) {
+      return SuccessResponse(1.toString(), _user);
+    }
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
+        _user = null;
         return SuccessResponse(404.toString(), null);
       } else {
-        final responseUser = await _userFirebase?.getUser(response.uid);
-        if (responseUser == null) {
-          return FailResponse(404.toString(), failure: "user not found");
-        } else {
-          return SuccessResponse(402.toString(), responseUser);
-        }
+        _user = response;
+        return SuccessResponse(1.toString(), response);
       }
     } on FirebaseAuthException catch (e) {
+      _user = null;
       return FailResponse(e.code, failure: e.message);
     }
   }
 
-  Future<ApiResponse<bool>> isConnected() async {
-    try {
-      final response = await _authFirebase?.getCurrentUser();
-      if (response == null) {
-        return SuccessResponse(404.toString(), false);
-      } else {
-        return SuccessResponse(402.toString(), true);
-      }
-    } on FirebaseAuthException catch (e) {
-      return FailResponse(e.code, failure: e.message);
-    }
-  }
 
   Future<ApiResponse<void>> resetPassword({required String email}) async {
     try {
@@ -110,84 +86,6 @@ class AuthRepositoryImpl {
       return SuccessResponse(402.toString(), null);
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
-    }
-  }
-
-  //USER METHODS
-
-  Future<void> deleteUser({required String uid}) async {
-    await _userFirebase?.deleteUser(uid: uid);
-    await _authFirebase?.deleteUser();
-  }
-
-  Future<ApiResponse<List<UserModel>>> getListUsers() async {
-    try {
-      final response = await _userFirebase?.getListUsers();
-      if (response == null) {
-        return FailResponse(0.toString(), failure: "Error user null");
-      } else {
-        return SuccessResponse(1.toString(), response);
-      }
-    } catch (e) {
-      return FailResponse(e.toString(), failure: e.toString());
-    }
-  }
-
-  Future<ApiResponse<List<UserModel>>> searchUsers({
-    required String text,
-  }) async {
-    try {
-      final response = await _userFirebase?.searchUsers(text: text);
-      if (response == null) {
-        return FailResponse(0.toString(), failure: "Error user null");
-      } else {
-        return SuccessResponse(1.toString(), response);
-      }
-    } catch (e) {
-      return FailResponse(e.toString(), failure: e.toString());
-    }
-  }
-
-  Future<ApiResponse<void>> updateUser({
-    required UserModel user,
-  }) async {
-    try {
-      final response = await _userFirebase?.updateUser(user: user);
-      return SuccessResponse(1.toString(), response);
-    } on Firebase catch (e) {
-      return FailResponse(e.toString(), failure: e.toString());
-    }
-  }
-
-  Future<ApiResponse<void>> updatePath({
-    required String path,
-  }) async {
-    final uid =  (await getCurrentUser() is SuccessResponse<UserModel?>) ? (await getCurrentUser() as SuccessResponse<UserModel?>).data!.uid : "";
-    try {
-      final response = await _userFirebase?.updatePathPhoto(uid: uid, pathPhoto: path);
-      return SuccessResponse(1.toString(), response);
-    } on Firebase catch (e) {
-      return FailResponse(e.toString(), failure: e.toString());
-    }
-  }
-
-  //PICTURE METHODS
-
-  Future<ApiResponse<String>> uploadPicture({
-    required File file,
-  }) async {
-    final uid =  (await getCurrentUser() is SuccessResponse<UserModel?>) ? (await getCurrentUser() as SuccessResponse<UserModel?>).data!.uid : "";
-    try {
-      final response =
-          await _pictureFirebase?.uploadPicture(file: file, folderName:uid);
-      if (response == null) {
-        return FailResponse(0.toString(), failure: "Error user null");
-      } else {
-        await updatePath(path: response);
-        return SuccessResponse(1.toString(), "ppppp");
-      }
-    } catch (e) {
-      return FailResponse(e.toString(), failure: e.toString());
     }
   }
 }

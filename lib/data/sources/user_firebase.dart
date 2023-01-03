@@ -22,6 +22,12 @@ class UserFirebase {
     return _instanceUserFirebase!;
   }
 
+  //get user uid
+  Future<UserModel?> getUserModel({required String uid}) async {
+    final response = await _listUsers.doc(uid).get();
+    return response.data();
+  }
+
   Future<List<UserModel>?> getListUsers() async {
     final response = await _listUsers.orderBy("score", descending: true).get();
     final listUsers = response.docs.map((e) => e.data()).toList();

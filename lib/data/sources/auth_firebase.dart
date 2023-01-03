@@ -15,7 +15,8 @@ class AuthFirebase {
     _instanceAuthFirebase ??= AuthFirebase._();
     return _instanceAuthFirebase!;
   }
-//TODO : add method to sign in with google
+
+
   Future<User?> signUp(String email, String password) async {
     UserCredential result = await _authFirebase!.createUserWithEmailAndPassword(
       email: email,
@@ -48,6 +49,3 @@ class AuthFirebase {
     await _authFirebase!.currentUser!.delete();
   }
 }
-
-// 3 -> hard
-//
