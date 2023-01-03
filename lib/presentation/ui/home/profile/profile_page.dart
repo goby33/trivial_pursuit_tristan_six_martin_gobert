@@ -27,7 +27,7 @@ class ProfilePage extends StatelessWidget {
                     ProfilePageHeader(
                       name: state.user.name,
                       uid: state.user.uid,
-                      photoUrl: null,
+                      photoUrl: state.user.pathPhoto,
                     ),
                     ProfilePageMain(
                       score: state.user.score,

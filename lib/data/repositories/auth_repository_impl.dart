@@ -1,9 +1,8 @@
 import 'dart:io';
-import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/api_response.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/auth_firebase.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/picture_firebase.dart';
@@ -13,16 +12,16 @@ class AuthRepositoryImpl {
   static AuthFirebase? _authFirebase;
   static UserFirebase? _userFirebase;
   static PictureFirebase? _pictureFirebase;
-  static UserModel? _userModel;
+  static AuthRepositoryImpl? _authRepositoryImpl;
 
   AuthRepositoryImpl._();
 
-  static AuthRepositoryImpl getInstance() {
+  static AuthRepositoryImpl getInstance()  {
     _authFirebase ??= AuthFirebase.getInstance();
     _userFirebase ??= UserFirebase.getInstance();
     _pictureFirebase ??= PictureFirebase.getInstance();
-    _userModel ??= null;
-    return AuthRepositoryImpl._();
+    _authRepositoryImpl ??= AuthRepositoryImpl._();
+    return _authRepositoryImpl!;
   }
 
   //AUTH METHODS
@@ -60,9 +59,9 @@ class AuthRepositoryImpl {
           numberDayLogged: 0,
           dateOfLastGame: "",
           score: 0,
+          pathPhoto: "",
         );
         await _userFirebase?.addUser(responseUser);
-        _userModel = responseUser;
         return SuccessResponse(1.toString(), responseAuth);
       }
     } on FirebaseAuthException catch (e) {
@@ -82,10 +81,8 @@ class AuthRepositoryImpl {
       } else {
         final responseUser = await _userFirebase?.getUser(response.uid);
         if (responseUser == null) {
-          _userModel = null;
           return FailResponse(404.toString(), failure: "user not found");
         } else {
-          _userModel = responseUser;
           return SuccessResponse(402.toString(), responseUser);
         }
       }
@@ -118,8 +115,8 @@ class AuthRepositoryImpl {
 
   //USER METHODS
 
-  Future<void> deleteUser({ required String uid}) async {
-    await _userFirebase?.deleteUser(uid : uid);
+  Future<void> deleteUser({required String uid}) async {
+    await _userFirebase?.deleteUser(uid: uid);
     await _authFirebase?.deleteUser();
   }
 
@@ -162,16 +159,31 @@ class AuthRepositoryImpl {
     }
   }
 
+  Future<ApiResponse<void>> updatePath({
+    required String path,
+  }) async {
+    final uid =  (await getCurrentUser() is SuccessResponse<UserModel?>) ? (await getCurrentUser() as SuccessResponse<UserModel?>).data!.uid : "";
+    try {
+      final response = await _userFirebase?.updatePathPhoto(uid: uid, pathPhoto: path);
+      return SuccessResponse(1.toString(), response);
+    } on Firebase catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
   //PICTURE METHODS
 
   Future<ApiResponse<String>> uploadPicture({
     required File file,
   }) async {
+    final uid =  (await getCurrentUser() is SuccessResponse<UserModel?>) ? (await getCurrentUser() as SuccessResponse<UserModel?>).data!.uid : "";
     try {
-      final response = await _pictureFirebase?.uploadPicture(file: file, folderName: "toto");
+      final response =
+          await _pictureFirebase?.uploadPicture(file: file, folderName:uid);
       if (response == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
+        await updatePath(path: response);
         return SuccessResponse(1.toString(), "ppppp");
       }
     } catch (e) {
@@ -179,6 +191,3 @@ class AuthRepositoryImpl {
     }
   }
 }
-
-
-

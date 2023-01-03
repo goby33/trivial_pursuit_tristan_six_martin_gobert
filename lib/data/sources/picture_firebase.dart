@@ -15,7 +15,7 @@ class PictureFirebase {
     return _instancePictureFirebase!;
   }
 
-  Future<TaskSnapshot> uploadPicture({
+  Future<String> uploadPicture({
     required File file,
     required String folderName,
   }) async {
@@ -30,7 +30,8 @@ class PictureFirebase {
     final mountainImagesRef = storageRef.child("images/"+folderName+"/"+photoName);
     assert(mountainsRef.name == mountainImagesRef.name);
     assert(mountainsRef.fullPath != mountainImagesRef.fullPath);
-    return await mountainImagesRef.putFile(file);
+    await mountainImagesRef.putFile(file);
+    return mountainImagesRef.getDownloadURL();
   }
 
   /*Future<void> deletePicture(String url) async {

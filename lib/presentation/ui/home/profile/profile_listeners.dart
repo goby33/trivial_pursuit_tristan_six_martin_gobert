@@ -13,17 +13,21 @@ class ProfileListeners extends StatelessWidget {
     return BlocListener<ProfileCubit, ProfileState>(
       listener: (context, state) => state.maybeMap(
         noSignIn: (value) => context.push('/sign-in'),
-        failed: (value) => ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            action: SnackBarAction(
-              label: 'close',
-              onPressed: () {
-                // Some code to undo the change.
-              },
+        failed: (value) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              action: SnackBarAction(
+                label: 'close',
+                onPressed: () {
+                  // Some code to undo the change.
+                },
+              ),
+              content: Text(value.message),
             ),
-            content: Text(value.message),
-          ),
-        ),
+          );
+          context.push('/sign-in');
+          return null;
+        },
         orElse: () => null,
       ),
       child: child,

@@ -27,6 +27,7 @@ mixin _$UserModel {
   int get numberDayLogged => throw _privateConstructorUsedError;
   String get dateOfLastGame => throw _privateConstructorUsedError;
   int get score => throw _privateConstructorUsedError;
+  String get pathPhoto => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $UserModelCopyWith<$Res> {
       int numberGoodAnswer,
       int numberDayLogged,
       String dateOfLastGame,
-      int score});
+      int score,
+      String pathPhoto});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? numberDayLogged = null,
     Object? dateOfLastGame = null,
     Object? score = null,
+    Object? pathPhoto = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -99,6 +102,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
+      pathPhoto: null == pathPhoto
+          ? _value.pathPhoto
+          : pathPhoto // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -117,7 +124,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       int numberGoodAnswer,
       int numberDayLogged,
       String dateOfLastGame,
-      int score});
+      int score,
+      String pathPhoto});
 }
 
 /// @nodoc
@@ -138,6 +146,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? numberDayLogged = null,
     Object? dateOfLastGame = null,
     Object? score = null,
+    Object? pathPhoto = null,
   }) {
     return _then(_$_UserModel(
       email: null == email
@@ -168,6 +177,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
+      pathPhoto: null == pathPhoto
+          ? _value.pathPhoto
+          : pathPhoto // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -182,7 +195,8 @@ class _$_UserModel implements _UserModel {
       required this.numberGoodAnswer,
       required this.numberDayLogged,
       required this.dateOfLastGame,
-      required this.score});
+      required this.score,
+      required this.pathPhoto});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -201,10 +215,12 @@ class _$_UserModel implements _UserModel {
   final String dateOfLastGame;
   @override
   final int score;
+  @override
+  final String pathPhoto;
 
   @override
   String toString() {
-    return 'UserModel(email: $email, uid: $uid, name: $name, numberGoodAnswer: $numberGoodAnswer, numberDayLogged: $numberDayLogged, dateOfLastGame: $dateOfLastGame, score: $score)';
+    return 'UserModel(email: $email, uid: $uid, name: $name, numberGoodAnswer: $numberGoodAnswer, numberDayLogged: $numberDayLogged, dateOfLastGame: $dateOfLastGame, score: $score, pathPhoto: $pathPhoto)';
   }
 
   @override
@@ -221,13 +237,15 @@ class _$_UserModel implements _UserModel {
                 other.numberDayLogged == numberDayLogged) &&
             (identical(other.dateOfLastGame, dateOfLastGame) ||
                 other.dateOfLastGame == dateOfLastGame) &&
-            (identical(other.score, score) || other.score == score));
+            (identical(other.score, score) || other.score == score) &&
+            (identical(other.pathPhoto, pathPhoto) ||
+                other.pathPhoto == pathPhoto));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, email, uid, name,
-      numberGoodAnswer, numberDayLogged, dateOfLastGame, score);
+      numberGoodAnswer, numberDayLogged, dateOfLastGame, score, pathPhoto);
 
   @JsonKey(ignore: true)
   @override
@@ -251,7 +269,8 @@ abstract class _UserModel implements UserModel {
       required final int numberGoodAnswer,
       required final int numberDayLogged,
       required final String dateOfLastGame,
-      required final int score}) = _$_UserModel;
+      required final int score,
+      required final String pathPhoto}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -270,6 +289,8 @@ abstract class _UserModel implements UserModel {
   String get dateOfLastGame;
   @override
   int get score;
+  @override
+  String get pathPhoto;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

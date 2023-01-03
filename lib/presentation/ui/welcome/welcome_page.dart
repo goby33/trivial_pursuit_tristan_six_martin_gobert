@@ -11,12 +11,13 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcom
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
-  Future<XFile?> getImage({
+  Future<void> getImage({
     required BuildContext context,
+    required ImageSource source,
   }) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      return image;
+      final image = await ImagePicker().pickImage(source: source);
+      context.read<WelcomeCubit>().checkImage(image: image!);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -84,7 +85,8 @@ class WelcomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: () => print("from camera"),
+                          onPressed: () async => await getImage(
+                              context: context, source: ImageSource.camera),
                           child: Text.rich(
                             TextSpan(
                               children: [
@@ -103,13 +105,8 @@ class WelcomePage extends StatelessWidget {
                           width: 20,
                         ),
                         ElevatedButton(
-                          onPressed: () async {
-                            final image = await ImagePicker()
-                                .pickImage(source: ImageSource.gallery);
-                            context
-                                .read<WelcomeCubit>()
-                                .checkImage(image: image!);
-                          },
+                          onPressed: () async => await getImage(
+                              context: context, source: ImageSource.gallery),
                           child: Text.rich(
                             TextSpan(
                               children: [

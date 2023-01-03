@@ -9,6 +9,7 @@
     { "name": "numberGoodAnswer", "type": "int" },
     { "name": "numberDayLogged", "type": "int" },
     { "name": "dateOfLastGame", "type": "String" },
-    { "name": "score", "type": "int" }
+    { "name": "score", "type": "int" },
+    { "name": "pathPhoto", "type": "String" }
   ]
 }

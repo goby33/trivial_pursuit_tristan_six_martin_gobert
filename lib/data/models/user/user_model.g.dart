@@ -14,6 +14,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       numberDayLogged: json['numberDayLogged'] as int,
       dateOfLastGame: json['dateOfLastGame'] as String,
       score: json['score'] as int,
+      pathPhoto: json['pathPhoto'] as String,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'numberDayLogged': instance.numberDayLogged,
       'dateOfLastGame': instance.dateOfLastGame,
       'score': instance.score,
+      'pathPhoto': instance.pathPhoto,
     };

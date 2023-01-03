@@ -15,7 +15,7 @@ abstract class AppRoutes {
   static const welcome = '/welcome';
 
   static GoRouter buildRouter() =>
-      GoRouter(initialLocation: '/sign-up/welcome', routes: [
+      GoRouter(initialLocation: '/', routes: [
         GoRoute(
           path: root,
           builder: (context, state) => const SplashPage(),
@@ -49,3 +49,6 @@ abstract class AppRoutes {
         ),
       ]);
 }
+
+
+
