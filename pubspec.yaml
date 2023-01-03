@@ -52,9 +52,6 @@ dependencies:
   cloud_firestore: ^4.3.1
   firebase_core_platform_interface: ^4.5.2
 
-
-  get_storage: ^2.0.3
-  get: ^4.6.5
   html_unescape: ^2.0.0
 
   #PHOTO
