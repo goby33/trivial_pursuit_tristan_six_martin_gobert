@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/style/theme_service.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/setting_cubit.dart';
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
@@ -81,7 +81,7 @@ class ContainerInfoUser extends StatelessWidget {
                  else if (value == 2) {
                   bloc.deleteAccount();
                 } else {
-                  ThemeService().switchTheme();
+                   context.read<SettingCubit>().changeTheme();
                 }
               },
               icon: const Icon(Icons.settings),
@@ -107,7 +107,7 @@ class ContainerInfoUser extends StatelessWidget {
                   child: ListTile(
                     contentPadding: const EdgeInsets.all(0),
                     leading: const Icon(Icons.dark_mode),
-                    title: Text(ThemeService().getStringTheme()),
+                    title: Text('ppppp'),
                   ),
                 ),
               ],
