@@ -22,7 +22,7 @@ class AuthRepositoryImpl {
     required String password,
   }) async {
     try {
-      final response_user = await _authFirebase?.signIn(email, password);
+      final response_user = await _authFirebase?.signIn(email: email, password: password);
       if (response_user == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
@@ -40,7 +40,7 @@ class AuthRepositoryImpl {
     required String name,
   }) async {
     try {
-      final responseAuth = await _authFirebase?.signUp(email, password);
+      final responseAuth = await _authFirebase?.signUp(email: email,password: password);
       if (responseAuth == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
@@ -83,7 +83,7 @@ class AuthRepositoryImpl {
 
   Future<ApiResponse<void>> resetPassword({required String email}) async {
     try {
-      await _authFirebase?.sendPasswordResetEmail(email);
+      await _authFirebase?.sendPasswordResetEmail(email: email);
       return SuccessResponse(402.toString(), null);
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);

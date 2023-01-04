@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 
 class UserFirebase {
-  static  FirebaseFirestore? _firebaseFirestore;
+  static FirebaseFirestore? _firebaseFirestore;
   static UserFirebase? _instanceUserFirebase;
   static late final CollectionReference<UserModel> _listUsers;
   UserFirebase._();
@@ -21,7 +21,9 @@ class UserFirebase {
     return _instanceUserFirebase!;
   }
 
-  Future<UserModel?> getUserModel({required String uid}) async {
+  Future<UserModel?> getUserModel({
+    required String uid,
+  }) async {
     final response = await _listUsers.doc(uid).get();
     return response.data();
   }
@@ -32,25 +34,31 @@ class UserFirebase {
     return listUsers;
   }
 
-  Future<List<UserModel>?> searchUsers({required String text}) async {
+  Future<List<UserModel>?> searchUsers({
+    required String text,
+  }) async {
     final response = await _listUsers.orderBy("score", descending: true).get();
-    final listUsers = response.docs
-        .map((e) => e.data())
-        .where((element) =>
-            element.name.toLowerCase().contains(text.toLowerCase()))
-        .toList();
+    // final listUsers = response.docs
+    //     .map((e) => e.data())
+    //     .where((element) =>
+    //         element.name.toLowerCase().contains(text.toLowerCase()))
+    //     .toList();
 
-    return listUsers;
+    return [];
   }
 
-  Future<void> addUser(UserModel user) async {
-    await _listUsers.doc(user.uid).set(user);
+  Future<void> addUser({
+    required UserModel user,
+    required String uid,
+  }) async {
+    await _listUsers.doc(uid).set(user);
   }
 
   Future<void> updateUser({
     required UserModel user,
+    required String uid,
   }) async {
-    await _listUsers.doc(user.uid).update(user.toJson());
+    await _listUsers.doc(uid).update(user.toJson());
   }
 
   Future<void> updatePathPhoto({
@@ -60,11 +68,15 @@ class UserFirebase {
     await _listUsers.doc(uid).update({"pathPhoto": pathPhoto});
   }
 
-  Future<UserModel?> getUser(String uid) async {
+  Future<UserModel?> getUser({
+    required String uid,
+  }) async {
     return _listUsers.doc(uid).get().then((value) => value.data());
   }
 
-  Future<void> deleteUser({required String uid}) async {
+  Future<void> deleteUser({
+    required String uid,
+  }) async {
     await _listUsers.doc(uid).delete();
   }
 }

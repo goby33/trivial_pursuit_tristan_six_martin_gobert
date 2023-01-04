@@ -7,7 +7,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_fire
 class UserModelRepositoryImpl {
   static UserFirebase? _userFirebase;
   static UserModel? _userModel;
-  static  UserModelRepositoryImpl? _instanceUserRepositoryImpl;
+  static UserModelRepositoryImpl? _instanceUserRepositoryImpl;
 
   UserModelRepositoryImpl._();
 
@@ -17,12 +17,16 @@ class UserModelRepositoryImpl {
     return _instanceUserRepositoryImpl!;
   }
 
-  Future<void> deleteUser({required String uid}) async {
+  Future<void> deleteUser({
+    required String uid,
+  }) async {
     await _userFirebase?.deleteUser(uid: uid);
   }
 
   //get user uid
-  Future<ApiResponse<UserModel>> getUserModel({required String uid}) async {
+  Future<ApiResponse<UserModel>> getUserModel({
+    required String uid,
+  }) async {
     try {
       final response_user = await _userFirebase?.getUserModel(uid: uid);
       if (response_user == null) {
@@ -65,9 +69,10 @@ class UserModelRepositoryImpl {
 
   Future<ApiResponse<void>> updateUserModel({
     required UserModel user,
+    required String uid,
   }) async {
     try {
-      final response = await _userFirebase?.updateUser(user: user);
+      final response = await _userFirebase?.updateUser(user: user, uid: uid);
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
