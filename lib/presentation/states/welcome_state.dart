@@ -7,14 +7,14 @@ class WelcomeState with _$WelcomeState {
   const WelcomeState._();
 
   //initial state
-  factory WelcomeState.initial() = WelcomeStateInitial;
+  factory WelcomeState.initial({required String path,}) = WelcomeStateInitial;
 
   // picture chosen
   factory WelcomeState.pictureChosen({
     required String path,
   }) = WelcomeStatePictureChoosen;
 
-  factory WelcomeState.loading() = WelcomeStateLoading;
+  factory WelcomeState.loading({required String path,}) = WelcomeStateLoading;
 
   factory WelcomeState.uploaded() = WelcomeStateUploaded;
 
@@ -23,11 +23,11 @@ class WelcomeState with _$WelcomeState {
         required String message}) = WelcomeStateFailed;
 
   //get path
-  String? get path => when(
-        initial: () => null,
+  String get path => when(
+        initial: (path) => path,
         pictureChosen: (path) => path,
-        loading: () => null,
-        uploaded: () => null,
-        failed: (dateTime, message) => null,
+        loading: (path) => path,
+        uploaded: () => '',
+        failed: (dateTime, message) => '',
       );
 }

@@ -20,3 +20,9 @@ enum TYPE_QUESTION {
   multiple,
   boolean,
 }
+
+//get date of today
+String getDateToday() {
+  DateTime today = DateTime.now();
+  return '${today.year}-${today.month}-${today.day}';
+}

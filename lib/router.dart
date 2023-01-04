@@ -36,8 +36,9 @@ abstract class AppRoutes {
           builder: (context, state) => const SignUpPage(),
           routes: [
             GoRoute(
-              path: 'welcome',
-              builder: (context, state) => const WelcomePage(),
+              name: 'welcome',
+              path: 'welcome/:name',
+              builder: (context, state) =>  WelcomePage(name: state.params['name']!),
               routes: const [],
             ),
           ],

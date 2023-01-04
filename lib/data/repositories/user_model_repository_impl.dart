@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
 
@@ -24,7 +25,7 @@ class UserModelRepositoryImpl {
     required String uid,
   }) async {
     try {
-      _userModel = UserModel(email, name, 0, 0, "12/12/2023", "", score: 0);
+      _userModel = UserModel(email, name, 0, 0, getDateToday(), "", score: 0);
       final response = await _userFirebase?.createUserModel(
           userModel: _userModel!, uid: uid);
       return SuccessResponse(402.toString(), response);

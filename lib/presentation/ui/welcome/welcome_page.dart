@@ -9,7 +9,8 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcom
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/widgets/circle_photo_welcome.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  final String name;
+  const WelcomePage({Key? key, required this.name}) : super(key: key);
 
   Future<void> getImage({
     required BuildContext context,
@@ -42,135 +43,91 @@ class WelcomePage extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: Color.fromRGBO(226, 149, 120, 1),
-              body: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (state is WelcomeStateLoading)
-                      const CircularProgressIndicator(),
-                    if (state is WelcomeStatePictureChoosen)
-                      CirclePhotoWelcome(
-                        urlPhoto: state.path,
-                      ),
-                    if (state is WelcomeStateInitial)
-                      Image.asset(
-                        'assets/images/trivial-pursuit-logo.png',
-                        width: 200,
-                      ),
-                    SizedBox(
-                      height: 20,
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CirclePhotoWelcome(
+                    urlPhoto: state.path!,
+                    loading: (state is WelcomeStateLoading),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Welcome $name',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
                     ),
-                    Text(
-                      'Welcome Tristan',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
                       'Please choose your profile picture',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () async => await getImage(
-                              context: context, source: ImageSource.camera),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: 'Take a picture'),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                WidgetSpan(child: Icon(Icons.add_a_photo)),
-                              ],
-                            ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(255, 221, 210, 1),
+                        ),
+                        onPressed: () async => await getImage(
+                            context: context, source: ImageSource.camera),
+                        icon: Icon(
+                          Icons.add_a_photo,
+                          size: 24.0,
+                        ),
+                        label: Text('Take a picture',style: TextStyle(color: Color.fromRGBO(226, 149, 120, 1))),
+                      ),
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(255, 221, 210, 1),
+                        ),
+                        onPressed: () async => await getImage(
+                            context: context, source: ImageSource.gallery),
+                        icon: Icon(
+                          Icons.collections,
+                          size: 24.0,
+                        ),
+                        label: Text('From gallery', style: TextStyle(color: Color.fromRGBO(226, 149, 120, 1))),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () => context.push('/home'),
+                        icon: Icon(
+                          Icons.no_photography,
+                          size: 24.0,
+                        ),
+                        label: Text('Add a photo later'),
+                      ),
+                      if (state.path != '')
+                        ElevatedButton.icon(
+                          onPressed: () => context
+                              .read<WelcomeCubit>()
+                              .uploadPicture(),
+                          icon: Icon(
+                            Icons.collections,
+                            size: 24.0,
                           ),
+                          label: Text('Save my photo'),
                         ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        ElevatedButton(
-                          onPressed: () async => await getImage(
-                              context: context, source: ImageSource.gallery),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: 'From gallery'),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                WidgetSpan(child: Icon(Icons.collections)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () async {
-                            context.push('/home');
-                          },
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: 'skip'),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                WidgetSpan(child: Icon(Icons.add_a_photo)),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            context
-                                .read<WelcomeCubit>()
-                                .uploadPicture(path: state.path!);
-                          },
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: 'save and next'),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                WidgetSpan(child: Icon(Icons.collections)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+
+                ],
               ),
             );
           },

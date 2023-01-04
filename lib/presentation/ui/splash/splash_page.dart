@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/splash/splash_listeners.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/splash/splash_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/splash_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/splash_state.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const SplashProvider(
-      child: SplashListeners(
-        child: Scaffold(
-            body: Center(
-          child: CircularProgressIndicator(),
-        )),
+    return BlocProvider(
+      create: (context) =>
+          SplashCubit(
+            authRepository: context.read<AuthRepositoryImpl>(),
+          ),
+      child: BlocListener<SplashCubit, SplashState>(
+        listener: (context, state) =>
+            state.maybeMap(
+              noConnected: (value) => context.push('/sign-in'),
+              connected: (value) => context.push('/home'),
+              orElse: () => print('ppp'),
+            ),
+        child: BlocBuilder<SplashCubit, SplashState>(
+          builder: (context, state) {
+            context.read<SplashCubit>().isConnected();
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -18,27 +18,27 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WelcomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
@@ -97,6 +97,8 @@ abstract class _$$WelcomeStateInitialCopyWith<$Res> {
   factory _$$WelcomeStateInitialCopyWith(_$WelcomeStateInitial value,
           $Res Function(_$WelcomeStateInitial) then) =
       __$$WelcomeStateInitialCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String path});
 }
 
 /// @nodoc
@@ -106,63 +108,88 @@ class __$$WelcomeStateInitialCopyWithImpl<$Res>
   __$$WelcomeStateInitialCopyWithImpl(
       _$WelcomeStateInitial _value, $Res Function(_$WelcomeStateInitial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_$WelcomeStateInitial(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$WelcomeStateInitial extends WelcomeStateInitial {
-  _$WelcomeStateInitial() : super._();
+  _$WelcomeStateInitial({required this.path}) : super._();
+
+  @override
+  final String path;
 
   @override
   String toString() {
-    return 'WelcomeState.initial()';
+    return 'WelcomeState.initial(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WelcomeStateInitial);
+        (other.runtimeType == runtimeType &&
+            other is _$WelcomeStateInitial &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WelcomeStateInitialCopyWith<_$WelcomeStateInitial> get copyWith =>
+      __$$WelcomeStateInitialCopyWithImpl<_$WelcomeStateInitial>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
-    return initial();
+    return initial(path);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
-    return initial?.call();
+    return initial?.call(path);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(path);
     }
     return orElse();
   }
@@ -209,8 +236,14 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
 }
 
 abstract class WelcomeStateInitial extends WelcomeState {
-  factory WelcomeStateInitial() = _$WelcomeStateInitial;
+  factory WelcomeStateInitial({required final String path}) =
+      _$WelcomeStateInitial;
   WelcomeStateInitial._() : super._();
+
+  String get path;
+  @JsonKey(ignore: true)
+  _$$WelcomeStateInitialCopyWith<_$WelcomeStateInitial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -280,9 +313,9 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
@@ -292,9 +325,9 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
@@ -304,9 +337,9 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
@@ -374,6 +407,8 @@ abstract class _$$WelcomeStateLoadingCopyWith<$Res> {
   factory _$$WelcomeStateLoadingCopyWith(_$WelcomeStateLoading value,
           $Res Function(_$WelcomeStateLoading) then) =
       __$$WelcomeStateLoadingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String path});
 }
 
 /// @nodoc
@@ -383,63 +418,88 @@ class __$$WelcomeStateLoadingCopyWithImpl<$Res>
   __$$WelcomeStateLoadingCopyWithImpl(
       _$WelcomeStateLoading _value, $Res Function(_$WelcomeStateLoading) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_$WelcomeStateLoading(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$WelcomeStateLoading extends WelcomeStateLoading {
-  _$WelcomeStateLoading() : super._();
+  _$WelcomeStateLoading({required this.path}) : super._();
+
+  @override
+  final String path;
 
   @override
   String toString() {
-    return 'WelcomeState.loading()';
+    return 'WelcomeState.loading(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WelcomeStateLoading);
+        (other.runtimeType == runtimeType &&
+            other is _$WelcomeStateLoading &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WelcomeStateLoadingCopyWith<_$WelcomeStateLoading> get copyWith =>
+      __$$WelcomeStateLoadingCopyWithImpl<_$WelcomeStateLoading>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
-    return loading();
+    return loading(path);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
-    return loading?.call();
+    return loading?.call(path);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(path);
     }
     return orElse();
   }
@@ -486,8 +546,14 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
 }
 
 abstract class WelcomeStateLoading extends WelcomeState {
-  factory WelcomeStateLoading() = _$WelcomeStateLoading;
+  factory WelcomeStateLoading({required final String path}) =
+      _$WelcomeStateLoading;
   WelcomeStateLoading._() : super._();
+
+  String get path;
+  @JsonKey(ignore: true)
+  _$$WelcomeStateLoadingCopyWith<_$WelcomeStateLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -528,9 +594,9 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
@@ -540,9 +606,9 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
@@ -552,9 +618,9 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
@@ -686,9 +752,9 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String path) initial,
     required TResult Function(String path) pictureChosen,
-    required TResult Function() loading,
+    required TResult Function(String path) loading,
     required TResult Function() uploaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
@@ -698,9 +764,9 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String path)? initial,
     TResult? Function(String path)? pictureChosen,
-    TResult? Function()? loading,
+    TResult? Function(String path)? loading,
     TResult? Function()? uploaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
@@ -710,9 +776,9 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String path)? initial,
     TResult Function(String path)? pictureChosen,
-    TResult Function()? loading,
+    TResult Function(String path)? loading,
     TResult Function()? uploaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
