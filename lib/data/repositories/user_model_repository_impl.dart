@@ -17,6 +17,22 @@ class UserModelRepositoryImpl {
     return _instanceUserRepositoryImpl!;
   }
 
+  //create user model
+  Future<ApiResponse<void>> createUserModel({
+    required String name,
+    required String email,
+    required String uid,
+  }) async {
+    try {
+      _userModel = UserModel(email, name, 0, 0, "12/12/2023", "", score: 0);
+      final response = await _userFirebase?.createUserModel(
+          userModel: _userModel!, uid: uid);
+      return SuccessResponse(402.toString(), response);
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
+  }
+
   Future<void> deleteUser({
     required String uid,
   }) async {

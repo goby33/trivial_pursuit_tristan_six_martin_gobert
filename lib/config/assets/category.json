@@ -1,0 +1,9 @@
+{
+  "model_name": "category_model",
+  "additionals": ["copyWith", "json", "equatable"],
+  "style": "freezed",
+  "properties": [
+    { "name": "id", "type": "int" },
+    { "name": "name", "type": "String" }
+  ]
+}

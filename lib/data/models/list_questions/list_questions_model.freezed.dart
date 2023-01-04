@@ -20,7 +20,6 @@ ListQuestionsModel _$ListQuestionsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListQuestionsModel {
-  int get response_code => throw _privateConstructorUsedError;
   List<QuestionModel> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $ListQuestionsModelCopyWith<$Res> {
           ListQuestionsModel value, $Res Function(ListQuestionsModel) then) =
       _$ListQuestionsModelCopyWithImpl<$Res, ListQuestionsModel>;
   @useResult
-  $Res call({int response_code, List<QuestionModel> results});
+  $Res call({List<QuestionModel> results});
 }
 
 /// @nodoc
@@ -51,14 +50,9 @@ class _$ListQuestionsModelCopyWithImpl<$Res, $Val extends ListQuestionsModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? response_code = null,
     Object? results = null,
   }) {
     return _then(_value.copyWith(
-      response_code: null == response_code
-          ? _value.response_code
-          : response_code // ignore: cast_nullable_to_non_nullable
-              as int,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$_ListQuestionsModelCopyWith<$Res>
       __$$_ListQuestionsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int response_code, List<QuestionModel> results});
+  $Res call({List<QuestionModel> results});
 }
 
 /// @nodoc
@@ -89,14 +83,9 @@ class __$$_ListQuestionsModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? response_code = null,
     Object? results = null,
   }) {
     return _then(_$_ListQuestionsModel(
-      response_code: null == response_code
-          ? _value.response_code
-          : response_code // ignore: cast_nullable_to_non_nullable
-              as int,
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -108,15 +97,12 @@ class __$$_ListQuestionsModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ListQuestionsModel implements _ListQuestionsModel {
-  const _$_ListQuestionsModel(
-      {required this.response_code, required final List<QuestionModel> results})
+  const _$_ListQuestionsModel({required final List<QuestionModel> results})
       : _results = results;
 
   factory _$_ListQuestionsModel.fromJson(Map<String, dynamic> json) =>
       _$$_ListQuestionsModelFromJson(json);
 
-  @override
-  final int response_code;
   final List<QuestionModel> _results;
   @override
   List<QuestionModel> get results {
@@ -127,7 +113,7 @@ class _$_ListQuestionsModel implements _ListQuestionsModel {
 
   @override
   String toString() {
-    return 'ListQuestionsModel(response_code: $response_code, results: $results)';
+    return 'ListQuestionsModel(results: $results)';
   }
 
   @override
@@ -135,15 +121,13 @@ class _$_ListQuestionsModel implements _ListQuestionsModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ListQuestionsModel &&
-            (identical(other.response_code, response_code) ||
-                other.response_code == response_code) &&
             const DeepCollectionEquality().equals(other._results, _results));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, response_code,
-      const DeepCollectionEquality().hash(_results));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_results));
 
   @JsonKey(ignore: true)
   @override
@@ -162,14 +146,11 @@ class _$_ListQuestionsModel implements _ListQuestionsModel {
 
 abstract class _ListQuestionsModel implements ListQuestionsModel {
   const factory _ListQuestionsModel(
-      {required final int response_code,
-      required final List<QuestionModel> results}) = _$_ListQuestionsModel;
+      {required final List<QuestionModel> results}) = _$_ListQuestionsModel;
 
   factory _ListQuestionsModel.fromJson(Map<String, dynamic> json) =
       _$_ListQuestionsModel.fromJson;
 
-  @override
-  int get response_code;
   @override
   List<QuestionModel> get results;
   @override

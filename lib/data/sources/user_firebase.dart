@@ -47,11 +47,11 @@ class UserFirebase {
     return [];
   }
 
-  Future<void> addUser({
-    required UserModel user,
+  Future<void> createUserModel({
+    required UserModel userModel,
     required String uid,
   }) async {
-    await _listUsers.doc(uid).set(user);
+    await _listUsers.doc(uid).set(userModel);
   }
 
   Future<void> updateUser({

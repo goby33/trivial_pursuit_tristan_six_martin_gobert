@@ -1,7 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+ 
 part 'question_model.freezed.dart';
 part 'question_model.g.dart';
 
@@ -11,7 +10,7 @@ part 'question_model.g.dart';
 @freezed
 class QuestionModel with _$QuestionModel {
   /// {@macro question_model}
-  const factory QuestionModel({
+  const factory QuestionModel({ 
     required String category,
     required String type,
     required String difficulty,
@@ -19,8 +18,7 @@ class QuestionModel with _$QuestionModel {
     required String correct_answer,
     required List<String> incorrect_answers,
   }) = _QuestionModel;
-
-  /// Creates a QuestionModel from Json map
-  factory QuestionModel.fromJson(Map<String, dynamic> data) =>
-      _$QuestionModelFromJson(data);
+  
+    /// Creates a QuestionModel from Json map
+  factory QuestionModel.fromJson(Map<String, dynamic> data) => _$QuestionModelFromJson(data);
 }

@@ -62,9 +62,6 @@ class AuthRepositoryImpl {
   }
 
   Future<ApiResponse<User?>> getCurrentUser() async {
-    if (_user != null) {
-      return SuccessResponse(1.toString(), _user);
-    }
     try {
       final response = await _authFirebase?.getCurrentUser();
       if (response == null) {
@@ -79,6 +76,8 @@ class AuthRepositoryImpl {
       return FailResponse(e.code, failure: e.message);
     }
   }
+
+  User? get user => _user;
 
 
   Future<ApiResponse<void>> resetPassword({required String email}) async {
