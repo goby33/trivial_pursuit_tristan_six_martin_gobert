@@ -36,11 +36,11 @@ class ListQuestionsFirebase {
     return questionsOfToDay.data();
   }
 
-  Future<void> post(ListQuestionsModel listQuestions) async {
+  Future<void> post({
+    required ListQuestionsModel listQuestions,
+  }) async {
     _listQuestionsCollection.doc(_getDate()).set(listQuestions);
   }
 
-  Future<void> delete() async {
-  }
-
+  Future<void> delete() async {}
 }

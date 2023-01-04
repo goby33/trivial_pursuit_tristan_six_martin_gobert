@@ -20,14 +20,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get email => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  int get numberGoodAnswer => throw _privateConstructorUsedError;
-  int get numberDayLogged => throw _privateConstructorUsedError;
-  String get dateOfLastGame => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  int? get numberGoodAnswer => throw _privateConstructorUsedError;
+  int? get numberDayLogged => throw _privateConstructorUsedError;
+  String? get dateOfLastGame => throw _privateConstructorUsedError;
+  String? get pathPhoto => throw _privateConstructorUsedError;
   int get score => throw _privateConstructorUsedError;
-  String get pathPhoto => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,14 +40,13 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String email,
-      String uid,
-      String name,
-      int numberGoodAnswer,
-      int numberDayLogged,
-      String dateOfLastGame,
-      int score,
-      String pathPhoto});
+      {String? email,
+      String? name,
+      int? numberGoodAnswer,
+      int? numberDayLogged,
+      String? dateOfLastGame,
+      String? pathPhoto,
+      int score});
 }
 
 /// @nodoc
@@ -64,48 +62,43 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? uid = null,
-    Object? name = null,
-    Object? numberGoodAnswer = null,
-    Object? numberDayLogged = null,
-    Object? dateOfLastGame = null,
+    Object? email = freezed,
+    Object? name = freezed,
+    Object? numberGoodAnswer = freezed,
+    Object? numberDayLogged = freezed,
+    Object? dateOfLastGame = freezed,
+    Object? pathPhoto = freezed,
     Object? score = null,
-    Object? pathPhoto = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      numberGoodAnswer: null == numberGoodAnswer
+              as String?,
+      numberGoodAnswer: freezed == numberGoodAnswer
           ? _value.numberGoodAnswer
           : numberGoodAnswer // ignore: cast_nullable_to_non_nullable
-              as int,
-      numberDayLogged: null == numberDayLogged
+              as int?,
+      numberDayLogged: freezed == numberDayLogged
           ? _value.numberDayLogged
           : numberDayLogged // ignore: cast_nullable_to_non_nullable
-              as int,
-      dateOfLastGame: null == dateOfLastGame
+              as int?,
+      dateOfLastGame: freezed == dateOfLastGame
           ? _value.dateOfLastGame
           : dateOfLastGame // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      pathPhoto: freezed == pathPhoto
+          ? _value.pathPhoto
+          : pathPhoto // ignore: cast_nullable_to_non_nullable
+              as String?,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      pathPhoto: null == pathPhoto
-          ? _value.pathPhoto
-          : pathPhoto // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -118,14 +111,13 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String email,
-      String uid,
-      String name,
-      int numberGoodAnswer,
-      int numberDayLogged,
-      String dateOfLastGame,
-      int score,
-      String pathPhoto});
+      {String? email,
+      String? name,
+      int? numberGoodAnswer,
+      int? numberDayLogged,
+      String? dateOfLastGame,
+      String? pathPhoto,
+      int score});
 }
 
 /// @nodoc
@@ -139,48 +131,43 @@ class __$$_UserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? uid = null,
-    Object? name = null,
-    Object? numberGoodAnswer = null,
-    Object? numberDayLogged = null,
-    Object? dateOfLastGame = null,
+    Object? email = freezed,
+    Object? name = freezed,
+    Object? numberGoodAnswer = freezed,
+    Object? numberDayLogged = freezed,
+    Object? dateOfLastGame = freezed,
+    Object? pathPhoto = freezed,
     Object? score = null,
-    Object? pathPhoto = null,
   }) {
     return _then(_$_UserModel(
-      email: null == email
+      freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      numberGoodAnswer: null == numberGoodAnswer
+              as String?,
+      freezed == numberGoodAnswer
           ? _value.numberGoodAnswer
           : numberGoodAnswer // ignore: cast_nullable_to_non_nullable
-              as int,
-      numberDayLogged: null == numberDayLogged
+              as int?,
+      freezed == numberDayLogged
           ? _value.numberDayLogged
           : numberDayLogged // ignore: cast_nullable_to_non_nullable
-              as int,
-      dateOfLastGame: null == dateOfLastGame
+              as int?,
+      freezed == dateOfLastGame
           ? _value.dateOfLastGame
           : dateOfLastGame // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      freezed == pathPhoto
+          ? _value.pathPhoto
+          : pathPhoto // ignore: cast_nullable_to_non_nullable
+              as String?,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      pathPhoto: null == pathPhoto
-          ? _value.pathPhoto
-          : pathPhoto // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -188,39 +175,31 @@ class __$$_UserModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
-  const _$_UserModel(
-      {required this.email,
-      required this.uid,
-      required this.name,
-      required this.numberGoodAnswer,
-      required this.numberDayLogged,
-      required this.dateOfLastGame,
-      required this.score,
-      required this.pathPhoto});
+  const _$_UserModel(this.email, this.name, this.numberGoodAnswer,
+      this.numberDayLogged, this.dateOfLastGame, this.pathPhoto,
+      {required this.score});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
   @override
-  final String email;
+  final String? email;
   @override
-  final String uid;
+  final String? name;
   @override
-  final String name;
+  final int? numberGoodAnswer;
   @override
-  final int numberGoodAnswer;
+  final int? numberDayLogged;
   @override
-  final int numberDayLogged;
+  final String? dateOfLastGame;
   @override
-  final String dateOfLastGame;
+  final String? pathPhoto;
   @override
   final int score;
-  @override
-  final String pathPhoto;
 
   @override
   String toString() {
-    return 'UserModel(email: $email, uid: $uid, name: $name, numberGoodAnswer: $numberGoodAnswer, numberDayLogged: $numberDayLogged, dateOfLastGame: $dateOfLastGame, score: $score, pathPhoto: $pathPhoto)';
+    return 'UserModel(email: $email, name: $name, numberGoodAnswer: $numberGoodAnswer, numberDayLogged: $numberDayLogged, dateOfLastGame: $dateOfLastGame, pathPhoto: $pathPhoto, score: $score)';
   }
 
   @override
@@ -229,7 +208,6 @@ class _$_UserModel implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.numberGoodAnswer, numberGoodAnswer) ||
                 other.numberGoodAnswer == numberGoodAnswer) &&
@@ -237,15 +215,15 @@ class _$_UserModel implements _UserModel {
                 other.numberDayLogged == numberDayLogged) &&
             (identical(other.dateOfLastGame, dateOfLastGame) ||
                 other.dateOfLastGame == dateOfLastGame) &&
-            (identical(other.score, score) || other.score == score) &&
             (identical(other.pathPhoto, pathPhoto) ||
-                other.pathPhoto == pathPhoto));
+                other.pathPhoto == pathPhoto) &&
+            (identical(other.score, score) || other.score == score));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, uid, name,
-      numberGoodAnswer, numberDayLogged, dateOfLastGame, score, pathPhoto);
+  int get hashCode => Object.hash(runtimeType, email, name, numberGoodAnswer,
+      numberDayLogged, dateOfLastGame, pathPhoto, score);
 
   @JsonKey(ignore: true)
   @override
@@ -263,34 +241,31 @@ class _$_UserModel implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String email,
-      required final String uid,
-      required final String name,
-      required final int numberGoodAnswer,
-      required final int numberDayLogged,
-      required final String dateOfLastGame,
-      required final int score,
-      required final String pathPhoto}) = _$_UserModel;
+      final String? email,
+      final String? name,
+      final int? numberGoodAnswer,
+      final int? numberDayLogged,
+      final String? dateOfLastGame,
+      final String? pathPhoto,
+      {required final int score}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  String get email;
+  String? get email;
   @override
-  String get uid;
+  String? get name;
   @override
-  String get name;
+  int? get numberGoodAnswer;
   @override
-  int get numberGoodAnswer;
+  int? get numberDayLogged;
   @override
-  int get numberDayLogged;
+  String? get dateOfLastGame;
   @override
-  String get dateOfLastGame;
+  String? get pathPhoto;
   @override
   int get score;
-  @override
-  String get pathPhoto;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

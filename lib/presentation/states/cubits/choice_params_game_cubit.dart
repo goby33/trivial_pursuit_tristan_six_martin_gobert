@@ -25,7 +25,7 @@ class ChoiceParamsGameCubit extends Cubit<ChoiceParamsGameState> {
   }
 
   void setDifficulty(DIFFICULTY_QUESTION difficulty) {
-    gameRepositoryImpl.setDifficultyQuestion(difficulty);
+    gameRepositoryImpl.setDifficultyQuestion(difficulty_question: difficulty);
     emit(
       ChoiceParamsGameStateLoaded( params: ParamsGameEntity(
             difficulty_question: difficulty,
@@ -36,7 +36,7 @@ class ChoiceParamsGameCubit extends Cubit<ChoiceParamsGameState> {
   }
 
   void setType(TYPE_QUESTION type) {
-    gameRepositoryImpl.setTypeQuestion(type);
+    gameRepositoryImpl.setTypeQuestion(type_question: type);
     emit(
       ChoiceParamsGameStateLoaded( params: ParamsGameEntity(
             difficulty_question: state.params!.difficulty_question,

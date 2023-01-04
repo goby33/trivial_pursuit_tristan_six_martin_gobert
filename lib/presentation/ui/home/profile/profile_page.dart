@@ -26,13 +26,13 @@ class ProfilePage extends StatelessWidget {
                   children: [
                     ProfilePageHeader(
                       name: state.user.name,
-                      uid: state.user.uid,
-                      photoUrl: state.user.pathPhoto,
+                      uid: "toto",
+                      photoUrl: state.user.pathPhoto ?? "",
                     ),
                     ProfilePageMain(
                       score: state.user.score,
-                      numberGoodAnswers: state.user.numberGoodAnswer,
-                      numberDayLogged: state.user.numberDayLogged,
+                      numberGoodAnswers: state.user.numberGoodAnswer ?? 0,
+                      numberDayLogged: state.user.numberDayLogged ?? 0,
                     ),
                   ],
                 ),

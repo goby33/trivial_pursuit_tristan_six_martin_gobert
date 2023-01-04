@@ -61,7 +61,7 @@ class _RankingPageState extends State<RankingPage> {
                             ),
                           ),
                           title: Text(
-                              state.listUsersModel![index].name),
+                              state.listUsersModel![index].name ?? ""),
                           subtitle: Text(
                               "Score : ${state.listUsersModel![index].score}"),
                         );

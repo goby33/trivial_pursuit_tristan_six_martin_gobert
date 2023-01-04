@@ -51,7 +51,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> deleteAccount() async {
-    await userModelRepositoryImpl.deleteUser(uid: state.user!.uid);
+    //await userModelRepositoryImpl.deleteUser(uid: state.user!.uid);
     emit(ProfileStateNoSignIn());
   }
 }
