@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   ThemeData lightTheme = ThemeData(
     primaryColor: const Color.fromRGBO(131, 197, 190, 1),
+    errorColor: const Color.fromRGBO(249, 65, 68, 1),
     scaffoldBackgroundColor: const Color.fromRGBO(237, 246, 249, 1),
     colorScheme: const ColorScheme.light(
       primary: Color.fromRGBO(131, 197, 190, 1),

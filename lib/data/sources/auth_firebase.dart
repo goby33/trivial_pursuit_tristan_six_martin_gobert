@@ -52,6 +52,52 @@ class AuthFirebase {
     await _authFirebase!.sendPasswordResetEmail(email: email);
   }
 
+  // email exists
+  Future<bool> emailExists({required String email}) async {
+    bool exists = false;
+    try {
+      final response = await _authFirebase!.fetchSignInMethodsForEmail(email);
+      return response.length > 0;
+    } catch (e) {
+      exists = false;
+    }
+    return exists;
+  }
+  //update email
+  Future<void> updateEmail({required String email}) async {
+    await _authFirebase!.currentUser!.updateEmail(email);
+  }
+  // update password
+  Future<void> updatePassword({required String password}) async {
+    await _authFirebase!.currentUser!.updatePassword(password);
+  }
+
+
+  // update profile
+  Future<void> updateProfile({required String name}) async {
+    await _authFirebase!.currentUser!.updateDisplayName(name);
+  }
+
+  // string password is equal to old password
+  Future<bool>  reauthenticate({required String email, required String password}) async {
+    bool isEqual = false;
+    try {
+      await _authFirebase!.currentUser!.reauthenticateWithCredential(
+        EmailAuthProvider.credential(
+          email: _authFirebase!.currentUser!.email!,
+          password: password,
+        ),
+      );
+      isEqual = true;
+    } catch (e) {
+      isEqual = false;
+    }
+    return isEqual;
+  }
+
+
+
+
   Future<void> deleteUser() async {
     await _authFirebase!.currentUser!.delete();
   }

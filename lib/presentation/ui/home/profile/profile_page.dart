@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileStateSignIn) {
-             return  RefreshIndicator(
+              return RefreshIndicator(
                 onRefresh: () async {
                   context.read<ProfileCubit>().getProfile();
                 },
@@ -25,8 +25,8 @@ class ProfilePage extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   children: [
                     ProfilePageHeader(
-                      name: state.user.name,
-                      uid: "toto",
+                      name: state.user.name ?? 'unknown',
+                      uid: state.uid,
                       photoUrl: state.user.pathPhoto ?? "",
                     ),
                     ProfilePageMain(
@@ -47,4 +47,5 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
 }

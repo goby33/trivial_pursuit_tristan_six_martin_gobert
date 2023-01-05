@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/forgot_password/forgot_password_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/home_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_in/sign_in_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_up/sign_up_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/splash/splash_page.dart';
@@ -46,7 +47,14 @@ abstract class AppRoutes {
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
-          routes: [],
+          routes: [
+            GoRoute(
+              name: 'settings',
+              path: 'settings',
+              builder: (context, state) =>  SettingsPage(),
+              routes: const [],
+            ),
+          ],
         ),
       ]);
 }

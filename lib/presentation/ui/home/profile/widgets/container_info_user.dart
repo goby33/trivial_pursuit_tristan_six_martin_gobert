@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/setting_cubit.dart';
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
   final String uid;
+
   const ContainerInfoUser({
     Key? key,
     required this.name,
@@ -63,56 +65,14 @@ class ContainerInfoUser extends StatelessWidget {
               ),
             ],
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).primaryColor,
-                ),
-              ),
-              onPressed: () {},
-              child: const Text("Modifier le profil"),
+          ElevatedButton.icon(
+            onPressed: () => context.push('/home/settings'),
+            icon: Icon(
+              Icons.settings,
+              size: 24.0,
             ),
-            PopupMenuButton<int>(
-              onSelected: (value) {
-                if (value == 1) {
-                  bloc.signOut();
-                }
-                 else if (value == 2) {
-                  bloc.deleteAccount();
-                } else {
-                   context.read<SettingCubit>().changeTheme();
-                }
-              },
-              icon: const Icon(Icons.settings),
-              itemBuilder: (BuildContext context) => [
-                const PopupMenuItem(
-                  value: 1,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    leading: Icon(Icons.logout),
-                    title: Text('Log Out'),
-                  ),
-                ),
-                const PopupMenuItem(
-                  value: 2,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    leading: Icon(Icons.delete_forever),
-                    title: Text('Delete Account'),
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 3,
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(0),
-                    leading: const Icon(Icons.dark_mode),
-                    title: Text('ppppp'),
-                  ),
-                ),
-              ],
-            )
-          ])
+            label: Text('Settings'),
+          ),
         ],
       ),
     );

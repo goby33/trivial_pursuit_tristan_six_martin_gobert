@@ -15,10 +15,15 @@ class ProfileState with _$ProfileState {
       {required DateTime dateTime,
       required String message}) = ProfileStateFailed;
 
-  factory ProfileState.signIn({required UserModel user}) = ProfileStateSignIn;
+  factory ProfileState.signIn({required UserModel user, required String uid}) = ProfileStateSignIn;
 
   UserModel? get user => maybeMap(
         signIn: (value) => value.user,
         orElse: () => null,
+      );
+
+  String get uid => maybeMap(
+        signIn: (value) => value.uid,
+        orElse: () => "undefined",
       );
 }
