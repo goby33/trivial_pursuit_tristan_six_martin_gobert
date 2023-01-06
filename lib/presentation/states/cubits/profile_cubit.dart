@@ -16,32 +16,24 @@ class ProfileCubit extends Cubit<ProfileState> {
   }) : super(ProfileStateLoading());
 
   Future<void> getProfile() async {
-    final user_response  = await authRepository.getCurrentUser();
-    if (user_response is SuccessResponse) {
-      if (user_response.data != null) {
-        User user = user_response.data!;
-        final user_model_response = await userModelRepositoryImpl.getUserModel(uid: user.uid);
-        if (user_model_response is SuccessResponse) {
-          if (user_model_response.data != null) {
-            UserModel userModel = user_model_response.data!;
-            emit(ProfileStateSignIn(user: userModel));
-          }
-        } else {
-          // USER VIDE
-          ProfileStateNoSignIn();
-        }
+    final user = await authRepository.user;
+    if (user != null) {
+      final user_model_response =
+          await userModelRepositoryImpl.getUserModel(uid: user.uid);
+      if (user_model_response is SuccessResponse &&
+          user_model_response.data != null) {
+        UserModel userModel = user_model_response.data!;
+        emit(ProfileStateSignIn(user: userModel, uid: user.uid));
       } else {
         emit(
-          ProfileStateNoSignIn(),
+          ProfileStateFailed(
+            message: user_model_response.toString(),
+            dateTime: DateTime.now(),
+          ),
         );
       }
-    } else if (user_response is FailResponse) {
-      emit(
-        ProfileStateFailed(
-          message: user_response.toString(),
-          dateTime: DateTime.now(),
-        ),
-      );
+    } else {
+      ProfileStateNoSignIn();
     }
   }
 

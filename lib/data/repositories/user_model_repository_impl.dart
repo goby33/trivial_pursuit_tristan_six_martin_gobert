@@ -1,26 +1,48 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_firebase.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/user_model_firebase.dart';
 
 class UserModelRepositoryImpl {
-  static UserFirebase? _userFirebase;
+  static UserModelFirebase? _userFirebase;
   static UserModel? _userModel;
   static UserModelRepositoryImpl? _instanceUserRepositoryImpl;
 
   UserModelRepositoryImpl._();
 
   static UserModelRepositoryImpl getInstance() {
-    _userFirebase ??= UserFirebase.getInstance();
+    _userFirebase ??= UserModelFirebase.getInstance();
     _instanceUserRepositoryImpl ??= UserModelRepositoryImpl._();
     return _instanceUserRepositoryImpl!;
   }
 
-  Future<void> deleteUser({
+  //create user model
+  Future<ApiResponse<void>> createUserModel({
+    required String name,
+    required String email,
     required String uid,
   }) async {
-    await _userFirebase?.deleteUser(uid: uid);
+    try {
+      _userModel = UserModel(email, name, 0, 0, getDateToday(), "", score: 0);
+      final response = await _userFirebase?.createUserModel(
+          userModel: _userModel!, uid: uid);
+      return SuccessResponse(402.toString(), response);
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
+  }
+
+  Future<ApiResponse<void>> deleteUser({
+    required String uid,
+  }) async {
+    try {
+      await _userFirebase?.deleteUser(uid: uid);
+      return SuccessResponse(402.toString(), null);
+    } on FirebaseAuthException catch (e) {
+      return FailResponse(e.code, failure: e.message);
+    }
   }
 
   //get user uid
@@ -87,6 +109,38 @@ class UserModelRepositoryImpl {
       final response = await _userFirebase?.updatePathPhoto(
         uid: uid,
         pathPhoto: path,
+      );
+      return SuccessResponse(1.toString(), response);
+    } on Firebase catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  // update name
+  Future<ApiResponse<void>> updateNameUserModel({
+    required String name,
+    required String uid,
+  }) async {
+    try {
+      final response = await _userFirebase?.updateName(
+        uid: uid,
+        name: name,
+      );
+      return SuccessResponse(1.toString(), response);
+    } on Firebase catch (e) {
+      return FailResponse(e.toString(), failure: e.toString());
+    }
+  }
+
+  // update email
+  Future<ApiResponse<void>> updateEmailUserModel({
+    required String email,
+    required String uid,
+  }) async {
+    try {
+      final response = await _userFirebase?.updateEmail(
+        uid: uid,
+        email: email,
       );
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {

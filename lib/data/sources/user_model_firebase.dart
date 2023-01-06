@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/user/user_model.dart';
 
-class UserFirebase {
+class UserModelFirebase {
   static FirebaseFirestore? _firebaseFirestore;
-  static UserFirebase? _instanceUserFirebase;
+  static UserModelFirebase? _instanceUserFirebase;
   static late final CollectionReference<UserModel> _listUsers;
-  UserFirebase._();
+  UserModelFirebase._();
 
-  static UserFirebase getInstance() {
+  static UserModelFirebase getInstance() {
     _firebaseFirestore ??= FirebaseFirestore.instance;
     if (_instanceUserFirebase == null) {
       _listUsers = _firebaseFirestore!
@@ -16,11 +16,12 @@ class UserFirebase {
               fromFirestore: (snapshot, _) =>
                   UserModel.fromJson(snapshot.data()!),
               toFirestore: (object, _) => object.toJson());
-      _instanceUserFirebase = UserFirebase._();
+      _instanceUserFirebase = UserModelFirebase._();
     }
     return _instanceUserFirebase!;
   }
 
+  // GETTERS
   Future<UserModel?> getUserModel({
     required String uid,
   }) async {
@@ -47,13 +48,14 @@ class UserFirebase {
     return [];
   }
 
-  Future<void> addUser({
-    required UserModel user,
+  Future<void> createUserModel({
+    required UserModel userModel,
     required String uid,
   }) async {
-    await _listUsers.doc(uid).set(user);
+    await _listUsers.doc(uid).set(userModel);
   }
 
+  // UPDATE
   Future<void> updateUser({
     required UserModel user,
     required String uid,
@@ -68,11 +70,23 @@ class UserFirebase {
     await _listUsers.doc(uid).update({"pathPhoto": pathPhoto});
   }
 
-  Future<UserModel?> getUser({
+  Future<void> updateName({
     required String uid,
+    required String name,
   }) async {
-    return _listUsers.doc(uid).get().then((value) => value.data());
+    await _listUsers.doc(uid).update({"name": name});
   }
+
+// update email
+  Future<void> updateEmail({
+    required String uid,
+    required String email,
+  }) async {
+    await _listUsers.doc(uid).update({"email": email});
+  }
+
+
+  // DELETE
 
   Future<void> deleteUser({
     required String uid,

@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class AppTheme {
   ThemeData lightTheme = ThemeData(
     primaryColor: const Color.fromRGBO(131, 197, 190, 1),
+    errorColor: const Color.fromRGBO(249, 65, 68, 1),
     scaffoldBackgroundColor: const Color.fromRGBO(237, 246, 249, 1),
+    colorScheme: const ColorScheme.light(
+      primary: Color.fromRGBO(131, 197, 190, 1),
+      secondary: Color.fromRGBO(0, 109, 119, 1),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color.fromRGBO(131, 197, 190, 1),
       selectedItemColor: Color.fromRGBO(0, 109, 119, 1),

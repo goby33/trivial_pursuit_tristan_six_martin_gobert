@@ -9,7 +9,6 @@ part of 'list_questions_model.dart';
 _$_ListQuestionsModel _$$_ListQuestionsModelFromJson(
         Map<String, dynamic> json) =>
     _$_ListQuestionsModel(
-      response_code: json['response_code'] as int,
       results: (json['results'] as List<dynamic>)
           .map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -18,6 +17,5 @@ _$_ListQuestionsModel _$$_ListQuestionsModelFromJson(
 Map<String, dynamic> _$$_ListQuestionsModelToJson(
         _$_ListQuestionsModel instance) =>
     <String, dynamic>{
-      'response_code': instance.response_code,
-      'results': instance.results.map((e) => e.toJson()).toList(),
+      'results': instance.results.map((question) => question.toJson()).toList(),
     };

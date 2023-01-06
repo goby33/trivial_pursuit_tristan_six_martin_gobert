@@ -1,0 +1,10 @@
+{
+  "model_name": "list_categories_model",
+  "additionals": ["copyWith", "json", "equatable"],
+  "style": "freezed",
+  "relations": [{ "name": "category_model" }],
+  "properties": [
+    { "name": "trivia_categories", "type": "List<CategoryModel>" }
+  ]
+}
+

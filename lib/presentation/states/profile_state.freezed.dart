@@ -21,7 +21,7 @@ mixin _$ProfileState {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(UserModel user) signIn,
+    required TResult Function(UserModel user, String uid) signIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ProfileState {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(UserModel user)? signIn,
+    TResult? Function(UserModel user, String uid)? signIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ProfileState {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(UserModel user)? signIn,
+    TResult Function(UserModel user, String uid)? signIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(UserModel user) signIn,
+    required TResult Function(UserModel user, String uid) signIn,
   }) {
     return loading();
   }
@@ -138,7 +138,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(UserModel user)? signIn,
+    TResult? Function(UserModel user, String uid)? signIn,
   }) {
     return loading?.call();
   }
@@ -149,7 +149,7 @@ class _$ProfileStateLoading extends ProfileStateLoading {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(UserModel user)? signIn,
+    TResult Function(UserModel user, String uid)? signIn,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -242,7 +242,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(UserModel user) signIn,
+    required TResult Function(UserModel user, String uid) signIn,
   }) {
     return noSignIn();
   }
@@ -253,7 +253,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(UserModel user)? signIn,
+    TResult? Function(UserModel user, String uid)? signIn,
   }) {
     return noSignIn?.call();
   }
@@ -264,7 +264,7 @@ class _$ProfileStateNoSignIn extends ProfileStateNoSignIn {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(UserModel user)? signIn,
+    TResult Function(UserModel user, String uid)? signIn,
     required TResult orElse(),
   }) {
     if (noSignIn != null) {
@@ -394,7 +394,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(UserModel user) signIn,
+    required TResult Function(UserModel user, String uid) signIn,
   }) {
     return failed(dateTime, message);
   }
@@ -405,7 +405,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(UserModel user)? signIn,
+    TResult? Function(UserModel user, String uid)? signIn,
   }) {
     return failed?.call(dateTime, message);
   }
@@ -416,7 +416,7 @@ class _$ProfileStateFailed extends ProfileStateFailed {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(UserModel user)? signIn,
+    TResult Function(UserModel user, String uid)? signIn,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -482,7 +482,7 @@ abstract class _$$ProfileStateSignInCopyWith<$Res> {
           $Res Function(_$ProfileStateSignIn) then) =
       __$$ProfileStateSignInCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel user});
+  $Res call({UserModel user, String uid});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -499,12 +499,17 @@ class __$$ProfileStateSignInCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? uid = null,
   }) {
     return _then(_$ProfileStateSignIn(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -520,14 +525,16 @@ class __$$ProfileStateSignInCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileStateSignIn extends ProfileStateSignIn {
-  _$ProfileStateSignIn({required this.user}) : super._();
+  _$ProfileStateSignIn({required this.user, required this.uid}) : super._();
 
   @override
   final UserModel user;
+  @override
+  final String uid;
 
   @override
   String toString() {
-    return 'ProfileState.signIn(user: $user)';
+    return 'ProfileState.signIn(user: $user, uid: $uid)';
   }
 
   @override
@@ -535,11 +542,12 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateSignIn &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -554,9 +562,9 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     required TResult Function() loading,
     required TResult Function() noSignIn,
     required TResult Function(DateTime dateTime, String message) failed,
-    required TResult Function(UserModel user) signIn,
+    required TResult Function(UserModel user, String uid) signIn,
   }) {
-    return signIn(user);
+    return signIn(user, uid);
   }
 
   @override
@@ -565,9 +573,9 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     TResult? Function()? loading,
     TResult? Function()? noSignIn,
     TResult? Function(DateTime dateTime, String message)? failed,
-    TResult? Function(UserModel user)? signIn,
+    TResult? Function(UserModel user, String uid)? signIn,
   }) {
-    return signIn?.call(user);
+    return signIn?.call(user, uid);
   }
 
   @override
@@ -576,11 +584,11 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
     TResult Function()? loading,
     TResult Function()? noSignIn,
     TResult Function(DateTime dateTime, String message)? failed,
-    TResult Function(UserModel user)? signIn,
+    TResult Function(UserModel user, String uid)? signIn,
     required TResult orElse(),
   }) {
     if (signIn != null) {
-      return signIn(user);
+      return signIn(user, uid);
     }
     return orElse();
   }
@@ -624,11 +632,13 @@ class _$ProfileStateSignIn extends ProfileStateSignIn {
 }
 
 abstract class ProfileStateSignIn extends ProfileState {
-  factory ProfileStateSignIn({required final UserModel user}) =
-      _$ProfileStateSignIn;
+  factory ProfileStateSignIn(
+      {required final UserModel user,
+      required final String uid}) = _$ProfileStateSignIn;
   ProfileStateSignIn._() : super._();
 
   UserModel get user;
+  String get uid;
   @JsonKey(ignore: true)
   _$$ProfileStateSignInCopyWith<_$ProfileStateSignIn> get copyWith =>
       throw _privateConstructorUsedError;

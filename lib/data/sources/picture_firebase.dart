@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 class PictureFirebase {
   static  FirebaseStorage? _storage;
-  static late final  PictureFirebase? _instancePictureFirebase;
+  static PictureFirebase? _instancePictureFirebase;
 
   PictureFirebase._();
 
