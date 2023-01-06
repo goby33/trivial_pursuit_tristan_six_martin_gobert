@@ -22,7 +22,7 @@ class WelcomeCubit extends Cubit<WelcomeState> {
   ));
 
   Future<void> uploadPicture() async {
-    String path = state.path!;
+    String path = state.path;
     emit(WelcomeStateLoading(path: path));
     File image = File(path);
     final user = await authRepository.user;
