@@ -101,4 +101,7 @@ class AuthFirebase {
   Future<void> deleteUser() async {
     await _authFirebase!.currentUser!.delete();
   }
+
+  // get all users
+
 }

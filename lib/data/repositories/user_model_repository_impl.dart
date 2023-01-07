@@ -39,6 +39,7 @@ class UserModelRepositoryImpl {
   }) async {
     try {
       await _userFirebase?.deleteUser(uid: uid);
+      _userModel = null;
       return SuccessResponse(402.toString(), null);
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
@@ -51,6 +52,7 @@ class UserModelRepositoryImpl {
   }) async {
     try {
       final response_user = await _userFirebase?.getUserModel(uid: uid);
+      _userModel = response_user;
       if (response_user == null) {
         return FailResponse(0.toString(), failure: "Error user null");
       } else {
@@ -59,6 +61,11 @@ class UserModelRepositoryImpl {
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
     }
+  }
+
+  // get user model
+  UserModel? getUserModelData() {
+    return _userModel;
   }
 
   Future<ApiResponse<List<UserModel>>> getListUserModel() async {
@@ -89,13 +96,14 @@ class UserModelRepositoryImpl {
     }
   }
 
-  Future<ApiResponse<void>> updateUserModel({
+  Future<ApiResponse<String>> updateUserModel({
     required UserModel user,
     required String uid,
   }) async {
     try {
       final response = await _userFirebase?.updateUser(user: user, uid: uid);
-      return SuccessResponse(1.toString(), response);
+      _userModel = user;
+      return SuccessResponse(1.toString(), "User updated");
     } on Firebase catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
     }
@@ -110,6 +118,7 @@ class UserModelRepositoryImpl {
         uid: uid,
         pathPhoto: path,
       );
+      _userModel = _userModel!.copyWith(pathPhoto: path);
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
@@ -126,6 +135,7 @@ class UserModelRepositoryImpl {
         uid: uid,
         name: name,
       );
+      _userModel = _userModel!.copyWith(name: name);
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {
       return FailResponse(e.toString(), failure: e.toString());
@@ -142,6 +152,7 @@ class UserModelRepositoryImpl {
         uid: uid,
         email: email,
       );
+      _userModel = _userModel!.copyWith(email: email);
       return SuccessResponse(1.toString(), response);
     } on Firebase catch (e) {
       return FailResponse(e.toString(), failure: e.toString());

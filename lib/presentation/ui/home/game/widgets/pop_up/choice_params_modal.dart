@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/choice_params_game_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/choice_params_game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/choice_difficulty.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/pop_up/choice_difficulty.dart';
 
 import 'choice_type_question.dart';
 
@@ -59,7 +59,6 @@ class ChoiceParamsModal extends StatelessWidget {
                       ElevatedButton(
                         style: Theme.of(context).elevatedButtonTheme.style,
                         onPressed: () => {
-                          Navigator.pop(context),
                           context
                               .read<GameCubit>()
                               .getQuestionsWithDifficulty(),

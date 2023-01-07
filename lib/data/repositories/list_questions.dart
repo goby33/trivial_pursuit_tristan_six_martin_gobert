@@ -28,7 +28,7 @@ class ListQuestionsRepositoryImpl {
     return _instanceGameRepositoryImpl!;
   }
 
-  Future<ApiResponse<ListQuestionsModel>> getQuestions() async {
+  Future<ApiResponse<ListQuestionsModel>> getQuestionsOfTheDay() async {
     try {
       final resultFirebase = await _listQuestionFirebase!.getQuestionsOfToDay();
       if (resultFirebase != null) {

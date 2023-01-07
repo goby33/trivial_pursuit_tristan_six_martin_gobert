@@ -60,14 +60,8 @@ class WelcomeCubit extends Cubit<WelcomeState> {
     }
   }
 
-  void checkImage({
-    required XFile image,
-  }) {
-    if (image.path.isNotEmpty) {
-      emit(
-        WelcomeStatePictureChoosen(path: image.path),
-      );
-    }
+  void checkImage() {
+    emit( WelcomeStatePictureChoosen(path: ''));
   }
 
   void reset() {
