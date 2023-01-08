@@ -14,19 +14,34 @@ class GamePageAlreadyPlayedToday extends StatelessWidget {
         gameRepositoryImpl: context.read<ListQuestionsRepositoryImpl>(),
       )..choiceParamsGame(),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "You have already played today",
-            style: Theme.of(context).textTheme.headline5,
+            "Hello, You have already played today",
+            style: Theme.of(context).textTheme.headline6,
           ),
+          const SizedBox(height: 10),
           Text(
             "...",
             style: Theme.of(context).textTheme.headline5,
           ),
-          Text(
-            "But you can play again with new parameters",
-            style: Theme.of(context).textTheme.headline6,
+          const SizedBox(height: 10),
+          RichText(
+            text: TextSpan(
+                text: "You can play again",
+                style: Theme.of(context).textTheme.headline6,
+                children: [
+                  TextSpan(
+                    text: " but your score not will be saved",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: Colors.blue),
+                  ),
+                ]),
+          ),
+          SizedBox(
+            height: 20,
           ),
           ChoiceParamsModal(),
         ],

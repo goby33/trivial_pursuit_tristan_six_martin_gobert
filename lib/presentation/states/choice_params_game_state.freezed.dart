@@ -19,21 +19,27 @@ mixin _$ChoiceParamsGameState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ParamsGameEntity params) loaded,
+    required TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)
+        loaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ParamsGameEntity params)? loaded,
+    TResult? Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ParamsGameEntity params)? loaded,
+    TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) =>
@@ -124,7 +130,9 @@ class _$ChoiceParamsGameStateLoading extends ChoiceParamsGameStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ParamsGameEntity params) loaded,
+    required TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)
+        loaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
     return loading();
@@ -134,7 +142,9 @@ class _$ChoiceParamsGameStateLoading extends ChoiceParamsGameStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ParamsGameEntity params)? loaded,
+    TResult? Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
     return loading?.call();
@@ -144,7 +154,9 @@ class _$ChoiceParamsGameStateLoading extends ChoiceParamsGameStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ParamsGameEntity params)? loaded,
+    TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) {
@@ -201,7 +213,9 @@ abstract class _$$ChoiceParamsGameStateLoadedCopyWith<$Res> {
           $Res Function(_$ChoiceParamsGameStateLoaded) then) =
       __$$ChoiceParamsGameStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({ParamsGameEntity params});
+  $Res call({ParamsGameEntity params, ListCategoriesModel list_categories});
+
+  $ListCategoriesModelCopyWith<$Res> get list_categories;
 }
 
 /// @nodoc
@@ -218,27 +232,44 @@ class __$$ChoiceParamsGameStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? params = null,
+    Object? list_categories = null,
   }) {
     return _then(_$ChoiceParamsGameStateLoaded(
       params: null == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
               as ParamsGameEntity,
+      list_categories: null == list_categories
+          ? _value.list_categories
+          : list_categories // ignore: cast_nullable_to_non_nullable
+              as ListCategoriesModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListCategoriesModelCopyWith<$Res> get list_categories {
+    return $ListCategoriesModelCopyWith<$Res>(_value.list_categories, (value) {
+      return _then(_value.copyWith(list_categories: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ChoiceParamsGameStateLoaded extends ChoiceParamsGameStateLoaded {
-  _$ChoiceParamsGameStateLoaded({required this.params}) : super._();
+  _$ChoiceParamsGameStateLoaded(
+      {required this.params, required this.list_categories})
+      : super._();
 
   @override
   final ParamsGameEntity params;
+  @override
+  final ListCategoriesModel list_categories;
 
   @override
   String toString() {
-    return 'ChoiceParamsGameState.loaded(params: $params)';
+    return 'ChoiceParamsGameState.loaded(params: $params, list_categories: $list_categories)';
   }
 
   @override
@@ -246,11 +277,13 @@ class _$ChoiceParamsGameStateLoaded extends ChoiceParamsGameStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChoiceParamsGameStateLoaded &&
-            (identical(other.params, params) || other.params == params));
+            (identical(other.params, params) || other.params == params) &&
+            (identical(other.list_categories, list_categories) ||
+                other.list_categories == list_categories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, params);
+  int get hashCode => Object.hash(runtimeType, params, list_categories);
 
   @JsonKey(ignore: true)
   @override
@@ -263,32 +296,38 @@ class _$ChoiceParamsGameStateLoaded extends ChoiceParamsGameStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ParamsGameEntity params) loaded,
+    required TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)
+        loaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
-    return loaded(params);
+    return loaded(params, list_categories);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ParamsGameEntity params)? loaded,
+    TResult? Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
-    return loaded?.call(params);
+    return loaded?.call(params, list_categories);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ParamsGameEntity params)? loaded,
+    TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(params);
+      return loaded(params, list_categories);
     }
     return orElse();
   }
@@ -330,10 +369,13 @@ class _$ChoiceParamsGameStateLoaded extends ChoiceParamsGameStateLoaded {
 
 abstract class ChoiceParamsGameStateLoaded extends ChoiceParamsGameState {
   factory ChoiceParamsGameStateLoaded(
-      {required final ParamsGameEntity params}) = _$ChoiceParamsGameStateLoaded;
+          {required final ParamsGameEntity params,
+          required final ListCategoriesModel list_categories}) =
+      _$ChoiceParamsGameStateLoaded;
   ChoiceParamsGameStateLoaded._() : super._();
 
   ParamsGameEntity get params;
+  ListCategoriesModel get list_categories;
   @JsonKey(ignore: true)
   _$$ChoiceParamsGameStateLoadedCopyWith<_$ChoiceParamsGameStateLoaded>
       get copyWith => throw _privateConstructorUsedError;
@@ -418,7 +460,9 @@ class _$ChoiceParamsGameStateFailed extends ChoiceParamsGameStateFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ParamsGameEntity params) loaded,
+    required TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)
+        loaded,
     required TResult Function(DateTime dateTime, String message) failed,
   }) {
     return failed(dateTime, message);
@@ -428,7 +472,9 @@ class _$ChoiceParamsGameStateFailed extends ChoiceParamsGameStateFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ParamsGameEntity params)? loaded,
+    TResult? Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult? Function(DateTime dateTime, String message)? failed,
   }) {
     return failed?.call(dateTime, message);
@@ -438,7 +484,9 @@ class _$ChoiceParamsGameStateFailed extends ChoiceParamsGameStateFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ParamsGameEntity params)? loaded,
+    TResult Function(
+            ParamsGameEntity params, ListCategoriesModel list_categories)?
+        loaded,
     TResult Function(DateTime dateTime, String message)? failed,
     required TResult orElse(),
   }) {

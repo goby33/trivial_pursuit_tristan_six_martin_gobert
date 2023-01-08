@@ -1,13 +1,17 @@
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/categories/category_model.dart';
 
 class ParamsGameEntity {
    DIFFICULTY_QUESTION difficulty_question;
    TYPE_QUESTION type_question;
+   CategoryModel? category;
 
   ParamsGameEntity({
     required this.difficulty_question,
     required this.type_question,
   });
+
+  get category_question => null;
 
   void setDifficultyQuestion(DIFFICULTY_QUESTION difficulty_question) {
     this.difficulty_question = difficulty_question;
@@ -15,6 +19,9 @@ class ParamsGameEntity {
 
   void setTypeQuestion(TYPE_QUESTION type_question) {
     this.type_question = type_question;
+  }
+  void setCategory(CategoryModel category) {
+    this.category = category;
   }
 
   String getPath() {
@@ -24,6 +31,9 @@ class ParamsGameEntity {
     }
     if (difficulty_question != DIFFICULTY_QUESTION.any) {
       path += "difficulty=" + difficulty_question.name + "&";
+    }
+    if (category != null) {
+      path += "category=" + category!.id.toString();
     }
     return path;
   }
