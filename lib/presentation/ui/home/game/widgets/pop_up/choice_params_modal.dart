@@ -5,6 +5,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cu
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/pop_up/choice_difficulty.dart';
 
+import 'choice_category.dart';
 import 'choice_type_question.dart';
 
 class ChoiceParamsModal extends StatelessWidget {
@@ -14,7 +15,7 @@ class ChoiceParamsModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      height: 350,
+      height: 450,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -55,6 +56,16 @@ class ChoiceParamsModal extends StatelessWidget {
                       ChoiceTypeQuestion(
                         typeQuestionChoose:
                             stateChoiceParams.params!.type_question,
+                      ),
+                      Text("Your Category : ",  style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(0, 109, 119, 1),
+                      ),),
+                      ChoiceCategory(
+                        categoryChoose:
+                            stateChoiceParams.params!.category_question,
+                        listCategory: stateChoiceParams.list_categories!,
                       ),
                       ElevatedButton(
                         style: Theme.of(context).elevatedButtonTheme.style,
