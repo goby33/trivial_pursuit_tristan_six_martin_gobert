@@ -112,20 +112,21 @@ class GameCubit extends Cubit<GameState> {
   }
 
   int consecutiveDateCalculation({required String from}) {
-    if (from.length != 10) {
-      List<String> dateSplit = from.split("-");
-      String month = (dateSplit[1].length != 2)
-          ? "0${dateSplit[1]}"
-          : dateSplit[1];
-      String day = (dateSplit[2].length != 2)
-          ? "0${dateSplit[2]}"
-          : dateSplit[2];
-      from = "${dateSplit[0]}-$month-$day" + " 00:00:00";
+    if (from != "") {
+      if (from.length != 10) {
+        List<String> dateSplit = from.split("-");
+        String month =
+            (dateSplit[1].length != 2) ? "0${dateSplit[1]}" : dateSplit[1];
+        String day =
+            (dateSplit[2].length != 2) ? "0${dateSplit[2]}" : dateSplit[2];
+        from = "${dateSplit[0]}-$month-$day" + " 00:00:00";
+      }
+      DateTime dateFrom = DateTime.parse(from);
+      DateTime dateNow = DateTime.now();
+      int difference = dateNow.difference(dateFrom).inDays;
+      return difference;
     }
-    DateTime dateFrom = DateTime.parse(from);
-    DateTime dateNow = DateTime.now();
-    int difference = dateNow.difference(dateFrom).inDays;
-    return difference;
+    return 0;
   }
 
   void endGame() async {
@@ -140,9 +141,10 @@ class GameCubit extends Cubit<GameState> {
       int newScore = userModel.score + currentScore;
       int newGoodAnswer = (userModel.numberGoodAnswer ?? 0) + currentGoodAnswer;
       // check if the user has already played today and update the date of last game
-      if (userModel.dateOfLastGame != null && userModel.dateOfLastGame !=  getDateToday()) {
+      if (userModel.dateOfLastGame != null &&
+          userModel.dateOfLastGame != getDateToday()) {
         int newConsecutiveDate =
-        consecutiveDateCalculation(from: userModel.dateOfLastGame ?? "");
+            consecutiveDateCalculation(from: userModel.dateOfLastGame ?? "");
         if (newConsecutiveDate == 1) {
           newConsecutiveDate = (userModel.numberDayLogged ?? 0) + 1;
         } else {
