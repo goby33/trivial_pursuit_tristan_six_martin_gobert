@@ -10,6 +10,7 @@ class SignInCubit extends Cubit<SignInState> {
   SignInCubit({required this.authRepository}) : super(SignInStateNoSignIn());
 
   Future<void> signIn({required String email, required String password}) async {
+    emit(SignInStateLoading());
     final response = await authRepository.signIn(
       email: email,
       password: password,

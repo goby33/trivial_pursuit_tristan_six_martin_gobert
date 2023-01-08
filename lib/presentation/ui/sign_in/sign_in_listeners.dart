@@ -10,7 +10,7 @@ class SignInListeners extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignInCubit, SignInState>(
+    return BlocListener<SignInCubit, SignInState>(
       listener: (context, state) => state.maybeMap(
         signIn: (value) => context.push('/home'),
         failed: (value) => ScaffoldMessenger.of(context).showSnackBar(
@@ -26,7 +26,7 @@ class SignInListeners extends StatelessWidget {
         ),
         orElse: () => null,
       ),
-      builder: (context, state) => child,
+      child: child,
     );
   }
 }

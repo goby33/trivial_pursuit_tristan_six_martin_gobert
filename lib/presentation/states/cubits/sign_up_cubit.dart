@@ -19,6 +19,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String name,
   }) async {
+    emit(SignUpStateLoading());
     String nameWithOutWhiteSpace = name.trim();
     if (email.isEmpty || password.isEmpty || nameWithOutWhiteSpace.isEmpty) {
       emit(SignUpStateFailed(
