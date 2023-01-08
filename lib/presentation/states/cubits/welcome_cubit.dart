@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/picker_photo_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/storage_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_model_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/welcome_state.dart';
@@ -12,14 +13,27 @@ class WelcomeCubit extends Cubit<WelcomeState> {
   AuthRepositoryImpl authRepository;
   StorageRepositoryImpl storageRepository;
   UserModelRepositoryImpl userModelRepositoryImpl;
+  PickerPhotoRepositoryImpl pickerPhotoRepositoryImpl;
 
   WelcomeCubit({
     required this.authRepository,
     required this.storageRepository,
     required this.userModelRepositoryImpl,
+    required this.pickerPhotoRepositoryImpl,
   }) : super(WelcomeStateInitial(
     path: '',
   ));
+
+  Future<void> pickImage({
+  required ImageSource source,
+}) async {
+   final response_photo = await pickerPhotoRepositoryImpl.getImage(source: source);
+   if (response_photo is SuccessResponse) {
+     emit(WelcomeStatePictureChoosen(path: response_photo.data!));
+   } else {
+     emit(WelcomeStateInitial(path: ''));
+   }
+  }
 
   Future<void> uploadPicture() async {
     String path = state.path;
@@ -60,9 +74,6 @@ class WelcomeCubit extends Cubit<WelcomeState> {
     }
   }
 
-  void checkImage() {
-    emit( WelcomeStatePictureChoosen(path: ''));
-  }
 
   void reset() {
     emit(WelcomeStateInitial(path: ''));

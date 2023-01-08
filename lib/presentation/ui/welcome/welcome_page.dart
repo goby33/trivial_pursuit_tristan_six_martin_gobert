@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/config/picker_photo_tools.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/welcome_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/welcome_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/welcome_listeners.dart';
@@ -19,52 +17,6 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  static XFile? _imageFileList;
-  static final ImagePicker _picker = ImagePicker();
-  PickerPhotoTools _pickerPhotoTools = PickerPhotoTools.getInstance();
-
-  void _setImageFileListFromFile(XFile? value) {
-    _imageFileList = value == null ? null : value;
-  }
-
-  Future<void> _onImageButtonPressed({
-    required ImageSource source,
-  }) async {
-    try {
-      final XFile? pickedFile = await _picker.pickImage(
-        source: source,
-      );
-      if (defaultTargetPlatform == TargetPlatform.android) {
-        await retrieveLostData();
-      }
-      setState(() {
-        _setImageFileListFromFile(pickedFile);
-      });
-    } catch (e) {
-      print("error");
-      _setImageFileListFromFile(null);
-    }
-  }
-
-  Future<void> retrieveLostData() async {
-    final LostDataResponse response = await _picker.retrieveLostData();
-    if (response.isEmpty) {
-      return;
-    }
-    if (response.file != null) {
-      setState(() {
-        if (response.files == null) {
-          _setImageFileListFromFile(response.file);
-        } else {
-          _setImageFileListFromFile(response.file);
-        }
-      });
-    } else {
-      print("error not file");
-      _setImageFileListFromFile(null);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return WelcomeProvider(
@@ -79,7 +31,10 @@ class _WelcomePageState extends State<WelcomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // logo or image
-                _previewImages(),
+                CirclePhotoWelcome(
+                  urlPhoto: state.path,
+                  loading: (state is WelcomeStateLoading),
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -107,11 +62,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromRGBO(255, 221, 210, 1),
                       ),
-                      onPressed: () async {
-                        await _pickerPhotoTools.onImageButtonPressed(
-                            source: ImageSource.camera);
-                        context.read<WelcomeCubit>().checkImage();
-                      },
+                      onPressed: () async => context
+                          .read<WelcomeCubit>()
+                          .pickImage(source: ImageSource.camera),
                       icon: Icon(
                         Icons.add_a_photo,
                         size: 24.0,
@@ -124,11 +77,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromRGBO(255, 221, 210, 1),
                       ),
-                      onPressed: () async {
-                        await _pickerPhotoTools.onImageButtonPressed(
-                            source: ImageSource.gallery);
-                        context.read<WelcomeCubit>().checkImage();
-                      },
+                      onPressed: () async => context
+                          .read<WelcomeCubit>()
+                          .pickImage(source: ImageSource.gallery),
                       icon: Icon(
                         Icons.collections,
                         size: 24.0,
@@ -153,8 +104,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       label: Text('Skip'),
                     ),
-                    if (_imageFileList != null &&
-                        _imageFileList!.path.isNotEmpty)
+                    if (state.path != '')
                       ElevatedButton.icon(
                         onPressed: () =>
                             context.read<WelcomeCubit>().uploadPicture(),
@@ -172,20 +122,5 @@ class _WelcomePageState extends State<WelcomePage> {
         }),
       ),
     );
-  }
-
-  Widget _previewImages() {
-    // if android or ios
-    if (_pickerPhotoTools.imageFileList != null) {
-      return CirclePhotoWelcome(
-        urlPhoto: _pickerPhotoTools.imageFileList!.path,
-        loading: false,
-      );
-    } else {
-      return CirclePhotoWelcome(
-        urlPhoto: '',
-        loading: false,
-      );
-    }
   }
 }

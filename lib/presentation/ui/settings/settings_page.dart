@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/setting_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/settings_profile_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/profile_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_listeners.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_provider.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/widgets/delete_account_pop_up.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/widgets/email_pop_up.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/widgets/name_pop_up.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/widgets/password_pop_up.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_provider.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/widgets/sign_out_pop_up.dart';
 
 class SettingsPage extends StatelessWidget {
