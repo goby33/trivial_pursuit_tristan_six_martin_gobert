@@ -43,11 +43,11 @@ class AppTheme {
 
   ThemeData darkTheme = ThemeData(
     primaryColor: const Color.fromRGBO(42, 89, 84, 1),
-    scaffoldBackgroundColor: const Color.fromRGBO(102, 102, 102, 1),
+    scaffoldBackgroundColor: const Color.fromRGBO(2, 102, 102, 1),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color.fromRGBO(42, 89, 84, 1),
-      selectedItemColor: Color.fromRGBO(0, 44, 48, 1),
-      unselectedItemColor: Color.fromRGBO(102, 102, 102, 1),
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Color.fromRGBO(201, 201, 201, 1),
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
       color: Color.fromRGBO(42, 89, 84, 1),
@@ -68,17 +68,22 @@ class AppTheme {
     inputDecorationTheme: const InputDecorationTheme(),
     textTheme: const TextTheme(
       headline6: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
       headline3: TextStyle(
-        color: Color.fromRGBO(49, 121, 146, 1),
+        color: Colors.black,
         fontSize: 40,
         fontWeight: FontWeight.bold,
       ),
       bodyText2: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyText1: TextStyle(
+        color: Colors.black,
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
