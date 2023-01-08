@@ -19,6 +19,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noSignIn,
+    required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
     required TResult Function() signIn,
   }) =>
@@ -26,6 +27,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noSignIn,
+    TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
     TResult? Function()? signIn,
   }) =>
@@ -33,6 +35,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noSignIn,
+    TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
     TResult Function()? signIn,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SignInStateNoSignIn value) noSignIn,
+    required TResult Function(SignInStateLoading value) loading,
     required TResult Function(SignInStateFailed value) failed,
     required TResult Function(SignInStateSignIn value) signIn,
   }) =>
@@ -48,6 +52,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SignInStateNoSignIn value)? noSignIn,
+    TResult? Function(SignInStateLoading value)? loading,
     TResult? Function(SignInStateFailed value)? failed,
     TResult? Function(SignInStateSignIn value)? signIn,
   }) =>
@@ -55,6 +60,7 @@ mixin _$SignInState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInStateNoSignIn value)? noSignIn,
+    TResult Function(SignInStateLoading value)? loading,
     TResult Function(SignInStateFailed value)? failed,
     TResult Function(SignInStateSignIn value)? signIn,
     required TResult orElse(),
@@ -119,6 +125,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noSignIn,
+    required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
     required TResult Function() signIn,
   }) {
@@ -129,6 +136,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noSignIn,
+    TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
     TResult? Function()? signIn,
   }) {
@@ -139,6 +147,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noSignIn,
+    TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
     TResult Function()? signIn,
     required TResult orElse(),
@@ -153,6 +162,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SignInStateNoSignIn value) noSignIn,
+    required TResult Function(SignInStateLoading value) loading,
     required TResult Function(SignInStateFailed value) failed,
     required TResult Function(SignInStateSignIn value) signIn,
   }) {
@@ -163,6 +173,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SignInStateNoSignIn value)? noSignIn,
+    TResult? Function(SignInStateLoading value)? loading,
     TResult? Function(SignInStateFailed value)? failed,
     TResult? Function(SignInStateSignIn value)? signIn,
   }) {
@@ -173,6 +184,7 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInStateNoSignIn value)? noSignIn,
+    TResult Function(SignInStateLoading value)? loading,
     TResult Function(SignInStateFailed value)? failed,
     TResult Function(SignInStateSignIn value)? signIn,
     required TResult orElse(),
@@ -187,6 +199,121 @@ class _$SignInStateNoSignIn extends SignInStateNoSignIn {
 abstract class SignInStateNoSignIn extends SignInState {
   factory SignInStateNoSignIn() = _$SignInStateNoSignIn;
   SignInStateNoSignIn._() : super._();
+}
+
+/// @nodoc
+abstract class _$$SignInStateLoadingCopyWith<$Res> {
+  factory _$$SignInStateLoadingCopyWith(_$SignInStateLoading value,
+          $Res Function(_$SignInStateLoading) then) =
+      __$$SignInStateLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SignInStateLoadingCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$SignInStateLoading>
+    implements _$$SignInStateLoadingCopyWith<$Res> {
+  __$$SignInStateLoadingCopyWithImpl(
+      _$SignInStateLoading _value, $Res Function(_$SignInStateLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SignInStateLoading extends SignInStateLoading {
+  _$SignInStateLoading() : super._();
+
+  @override
+  String toString() {
+    return 'SignInState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SignInStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noSignIn,
+    required TResult Function() loading,
+    required TResult Function(DateTime dateTime, String message) failed,
+    required TResult Function() signIn,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? noSignIn,
+    TResult? Function()? loading,
+    TResult? Function(DateTime dateTime, String message)? failed,
+    TResult? Function()? signIn,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noSignIn,
+    TResult Function()? loading,
+    TResult Function(DateTime dateTime, String message)? failed,
+    TResult Function()? signIn,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SignInStateNoSignIn value) noSignIn,
+    required TResult Function(SignInStateLoading value) loading,
+    required TResult Function(SignInStateFailed value) failed,
+    required TResult Function(SignInStateSignIn value) signIn,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SignInStateNoSignIn value)? noSignIn,
+    TResult? Function(SignInStateLoading value)? loading,
+    TResult? Function(SignInStateFailed value)? failed,
+    TResult? Function(SignInStateSignIn value)? signIn,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SignInStateNoSignIn value)? noSignIn,
+    TResult Function(SignInStateLoading value)? loading,
+    TResult Function(SignInStateFailed value)? failed,
+    TResult Function(SignInStateSignIn value)? signIn,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignInStateLoading extends SignInState {
+  factory SignInStateLoading() = _$SignInStateLoading;
+  SignInStateLoading._() : super._();
 }
 
 /// @nodoc
@@ -264,6 +391,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noSignIn,
+    required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
     required TResult Function() signIn,
   }) {
@@ -274,6 +402,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noSignIn,
+    TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
     TResult? Function()? signIn,
   }) {
@@ -284,6 +413,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noSignIn,
+    TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
     TResult Function()? signIn,
     required TResult orElse(),
@@ -298,6 +428,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SignInStateNoSignIn value) noSignIn,
+    required TResult Function(SignInStateLoading value) loading,
     required TResult Function(SignInStateFailed value) failed,
     required TResult Function(SignInStateSignIn value) signIn,
   }) {
@@ -308,6 +439,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SignInStateNoSignIn value)? noSignIn,
+    TResult? Function(SignInStateLoading value)? loading,
     TResult? Function(SignInStateFailed value)? failed,
     TResult? Function(SignInStateSignIn value)? signIn,
   }) {
@@ -318,6 +450,7 @@ class _$SignInStateFailed extends SignInStateFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInStateNoSignIn value)? noSignIn,
+    TResult Function(SignInStateLoading value)? loading,
     TResult Function(SignInStateFailed value)? failed,
     TResult Function(SignInStateSignIn value)? signIn,
     required TResult orElse(),
@@ -381,6 +514,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noSignIn,
+    required TResult Function() loading,
     required TResult Function(DateTime dateTime, String message) failed,
     required TResult Function() signIn,
   }) {
@@ -391,6 +525,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noSignIn,
+    TResult? Function()? loading,
     TResult? Function(DateTime dateTime, String message)? failed,
     TResult? Function()? signIn,
   }) {
@@ -401,6 +536,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noSignIn,
+    TResult Function()? loading,
     TResult Function(DateTime dateTime, String message)? failed,
     TResult Function()? signIn,
     required TResult orElse(),
@@ -415,6 +551,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SignInStateNoSignIn value) noSignIn,
+    required TResult Function(SignInStateLoading value) loading,
     required TResult Function(SignInStateFailed value) failed,
     required TResult Function(SignInStateSignIn value) signIn,
   }) {
@@ -425,6 +562,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SignInStateNoSignIn value)? noSignIn,
+    TResult? Function(SignInStateLoading value)? loading,
     TResult? Function(SignInStateFailed value)? failed,
     TResult? Function(SignInStateSignIn value)? signIn,
   }) {
@@ -435,6 +573,7 @@ class _$SignInStateSignIn extends SignInStateSignIn {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SignInStateNoSignIn value)? noSignIn,
+    TResult Function(SignInStateLoading value)? loading,
     TResult Function(SignInStateFailed value)? failed,
     TResult Function(SignInStateSignIn value)? signIn,
     required TResult orElse(),

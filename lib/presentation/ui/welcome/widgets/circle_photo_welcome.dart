@@ -1,6 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/welcome_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/picker_image_cubit.dart';
 
 class CirclePhotoWelcome extends StatelessWidget {
   final String urlPhoto;
@@ -21,13 +23,13 @@ class CirclePhotoWelcome extends StatelessWidget {
           backgroundColor: Color.fromRGBO(255, 221, 210, 1),
           child: CircleAvatar(
             radius: 87.0,
-            backgroundImage: Image.asset(
-              urlPhoto,
+            backgroundImage: Image.file(
+              File(urlPhoto),
             ).image,
             child:  Align(
               alignment: Alignment.bottomRight,
               child:  (loading)  ? CircularProgressIndicator(): InkWell(
-                onTap: () => context.read<WelcomeCubit>().reset(),
+                onTap: () => context.read<PickerImageCubit>().reset(),
                 child: CircleAvatar(
                   backgroundColor: Color.fromRGBO(255, 221, 210, 1),
                   radius: 15.0,

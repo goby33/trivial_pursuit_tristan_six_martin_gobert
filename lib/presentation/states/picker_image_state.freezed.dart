@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WelcomeState {
+mixin _$PickerImageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String path) initial,
@@ -46,45 +46,45 @@ mixin _$WelcomeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WelcomeStateCopyWith<$Res> {
-  factory $WelcomeStateCopyWith(
-          WelcomeState value, $Res Function(WelcomeState) then) =
-      _$WelcomeStateCopyWithImpl<$Res, WelcomeState>;
+abstract class $PickerImageStateCopyWith<$Res> {
+  factory $PickerImageStateCopyWith(
+          PickerImageState value, $Res Function(PickerImageState) then) =
+      _$PickerImageStateCopyWithImpl<$Res, PickerImageState>;
 }
 
 /// @nodoc
-class _$WelcomeStateCopyWithImpl<$Res, $Val extends WelcomeState>
-    implements $WelcomeStateCopyWith<$Res> {
-  _$WelcomeStateCopyWithImpl(this._value, this._then);
+class _$PickerImageStateCopyWithImpl<$Res, $Val extends PickerImageState>
+    implements $PickerImageStateCopyWith<$Res> {
+  _$PickerImageStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,20 +93,20 @@ class _$WelcomeStateCopyWithImpl<$Res, $Val extends WelcomeState>
 }
 
 /// @nodoc
-abstract class _$$WelcomeStateInitialCopyWith<$Res> {
-  factory _$$WelcomeStateInitialCopyWith(_$WelcomeStateInitial value,
-          $Res Function(_$WelcomeStateInitial) then) =
-      __$$WelcomeStateInitialCopyWithImpl<$Res>;
+abstract class _$$PickerImageStateInitialCopyWith<$Res> {
+  factory _$$PickerImageStateInitialCopyWith(_$PickerImageStateInitial value,
+          $Res Function(_$PickerImageStateInitial) then) =
+      __$$PickerImageStateInitialCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$WelcomeStateInitialCopyWithImpl<$Res>
-    extends _$WelcomeStateCopyWithImpl<$Res, _$WelcomeStateInitial>
-    implements _$$WelcomeStateInitialCopyWith<$Res> {
-  __$$WelcomeStateInitialCopyWithImpl(
-      _$WelcomeStateInitial _value, $Res Function(_$WelcomeStateInitial) _then)
+class __$$PickerImageStateInitialCopyWithImpl<$Res>
+    extends _$PickerImageStateCopyWithImpl<$Res, _$PickerImageStateInitial>
+    implements _$$PickerImageStateInitialCopyWith<$Res> {
+  __$$PickerImageStateInitialCopyWithImpl(_$PickerImageStateInitial _value,
+      $Res Function(_$PickerImageStateInitial) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$WelcomeStateInitialCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$WelcomeStateInitial(
+    return _then(_$PickerImageStateInitial(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -125,22 +125,22 @@ class __$$WelcomeStateInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WelcomeStateInitial extends WelcomeStateInitial {
-  _$WelcomeStateInitial({required this.path}) : super._();
+class _$PickerImageStateInitial extends PickerImageStateInitial {
+  _$PickerImageStateInitial({required this.path}) : super._();
 
   @override
   final String path;
 
   @override
   String toString() {
-    return 'WelcomeState.initial(path: $path)';
+    return 'PickerImageState.initial(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WelcomeStateInitial &&
+            other is _$PickerImageStateInitial &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -150,8 +150,8 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WelcomeStateInitialCopyWith<_$WelcomeStateInitial> get copyWith =>
-      __$$WelcomeStateInitialCopyWithImpl<_$WelcomeStateInitial>(
+  _$$PickerImageStateInitialCopyWith<_$PickerImageStateInitial> get copyWith =>
+      __$$PickerImageStateInitialCopyWithImpl<_$PickerImageStateInitial>(
           this, _$identity);
 
   @override
@@ -197,11 +197,11 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) {
     return initial(this);
   }
@@ -209,11 +209,11 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -221,11 +221,11 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -235,34 +235,32 @@ class _$WelcomeStateInitial extends WelcomeStateInitial {
   }
 }
 
-abstract class WelcomeStateInitial extends WelcomeState {
-  factory WelcomeStateInitial({required final String path}) =
-      _$WelcomeStateInitial;
-  WelcomeStateInitial._() : super._();
+abstract class PickerImageStateInitial extends PickerImageState {
+  factory PickerImageStateInitial({required final String path}) =
+      _$PickerImageStateInitial;
+  PickerImageStateInitial._() : super._();
 
   String get path;
   @JsonKey(ignore: true)
-  _$$WelcomeStateInitialCopyWith<_$WelcomeStateInitial> get copyWith =>
+  _$$PickerImageStateInitialCopyWith<_$PickerImageStateInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$WelcomeStatePictureChoosenCopyWith<$Res> {
-  factory _$$WelcomeStatePictureChoosenCopyWith(
-          _$WelcomeStatePictureChoosen value,
-          $Res Function(_$WelcomeStatePictureChoosen) then) =
-      __$$WelcomeStatePictureChoosenCopyWithImpl<$Res>;
+abstract class _$$PickerImageStateChoosenCopyWith<$Res> {
+  factory _$$PickerImageStateChoosenCopyWith(_$PickerImageStateChoosen value,
+          $Res Function(_$PickerImageStateChoosen) then) =
+      __$$PickerImageStateChoosenCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$WelcomeStatePictureChoosenCopyWithImpl<$Res>
-    extends _$WelcomeStateCopyWithImpl<$Res, _$WelcomeStatePictureChoosen>
-    implements _$$WelcomeStatePictureChoosenCopyWith<$Res> {
-  __$$WelcomeStatePictureChoosenCopyWithImpl(
-      _$WelcomeStatePictureChoosen _value,
-      $Res Function(_$WelcomeStatePictureChoosen) _then)
+class __$$PickerImageStateChoosenCopyWithImpl<$Res>
+    extends _$PickerImageStateCopyWithImpl<$Res, _$PickerImageStateChoosen>
+    implements _$$PickerImageStateChoosenCopyWith<$Res> {
+  __$$PickerImageStateChoosenCopyWithImpl(_$PickerImageStateChoosen _value,
+      $Res Function(_$PickerImageStateChoosen) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -270,7 +268,7 @@ class __$$WelcomeStatePictureChoosenCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$WelcomeStatePictureChoosen(
+    return _then(_$PickerImageStateChoosen(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -281,22 +279,22 @@ class __$$WelcomeStatePictureChoosenCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
-  _$WelcomeStatePictureChoosen({required this.path}) : super._();
+class _$PickerImageStateChoosen extends PickerImageStateChoosen {
+  _$PickerImageStateChoosen({required this.path}) : super._();
 
   @override
   final String path;
 
   @override
   String toString() {
-    return 'WelcomeState.pictureChosen(path: $path)';
+    return 'PickerImageState.pictureChosen(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WelcomeStatePictureChoosen &&
+            other is _$PickerImageStateChoosen &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -306,9 +304,9 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WelcomeStatePictureChoosenCopyWith<_$WelcomeStatePictureChoosen>
-      get copyWith => __$$WelcomeStatePictureChoosenCopyWithImpl<
-          _$WelcomeStatePictureChoosen>(this, _$identity);
+  _$$PickerImageStateChoosenCopyWith<_$PickerImageStateChoosen> get copyWith =>
+      __$$PickerImageStateChoosenCopyWithImpl<_$PickerImageStateChoosen>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -353,11 +351,11 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) {
     return pictureChosen(this);
   }
@@ -365,11 +363,11 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) {
     return pictureChosen?.call(this);
   }
@@ -377,11 +375,11 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (pictureChosen != null) {
@@ -391,32 +389,32 @@ class _$WelcomeStatePictureChoosen extends WelcomeStatePictureChoosen {
   }
 }
 
-abstract class WelcomeStatePictureChoosen extends WelcomeState {
-  factory WelcomeStatePictureChoosen({required final String path}) =
-      _$WelcomeStatePictureChoosen;
-  WelcomeStatePictureChoosen._() : super._();
+abstract class PickerImageStateChoosen extends PickerImageState {
+  factory PickerImageStateChoosen({required final String path}) =
+      _$PickerImageStateChoosen;
+  PickerImageStateChoosen._() : super._();
 
   String get path;
   @JsonKey(ignore: true)
-  _$$WelcomeStatePictureChoosenCopyWith<_$WelcomeStatePictureChoosen>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$PickerImageStateChoosenCopyWith<_$PickerImageStateChoosen> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$WelcomeStateLoadingCopyWith<$Res> {
-  factory _$$WelcomeStateLoadingCopyWith(_$WelcomeStateLoading value,
-          $Res Function(_$WelcomeStateLoading) then) =
-      __$$WelcomeStateLoadingCopyWithImpl<$Res>;
+abstract class _$$PickerImageStateLoadingCopyWith<$Res> {
+  factory _$$PickerImageStateLoadingCopyWith(_$PickerImageStateLoading value,
+          $Res Function(_$PickerImageStateLoading) then) =
+      __$$PickerImageStateLoadingCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$WelcomeStateLoadingCopyWithImpl<$Res>
-    extends _$WelcomeStateCopyWithImpl<$Res, _$WelcomeStateLoading>
-    implements _$$WelcomeStateLoadingCopyWith<$Res> {
-  __$$WelcomeStateLoadingCopyWithImpl(
-      _$WelcomeStateLoading _value, $Res Function(_$WelcomeStateLoading) _then)
+class __$$PickerImageStateLoadingCopyWithImpl<$Res>
+    extends _$PickerImageStateCopyWithImpl<$Res, _$PickerImageStateLoading>
+    implements _$$PickerImageStateLoadingCopyWith<$Res> {
+  __$$PickerImageStateLoadingCopyWithImpl(_$PickerImageStateLoading _value,
+      $Res Function(_$PickerImageStateLoading) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -424,7 +422,7 @@ class __$$WelcomeStateLoadingCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$WelcomeStateLoading(
+    return _then(_$PickerImageStateLoading(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -435,22 +433,22 @@ class __$$WelcomeStateLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WelcomeStateLoading extends WelcomeStateLoading {
-  _$WelcomeStateLoading({required this.path}) : super._();
+class _$PickerImageStateLoading extends PickerImageStateLoading {
+  _$PickerImageStateLoading({required this.path}) : super._();
 
   @override
   final String path;
 
   @override
   String toString() {
-    return 'WelcomeState.loading(path: $path)';
+    return 'PickerImageState.loading(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WelcomeStateLoading &&
+            other is _$PickerImageStateLoading &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -460,8 +458,8 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WelcomeStateLoadingCopyWith<_$WelcomeStateLoading> get copyWith =>
-      __$$WelcomeStateLoadingCopyWithImpl<_$WelcomeStateLoading>(
+  _$$PickerImageStateLoadingCopyWith<_$PickerImageStateLoading> get copyWith =>
+      __$$PickerImageStateLoadingCopyWithImpl<_$PickerImageStateLoading>(
           this, _$identity);
 
   @override
@@ -507,11 +505,11 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) {
     return loading(this);
   }
@@ -519,11 +517,11 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) {
     return loading?.call(this);
   }
@@ -531,11 +529,11 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -545,47 +543,48 @@ class _$WelcomeStateLoading extends WelcomeStateLoading {
   }
 }
 
-abstract class WelcomeStateLoading extends WelcomeState {
-  factory WelcomeStateLoading({required final String path}) =
-      _$WelcomeStateLoading;
-  WelcomeStateLoading._() : super._();
+abstract class PickerImageStateLoading extends PickerImageState {
+  factory PickerImageStateLoading({required final String path}) =
+      _$PickerImageStateLoading;
+  PickerImageStateLoading._() : super._();
 
   String get path;
   @JsonKey(ignore: true)
-  _$$WelcomeStateLoadingCopyWith<_$WelcomeStateLoading> get copyWith =>
+  _$$PickerImageStateLoadingCopyWith<_$PickerImageStateLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$WelcomeStateUploadedCopyWith<$Res> {
-  factory _$$WelcomeStateUploadedCopyWith(_$WelcomeStateUploaded value,
-          $Res Function(_$WelcomeStateUploaded) then) =
-      __$$WelcomeStateUploadedCopyWithImpl<$Res>;
+abstract class _$$PickerImageStateUploadedCopyWith<$Res> {
+  factory _$$PickerImageStateUploadedCopyWith(_$PickerImageStateUploaded value,
+          $Res Function(_$PickerImageStateUploaded) then) =
+      __$$PickerImageStateUploadedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WelcomeStateUploadedCopyWithImpl<$Res>
-    extends _$WelcomeStateCopyWithImpl<$Res, _$WelcomeStateUploaded>
-    implements _$$WelcomeStateUploadedCopyWith<$Res> {
-  __$$WelcomeStateUploadedCopyWithImpl(_$WelcomeStateUploaded _value,
-      $Res Function(_$WelcomeStateUploaded) _then)
+class __$$PickerImageStateUploadedCopyWithImpl<$Res>
+    extends _$PickerImageStateCopyWithImpl<$Res, _$PickerImageStateUploaded>
+    implements _$$PickerImageStateUploadedCopyWith<$Res> {
+  __$$PickerImageStateUploadedCopyWithImpl(_$PickerImageStateUploaded _value,
+      $Res Function(_$PickerImageStateUploaded) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WelcomeStateUploaded extends WelcomeStateUploaded {
-  _$WelcomeStateUploaded() : super._();
+class _$PickerImageStateUploaded extends PickerImageStateUploaded {
+  _$PickerImageStateUploaded() : super._();
 
   @override
   String toString() {
-    return 'WelcomeState.uploaded()';
+    return 'PickerImageState.uploaded()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WelcomeStateUploaded);
+        (other.runtimeType == runtimeType &&
+            other is _$PickerImageStateUploaded);
   }
 
   @override
@@ -634,11 +633,11 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) {
     return uploaded(this);
   }
@@ -646,11 +645,11 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) {
     return uploaded?.call(this);
   }
@@ -658,11 +657,11 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (uploaded != null) {
@@ -672,26 +671,26 @@ class _$WelcomeStateUploaded extends WelcomeStateUploaded {
   }
 }
 
-abstract class WelcomeStateUploaded extends WelcomeState {
-  factory WelcomeStateUploaded() = _$WelcomeStateUploaded;
-  WelcomeStateUploaded._() : super._();
+abstract class PickerImageStateUploaded extends PickerImageState {
+  factory PickerImageStateUploaded() = _$PickerImageStateUploaded;
+  PickerImageStateUploaded._() : super._();
 }
 
 /// @nodoc
-abstract class _$$WelcomeStateFailedCopyWith<$Res> {
-  factory _$$WelcomeStateFailedCopyWith(_$WelcomeStateFailed value,
-          $Res Function(_$WelcomeStateFailed) then) =
-      __$$WelcomeStateFailedCopyWithImpl<$Res>;
+abstract class _$$PickerImageStateFailedCopyWith<$Res> {
+  factory _$$PickerImageStateFailedCopyWith(_$PickerImageStateFailed value,
+          $Res Function(_$PickerImageStateFailed) then) =
+      __$$PickerImageStateFailedCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime dateTime, String message});
 }
 
 /// @nodoc
-class __$$WelcomeStateFailedCopyWithImpl<$Res>
-    extends _$WelcomeStateCopyWithImpl<$Res, _$WelcomeStateFailed>
-    implements _$$WelcomeStateFailedCopyWith<$Res> {
-  __$$WelcomeStateFailedCopyWithImpl(
-      _$WelcomeStateFailed _value, $Res Function(_$WelcomeStateFailed) _then)
+class __$$PickerImageStateFailedCopyWithImpl<$Res>
+    extends _$PickerImageStateCopyWithImpl<$Res, _$PickerImageStateFailed>
+    implements _$$PickerImageStateFailedCopyWith<$Res> {
+  __$$PickerImageStateFailedCopyWithImpl(_$PickerImageStateFailed _value,
+      $Res Function(_$PickerImageStateFailed) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -700,7 +699,7 @@ class __$$WelcomeStateFailedCopyWithImpl<$Res>
     Object? dateTime = null,
     Object? message = null,
   }) {
-    return _then(_$WelcomeStateFailed(
+    return _then(_$PickerImageStateFailed(
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -715,8 +714,8 @@ class __$$WelcomeStateFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WelcomeStateFailed extends WelcomeStateFailed {
-  _$WelcomeStateFailed({required this.dateTime, required this.message})
+class _$PickerImageStateFailed extends PickerImageStateFailed {
+  _$PickerImageStateFailed({required this.dateTime, required this.message})
       : super._();
 
   @override
@@ -726,14 +725,14 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
 
   @override
   String toString() {
-    return 'WelcomeState.failed(dateTime: $dateTime, message: $message)';
+    return 'PickerImageState.failed(dateTime: $dateTime, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WelcomeStateFailed &&
+            other is _$PickerImageStateFailed &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.message, message) || other.message == message));
@@ -745,8 +744,8 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WelcomeStateFailedCopyWith<_$WelcomeStateFailed> get copyWith =>
-      __$$WelcomeStateFailedCopyWithImpl<_$WelcomeStateFailed>(
+  _$$PickerImageStateFailedCopyWith<_$PickerImageStateFailed> get copyWith =>
+      __$$PickerImageStateFailedCopyWithImpl<_$PickerImageStateFailed>(
           this, _$identity);
 
   @override
@@ -792,11 +791,11 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WelcomeStateInitial value) initial,
-    required TResult Function(WelcomeStatePictureChoosen value) pictureChosen,
-    required TResult Function(WelcomeStateLoading value) loading,
-    required TResult Function(WelcomeStateUploaded value) uploaded,
-    required TResult Function(WelcomeStateFailed value) failed,
+    required TResult Function(PickerImageStateInitial value) initial,
+    required TResult Function(PickerImageStateChoosen value) pictureChosen,
+    required TResult Function(PickerImageStateLoading value) loading,
+    required TResult Function(PickerImageStateUploaded value) uploaded,
+    required TResult Function(PickerImageStateFailed value) failed,
   }) {
     return failed(this);
   }
@@ -804,11 +803,11 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WelcomeStateInitial value)? initial,
-    TResult? Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult? Function(WelcomeStateLoading value)? loading,
-    TResult? Function(WelcomeStateUploaded value)? uploaded,
-    TResult? Function(WelcomeStateFailed value)? failed,
+    TResult? Function(PickerImageStateInitial value)? initial,
+    TResult? Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult? Function(PickerImageStateLoading value)? loading,
+    TResult? Function(PickerImageStateUploaded value)? uploaded,
+    TResult? Function(PickerImageStateFailed value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -816,11 +815,11 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WelcomeStateInitial value)? initial,
-    TResult Function(WelcomeStatePictureChoosen value)? pictureChosen,
-    TResult Function(WelcomeStateLoading value)? loading,
-    TResult Function(WelcomeStateUploaded value)? uploaded,
-    TResult Function(WelcomeStateFailed value)? failed,
+    TResult Function(PickerImageStateInitial value)? initial,
+    TResult Function(PickerImageStateChoosen value)? pictureChosen,
+    TResult Function(PickerImageStateLoading value)? loading,
+    TResult Function(PickerImageStateUploaded value)? uploaded,
+    TResult Function(PickerImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -830,15 +829,15 @@ class _$WelcomeStateFailed extends WelcomeStateFailed {
   }
 }
 
-abstract class WelcomeStateFailed extends WelcomeState {
-  factory WelcomeStateFailed(
+abstract class PickerImageStateFailed extends PickerImageState {
+  factory PickerImageStateFailed(
       {required final DateTime dateTime,
-      required final String message}) = _$WelcomeStateFailed;
-  WelcomeStateFailed._() : super._();
+      required final String message}) = _$PickerImageStateFailed;
+  PickerImageStateFailed._() : super._();
 
   DateTime get dateTime;
   String get message;
   @JsonKey(ignore: true)
-  _$$WelcomeStateFailedCopyWith<_$WelcomeStateFailed> get copyWith =>
+  _$$PickerImageStateFailedCopyWith<_$PickerImageStateFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

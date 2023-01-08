@@ -4,7 +4,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart'
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/list_questions.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/choice_params_game_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/game_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/choice_params_modal.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/game/widgets/pop_up/choice_params_modal.dart';
 
 import 'container_result_score.dart';
 

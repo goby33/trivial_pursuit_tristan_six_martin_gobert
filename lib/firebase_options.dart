@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBgQSVKFJO_lDEBW-JZC-j6qcFv86jQZ0g',
-    appId: '1:93566381279:android:a90fee581b3cf0fbce0d6a',
-    messagingSenderId: '93566381279',
-    projectId: 'trivialpoursuittristanmartin',
-    storageBucket: 'trivialpoursuittristanmartin.appspot.com',
+    apiKey: 'AIzaSyCYtSQWf8DqRZCjG87jmQjye35ooO2fdsE',
+    appId: '1:884902095592:android:13d1e38f0c487ac52df75d',
+    messagingSenderId: '884902095592',
+    projectId: 'trivia-class-d2d55',
+    storageBucket: 'trivia-class-d2d55.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBxnNP_bHPlSp75gLaD1m60a92pMWEbju8',
-    appId: '1:93566381279:ios:01d592755fda8c3dce0d6a',
-    messagingSenderId: '93566381279',
-    projectId: 'trivialpoursuittristanmartin',
-    storageBucket: 'trivialpoursuittristanmartin.appspot.com',
-    iosClientId:
-        '93566381279-cai1pbiehheumsr32kdivrshtk5uthhg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDCy8INUKqMta-UfTiuFpNceGAQghu0An4',
+    appId: '1:884902095592:ios:9957b850dd38671e2df75d',
+    messagingSenderId: '884902095592',
+    projectId: 'trivia-class-d2d55',
+    storageBucket: 'trivia-class-d2d55.appspot.com',
+    iosClientId: '884902095592-tctmmm55au00a1preu5ovg0s5j2setu0.apps.googleusercontent.com',
     iosBundleId: 'com.example.trivialPursuitSixTristanGobertMartin',
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/picker_photo_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/storage_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_model_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/setting_cubit.dart';
@@ -23,6 +24,9 @@ class MainProvider extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => UserModelRepositoryImpl.getInstance(),
+        ),
+        RepositoryProvider(
+          create: (context) => PickerPhotoRepositoryImpl.getInstance(),
         ),
       ],
       child: BlocProvider(

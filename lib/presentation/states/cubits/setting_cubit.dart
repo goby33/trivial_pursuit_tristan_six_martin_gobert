@@ -7,10 +7,8 @@ class SettingCubit extends Cubit<SettingState> {
 
   void changeTheme() {
     if (state.themeMode == ThemeMode.light) {
-      print("light");
       emit(SettingState(dateTime: DateTime.now(),themeMode: ThemeMode.dark));
     } else {
-      print("dark");
       emit(SettingState(dateTime: DateTime.now(),themeMode: ThemeMode.light));
     }
 

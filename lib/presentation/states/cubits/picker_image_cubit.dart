@@ -4,26 +4,40 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/picker_photo_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/storage_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_model_repository_impl.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/welcome_state.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/picker_image_state.dart';
 
-class WelcomeCubit extends Cubit<WelcomeState> {
+class PickerImageCubit extends Cubit<PickerImageState> {
   AuthRepositoryImpl authRepository;
   StorageRepositoryImpl storageRepository;
   UserModelRepositoryImpl userModelRepositoryImpl;
+  PickerPhotoRepositoryImpl pickerPhotoRepositoryImpl;
 
-  WelcomeCubit({
+  PickerImageCubit({
     required this.authRepository,
     required this.storageRepository,
     required this.userModelRepositoryImpl,
-  }) : super(WelcomeStateInitial(
+    required this.pickerPhotoRepositoryImpl,
+  }) : super(PickerImageStateInitial(
     path: '',
   ));
 
+  Future<void> pickImage({
+  required ImageSource source,
+}) async {
+   final response_photo = await pickerPhotoRepositoryImpl.getImage(source: source);
+   if (response_photo is SuccessResponse) {
+     emit(PickerImageStateChoosen(path: response_photo.data!));
+   } else {
+     emit(PickerImageStateFailed(dateTime: DateTime.now(), message: "Error: format not supported"));
+   }
+  }
+
   Future<void> uploadPicture() async {
     String path = state.path;
-    emit(WelcomeStateLoading(path: path));
+    emit(PickerImageStateLoading(path: path));
     File image = File(path);
     final user = await authRepository.user;
     if (user != null) {
@@ -33,10 +47,10 @@ class WelcomeCubit extends Cubit<WelcomeState> {
         final response_user = await userModelRepositoryImpl.updatePathUserModel(
             uid: user.uid, path: response_upload.data!);
         if (response_user is SuccessResponse) {
-          emit(WelcomeStateUploaded());
+          emit(PickerImageStateUploaded());
         } else {
           emit(
-            WelcomeStateFailed(
+            PickerImageStateFailed(
               dateTime: DateTime.now(),
               message: response_user.toString(),
             ),
@@ -44,7 +58,7 @@ class WelcomeCubit extends Cubit<WelcomeState> {
         }
       } else {
         emit(
-          WelcomeStateFailed(
+          PickerImageStateFailed(
             dateTime: DateTime.now(),
             message: response_upload.toString(),
           ),
@@ -52,25 +66,16 @@ class WelcomeCubit extends Cubit<WelcomeState> {
       }
     } else {
       emit(
-        WelcomeStateFailed(
+        PickerImageStateFailed(
           dateTime: DateTime.now(),
-          message: "User is null",
+          message: "Error : User is null",
         ),
       );
     }
   }
 
-  void checkImage({
-    required XFile image,
-  }) {
-    if (image.path.isNotEmpty) {
-      emit(
-        WelcomeStatePictureChoosen(path: image.path),
-      );
-    }
-  }
 
   void reset() {
-    emit(WelcomeStateInitial(path: ''));
+    emit(PickerImageStateInitial(path: ''));
   }
 }

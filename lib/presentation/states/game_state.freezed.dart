@@ -24,6 +24,7 @@ mixin _$GameState {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +36,7 @@ mixin _$GameState {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ mixin _$GameState {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) =>
@@ -58,6 +61,8 @@ mixin _$GameState {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -69,6 +74,7 @@ mixin _$GameState {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +86,7 @@ mixin _$GameState {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) =>
@@ -147,6 +154,7 @@ class _$GameStateLoading extends GameStateLoading {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return loading();
@@ -161,6 +169,7 @@ class _$GameStateLoading extends GameStateLoading {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return loading?.call();
@@ -175,6 +184,7 @@ class _$GameStateLoading extends GameStateLoading {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -193,6 +203,8 @@ class _$GameStateLoading extends GameStateLoading {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return loading(this);
@@ -207,6 +219,7 @@ class _$GameStateLoading extends GameStateLoading {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return loading?.call(this);
@@ -221,6 +234,7 @@ class _$GameStateLoading extends GameStateLoading {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -307,6 +321,7 @@ class _$GameStateLoaded extends GameStateLoaded {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return loaded(gameEntity);
@@ -321,6 +336,7 @@ class _$GameStateLoaded extends GameStateLoaded {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return loaded?.call(gameEntity);
@@ -335,6 +351,7 @@ class _$GameStateLoaded extends GameStateLoaded {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -353,6 +370,8 @@ class _$GameStateLoaded extends GameStateLoaded {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return loaded(this);
@@ -367,6 +386,7 @@ class _$GameStateLoaded extends GameStateLoaded {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return loaded?.call(this);
@@ -381,6 +401,7 @@ class _$GameStateLoaded extends GameStateLoaded {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -474,6 +495,7 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return nextQuestion(gameEntity);
@@ -488,6 +510,7 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return nextQuestion?.call(gameEntity);
@@ -502,6 +525,7 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -520,6 +544,8 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return nextQuestion(this);
@@ -534,6 +560,7 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return nextQuestion?.call(this);
@@ -548,6 +575,7 @@ class _$GameStateNextQuestion extends GameStateNextQuestion {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -641,6 +669,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return wrongAnswer(gameEntity);
@@ -655,6 +684,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return wrongAnswer?.call(gameEntity);
@@ -669,6 +699,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -687,6 +718,8 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return wrongAnswer(this);
@@ -701,6 +734,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return wrongAnswer?.call(this);
@@ -715,6 +749,7 @@ class _$GameStateWrongAnswer extends GameStateWrongAnswer {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -808,6 +843,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return rightAnswer(gameEntity);
@@ -822,6 +858,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return rightAnswer?.call(gameEntity);
@@ -836,6 +873,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -854,6 +892,8 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return rightAnswer(this);
@@ -868,6 +908,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return rightAnswer?.call(this);
@@ -882,6 +923,7 @@ class _$GameStateRightAnswer extends GameStateRightAnswer {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -983,6 +1025,7 @@ class _$GameStateFinished extends GameStateFinished {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return finished(score, goodAnswer);
@@ -997,6 +1040,7 @@ class _$GameStateFinished extends GameStateFinished {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return finished?.call(score, goodAnswer);
@@ -1011,6 +1055,7 @@ class _$GameStateFinished extends GameStateFinished {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -1029,6 +1074,8 @@ class _$GameStateFinished extends GameStateFinished {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return finished(this);
@@ -1043,6 +1090,7 @@ class _$GameStateFinished extends GameStateFinished {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return finished?.call(this);
@@ -1057,6 +1105,7 @@ class _$GameStateFinished extends GameStateFinished {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -1078,6 +1127,149 @@ abstract class GameStateFinished extends GameState {
   @JsonKey(ignore: true)
   _$$GameStateFinishedCopyWith<_$GameStateFinished> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GameStateAlreadyPlayedTodayCopyWith<$Res> {
+  factory _$$GameStateAlreadyPlayedTodayCopyWith(
+          _$GameStateAlreadyPlayedToday value,
+          $Res Function(_$GameStateAlreadyPlayedToday) then) =
+      __$$GameStateAlreadyPlayedTodayCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameStateAlreadyPlayedTodayCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$GameStateAlreadyPlayedToday>
+    implements _$$GameStateAlreadyPlayedTodayCopyWith<$Res> {
+  __$$GameStateAlreadyPlayedTodayCopyWithImpl(
+      _$GameStateAlreadyPlayedToday _value,
+      $Res Function(_$GameStateAlreadyPlayedToday) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameStateAlreadyPlayedToday extends GameStateAlreadyPlayedToday {
+  _$GameStateAlreadyPlayedToday() : super._();
+
+  @override
+  String toString() {
+    return 'GameState.alreadyPlayedToday()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GameStateAlreadyPlayedToday);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(GameEntity gameEntity) loaded,
+    required TResult Function(GameEntity gameEntity) nextQuestion,
+    required TResult Function(GameEntity gameEntity) wrongAnswer,
+    required TResult Function(GameEntity gameEntity) rightAnswer,
+    required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
+    required TResult Function(String failed) failed,
+  }) {
+    return alreadyPlayedToday();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(GameEntity gameEntity)? loaded,
+    TResult? Function(GameEntity gameEntity)? nextQuestion,
+    TResult? Function(GameEntity gameEntity)? wrongAnswer,
+    TResult? Function(GameEntity gameEntity)? rightAnswer,
+    TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
+    TResult? Function(String failed)? failed,
+  }) {
+    return alreadyPlayedToday?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(GameEntity gameEntity)? loaded,
+    TResult Function(GameEntity gameEntity)? nextQuestion,
+    TResult Function(GameEntity gameEntity)? wrongAnswer,
+    TResult Function(GameEntity gameEntity)? rightAnswer,
+    TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
+    TResult Function(String failed)? failed,
+    required TResult orElse(),
+  }) {
+    if (alreadyPlayedToday != null) {
+      return alreadyPlayedToday();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameStateLoading value) loading,
+    required TResult Function(GameStateLoaded value) loaded,
+    required TResult Function(GameStateNextQuestion value) nextQuestion,
+    required TResult Function(GameStateWrongAnswer value) wrongAnswer,
+    required TResult Function(GameStateRightAnswer value) rightAnswer,
+    required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
+    required TResult Function(GameStateFailed value) failed,
+  }) {
+    return alreadyPlayedToday(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameStateLoading value)? loading,
+    TResult? Function(GameStateLoaded value)? loaded,
+    TResult? Function(GameStateNextQuestion value)? nextQuestion,
+    TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
+    TResult? Function(GameStateRightAnswer value)? rightAnswer,
+    TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
+    TResult? Function(GameStateFailed value)? failed,
+  }) {
+    return alreadyPlayedToday?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameStateLoading value)? loading,
+    TResult Function(GameStateLoaded value)? loaded,
+    TResult Function(GameStateNextQuestion value)? nextQuestion,
+    TResult Function(GameStateWrongAnswer value)? wrongAnswer,
+    TResult Function(GameStateRightAnswer value)? rightAnswer,
+    TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
+    TResult Function(GameStateFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (alreadyPlayedToday != null) {
+      return alreadyPlayedToday(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameStateAlreadyPlayedToday extends GameState {
+  factory GameStateAlreadyPlayedToday() = _$GameStateAlreadyPlayedToday;
+  GameStateAlreadyPlayedToday._() : super._();
 }
 
 /// @nodoc
@@ -1150,6 +1342,7 @@ class _$GameStateFailed extends GameStateFailed {
     required TResult Function(GameEntity gameEntity) wrongAnswer,
     required TResult Function(GameEntity gameEntity) rightAnswer,
     required TResult Function(int score, int goodAnswer) finished,
+    required TResult Function() alreadyPlayedToday,
     required TResult Function(String failed) failed,
   }) {
     return failed(this.failed);
@@ -1164,6 +1357,7 @@ class _$GameStateFailed extends GameStateFailed {
     TResult? Function(GameEntity gameEntity)? wrongAnswer,
     TResult? Function(GameEntity gameEntity)? rightAnswer,
     TResult? Function(int score, int goodAnswer)? finished,
+    TResult? Function()? alreadyPlayedToday,
     TResult? Function(String failed)? failed,
   }) {
     return failed?.call(this.failed);
@@ -1178,6 +1372,7 @@ class _$GameStateFailed extends GameStateFailed {
     TResult Function(GameEntity gameEntity)? wrongAnswer,
     TResult Function(GameEntity gameEntity)? rightAnswer,
     TResult Function(int score, int goodAnswer)? finished,
+    TResult Function()? alreadyPlayedToday,
     TResult Function(String failed)? failed,
     required TResult orElse(),
   }) {
@@ -1196,6 +1391,8 @@ class _$GameStateFailed extends GameStateFailed {
     required TResult Function(GameStateWrongAnswer value) wrongAnswer,
     required TResult Function(GameStateRightAnswer value) rightAnswer,
     required TResult Function(GameStateFinished value) finished,
+    required TResult Function(GameStateAlreadyPlayedToday value)
+        alreadyPlayedToday,
     required TResult Function(GameStateFailed value) failed,
   }) {
     return failed(this);
@@ -1210,6 +1407,7 @@ class _$GameStateFailed extends GameStateFailed {
     TResult? Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult? Function(GameStateRightAnswer value)? rightAnswer,
     TResult? Function(GameStateFinished value)? finished,
+    TResult? Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult? Function(GameStateFailed value)? failed,
   }) {
     return failed?.call(this);
@@ -1224,6 +1422,7 @@ class _$GameStateFailed extends GameStateFailed {
     TResult Function(GameStateWrongAnswer value)? wrongAnswer,
     TResult Function(GameStateRightAnswer value)? rightAnswer,
     TResult Function(GameStateFinished value)? finished,
+    TResult Function(GameStateAlreadyPlayedToday value)? alreadyPlayedToday,
     TResult Function(GameStateFailed value)? failed,
     required TResult orElse(),
   }) {

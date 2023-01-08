@@ -57,7 +57,6 @@ dependencies:
   #PHOTO
   image_picker: ^0.8.6
   flutter_launcher_icons:
-    version: ^0.11.0
 
 dev_dependencies:
   flutter_test:

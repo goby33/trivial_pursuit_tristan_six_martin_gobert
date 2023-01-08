@@ -34,6 +34,9 @@ class GameState with _$GameState {
     required int goodAnswer,
   }) = GameStateFinished;
 
+  //already played today
+  factory GameState.alreadyPlayedToday() = GameStateAlreadyPlayedToday;
+
   factory GameState.failed({required String failed}) = GameStateFailed;
 
   List<QuestionModel> get listQuestions => maybeMap(
