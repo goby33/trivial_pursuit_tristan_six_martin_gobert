@@ -4,6 +4,7 @@ import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/h
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_in/sign_in_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/sign_up/sign_up_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/splash/splash_page.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/welcome_page.dart';
 
 abstract class AppRoutes {
@@ -18,7 +19,7 @@ abstract class AppRoutes {
       GoRouter(initialLocation: '/', routes: [
         GoRoute(
           path: root,
-          builder: (context, state) => const WelcomePage(name: 'Henri',),
+          builder: (context, state) => const SplashPage(),
           routes: const [],
         ),
         GoRoute(

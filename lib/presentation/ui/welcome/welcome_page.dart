@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/welcome_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/welcome_state.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/picker_image_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/picker_image_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/welcome_listeners.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/welcome_provider.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/welcome/widgets/circle_photo_welcome.dart';
@@ -21,7 +21,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return WelcomeProvider(
       child: WelcomeListeners(
-        child: BlocBuilder<WelcomeCubit, WelcomeState>(builder: (
+        child: BlocBuilder<PickerImageCubit, PickerImageState>(builder: (
           context,
           state,
         ) {
@@ -33,7 +33,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 // logo or image
                 CirclePhotoWelcome(
                   urlPhoto: state.path,
-                  loading: (state is WelcomeStateLoading),
+                  loading: (state is PickerImageStateLoading),
                 ),
                 SizedBox(
                   height: 20,
@@ -63,7 +63,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         backgroundColor: Color.fromRGBO(255, 221, 210, 1),
                       ),
                       onPressed: () async => context
-                          .read<WelcomeCubit>()
+                          .read<PickerImageCubit>()
                           .pickImage(source: ImageSource.camera),
                       icon: Icon(
                         Icons.add_a_photo,
@@ -78,7 +78,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         backgroundColor: Color.fromRGBO(255, 221, 210, 1),
                       ),
                       onPressed: () async => context
-                          .read<WelcomeCubit>()
+                          .read<PickerImageCubit>()
                           .pickImage(source: ImageSource.gallery),
                       icon: Icon(
                         Icons.collections,
@@ -102,12 +102,14 @@ class _WelcomePageState extends State<WelcomePage> {
                         Icons.no_photography,
                         size: 24.0,
                       ),
-                      label: Text('Skip'),
+                      label: Text(
+                        'take a picture later',
+                      ),
                     ),
                     if (state.path != '')
                       ElevatedButton.icon(
                         onPressed: () =>
-                            context.read<WelcomeCubit>().uploadPicture(),
+                            context.read<PickerImageCubit>().uploadPicture(),
                         icon: Icon(
                           Icons.collections,
                           size: 24.0,

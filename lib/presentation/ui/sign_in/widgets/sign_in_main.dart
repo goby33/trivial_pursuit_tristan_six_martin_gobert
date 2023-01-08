@@ -11,9 +11,12 @@ class SignInMain extends StatefulWidget {
   State<SignInMain> createState() => _SignInMainState();
 }
 
-class _SignInMainState extends State<SignInMain> {
+class _SignInMainState extends State<SignInMain>
+    with SingleTickerProviderStateMixin {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late final AnimationController _controller =
+      AnimationController(vsync: this, duration: Duration(seconds: 2),);
   @override
   void initState() {
     super.initState();
@@ -104,17 +107,28 @@ class _SignInMainState extends State<SignInMain> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
                     alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () => context.read<SignInCubit>().signIn(
-                          email: emailController.text,
-                          password: passwordController.text),
-                      child: const CircleAvatar(
-                        backgroundColor: Color.fromRGBO(0, 109, 119, 1),
-                        radius: 40,
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: Color.fromRGBO(237, 246, 249, 1),
-                          size: 50,
+                    child: AnimatedBuilder(
+                      animation: _controller,
+                      builder: (_, Widget? child) {
+                        return Transform.rotate(
+                          angle: _controller.value * 12.6,
+                          child: child,
+                        );
+                      },
+                      child: InkWell(
+                        onTap: () {
+                          _controller.forward();
+                          context.read<SignInCubit>().signIn(
+                            email: emailController.text,
+                            password: passwordController.text); },
+                        child: const CircleAvatar(
+                          backgroundColor: Color.fromRGBO(0, 109, 119, 1),
+                          radius: 40,
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Color.fromRGBO(237, 246, 249, 1),
+                            size: 50,
+                          ),
                         ),
                       ),
                     ),

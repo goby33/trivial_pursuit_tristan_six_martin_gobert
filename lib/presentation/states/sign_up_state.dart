@@ -8,6 +8,9 @@ class SignUpState with _$SignUpState {
 
   factory SignUpState.noSignIn() = SignUpStateNoSignUp;
 
+  //loading
+  factory SignUpState.loading() = SignUpStateLoading;
+
   factory SignUpState.failed({
     required DateTime dateTime,
     required String message,
