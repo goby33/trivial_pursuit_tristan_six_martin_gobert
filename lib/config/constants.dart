@@ -23,6 +23,7 @@ enum TYPE_QUESTION {
 
 //get date of today
 String getDateToday() {
-  DateTime today = DateTime.now();
-  return '${today.year}-${today.month}-${today.day}';
+  DateTime now = DateTime.now();;
+  DateTime date = new DateTime(now.year, now.month, now.day);
+  return '${date.year}-${date.month}-${date.day}';
 }

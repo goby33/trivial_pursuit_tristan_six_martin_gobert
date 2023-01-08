@@ -23,7 +23,6 @@ class ChoiceParamsGameState with _$ChoiceParamsGameState {
   ParamsGameEntity? get params =>
       maybeMap(loaded: (loaded) => loaded.params, orElse: () => null);
 
-  ListCategoriesModel? get list_categories => maybeMap(
-    loaded: (loaded) => loaded.list_categories,
-      orElse: () => null);
+  ListCategoriesModel? get list_categories =>
+      maybeMap(loaded: (loaded) => loaded.list_categories, orElse: () => null);
 }

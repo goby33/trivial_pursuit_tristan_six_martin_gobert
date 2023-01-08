@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/categories/category_model.dart';
 
@@ -9,9 +10,9 @@ class ParamsGameEntity {
   ParamsGameEntity({
     required this.difficulty_question,
     required this.type_question,
+    required this.category
   });
 
-  get category_question => null;
 
   void setDifficultyQuestion(DIFFICULTY_QUESTION difficulty_question) {
     this.difficulty_question = difficulty_question;
@@ -20,7 +21,7 @@ class ParamsGameEntity {
   void setTypeQuestion(TYPE_QUESTION type_question) {
     this.type_question = type_question;
   }
-  void setCategory(CategoryModel category) {
+  void setCategoryQuestion(CategoryModel? category) {
     this.category = category;
   }
 
@@ -35,6 +36,7 @@ class ParamsGameEntity {
     if (category != null) {
       path += "category=" + category!.id.toString();
     }
+    debugPrint(path);
     return path;
   }
 }

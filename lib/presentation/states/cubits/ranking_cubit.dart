@@ -9,6 +9,7 @@ class RankingCubit extends Cubit<RankingState> {
   RankingCubit({required this.userModelRepository}) : super(RankingStateLoading());
 
   Future<void> getProfiles() async {
+    emit(RankingStateLoading());
     final response = await userModelRepository.getListUserModel();
     if (response is SuccessResponse) {
       emit(
@@ -28,7 +29,7 @@ class RankingCubit extends Cubit<RankingState> {
     final response = await userModelRepository.searchUserModel(text: text);
     if (response is SuccessResponse) {
       emit(
-        RankingState.ready(listUsersModel: response.data),
+        RankingStateReady(listUsersModel: response.data),
       );
     } else if (response is FailResponse) {
       emit(

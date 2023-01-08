@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/picker_photo_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/storage_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_model_repository_impl.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/picker_image_cubit.dart';
 
 class CirclePhoto extends StatelessWidget {
   final String urlPhoto;
@@ -32,15 +39,18 @@ class CirclePhoto extends StatelessWidget {
                     );
                   },
                 ).image,
-                child: const Align(
+                child: Align(
                   alignment: Alignment.bottomRight,
-                  child: CircleAvatar(
-                    backgroundColor: Color.fromRGBO(226, 149, 120, 1),
-                    radius: 17.0,
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 20.0,
-                      color: Color(0xFF404040),
+                  child: InkWell(
+                    onTap: () => _showModal(buildContext: context),
+                    child: CircleAvatar(
+                      backgroundColor: Color.fromRGBO(226, 149, 120, 1),
+                      radius: 17.0,
+                      child: Icon(
+                        Icons.camera_alt,
+                        size: 20.0,
+                        color: Color(0xFF404040),
+                      ),
                     ),
                   ),
                 ),
@@ -51,5 +61,41 @@ class CirclePhoto extends StatelessWidget {
               ),
       ),
     );
+  }
+
+  void _showModal({
+    required BuildContext buildContext,
+  }) {
+    showModalBottomSheet(
+        context: buildContext,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(25.0),
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(237, 246, 249, 1),
+        builder: (_) => Container(
+              height: 130,
+              child: Column(
+                children: [
+                  // pick with camera
+                  ListTile(
+                    leading: Icon(Icons.camera_alt),
+                    title: Text('Camera'),
+                    onTap: () {
+                      Navigator.pop(buildContext);
+                    },
+                  ),
+                  // pick with gallery
+                  ListTile(
+                    leading: Icon(Icons.photo),
+                    title: Text('Gallery'),
+                    onTap: () {
+                      Navigator.pop(buildContext);
+                    },
+                  ),
+                ],
+              ),
+            ));
   }
 }

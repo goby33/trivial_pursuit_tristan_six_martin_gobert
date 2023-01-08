@@ -44,14 +44,14 @@ class SettingsPage extends StatelessWidget {
                     onTap: () =>
                         _showModal(buildContext: context, child: NamePopUp()),
                     title: Text('Name'),
-                    subtitle: Text('Tristan Gobert'),
+                    subtitle: Text('Your name'),
                     trailing: Icon(Icons.edit),
                   ),
                   ListTile(
                     onTap: () =>
                         _showModal(buildContext: context, child: EmailPopUp()),
                     title: Text('Email'),
-                    subtitle: Text('martin.gobert@hotmail.fr'),
+                    subtitle: Text('Your email'),
                     trailing: Icon(Icons.edit),
                   ),
                 ],

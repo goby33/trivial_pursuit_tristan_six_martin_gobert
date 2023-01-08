@@ -13,38 +13,47 @@ class GamePageAlreadyPlayedToday extends StatelessWidget {
       create: (_) => ChoiceParamsGameCubit(
         gameRepositoryImpl: context.read<ListQuestionsRepositoryImpl>(),
       )..choiceParamsGame(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "Hello, You have already played today",
-            style: Theme.of(context).textTheme.headline6,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "...",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          const SizedBox(height: 10),
-          RichText(
-            text: TextSpan(
-                text: "You can play again",
-                style: Theme.of(context).textTheme.headline6,
+      child: Expanded(
+        flex: 10,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TextSpan(
-                    text: " but your score not will be saved",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: Colors.blue),
+                  Text(
+                    "Hello, You have already played today",
+                    style: Theme.of(context).textTheme.headline6,
                   ),
-                ]),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ChoiceParamsModal(),
-        ],
+                  const SizedBox(height: 10),
+                  Text(
+                    "...",
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  const SizedBox(height: 10),
+                  RichText(
+                    text: TextSpan(
+                        text: "You can play again",
+                        style: Theme.of(context).textTheme.headline6,
+                        children: [
+                          TextSpan(
+                            text: " but your score not will be saved",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6!
+                                .copyWith(color: Colors.blue),
+                          ),
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 7,
+              child: ChoiceParamsModal(isPopUp: false,),),
+          ],
+        ),
       ),
     );
   }

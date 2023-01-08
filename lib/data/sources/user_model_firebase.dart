@@ -39,13 +39,16 @@ class UserModelFirebase {
     required String text,
   }) async {
     final response = await _listUsers.orderBy("score", descending: true).get();
-    // final listUsers = response.docs
-    //     .map((e) => e.data())
-    //     .where((element) =>
-    //         element.name.toLowerCase().contains(text.toLowerCase()))
-    //     .toList();
-
-    return [];
+    // get user where name != null
+    final listUsersWidthName = response.docs
+        .map((e) => e.data())
+        .where((element) => element.name != null)
+        .toList();
+    final searchUser = listUsersWidthName
+        .where((element) =>
+            element.name!.toLowerCase().contains(text.toLowerCase()))
+        .toList();
+    return searchUser;
   }
 
   Future<void> createUserModel({
@@ -84,7 +87,6 @@ class UserModelFirebase {
   }) async {
     await _listUsers.doc(uid).update({"email": email});
   }
-
 
   // DELETE
 

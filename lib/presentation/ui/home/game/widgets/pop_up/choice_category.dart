@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/categories/list_categories_model.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/choice_params_game_cubit.dart';
 
 class ChoiceCategory extends StatelessWidget {
-  final String? categoryChoose;
+  final int? categoryChoose;
   final ListCategoriesModel listCategory;
   ChoiceCategory({
     Key? key,
@@ -13,17 +15,26 @@ class ChoiceCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 150,
       child: ListView(
         scrollDirection: Axis.vertical,
         children: listCategory.trivia_categories.map((category) {
+          bool isCategoryChoose = (categoryChoose == category.id);
           return Container(
-            height: 30,
-            child: TextButton(
-              onPressed: () {
-              },
-              child: Text(category.name),
-            ),
+              height: 40,
+              decoration: BoxDecoration(
+                color:    isCategoryChoose ? Colors.grey : Colors.white
+              ),
+              child: TextButton(
+                onPressed: () {
+                  if (isCategoryChoose) {
+                    context.read<ChoiceParamsGameCubit>().setCategory(categoryModel:  null);
+                  } else {
+                    context.read<ChoiceParamsGameCubit>().setCategory(categoryModel: category);
+                  }
+                },
+                child: Text(category.name),
+              ),
           );
         }).toList(),
       ),

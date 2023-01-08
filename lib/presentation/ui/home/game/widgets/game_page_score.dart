@@ -123,7 +123,7 @@ class GamePageScore extends StatelessWidget {
         )..choiceParamsGame(),
         child: BlocProvider.value(
           value: buildContext.read<GameCubit>(),
-          child: ChoiceParamsModal(),
+          child: ChoiceParamsModal(isPopUp: true,),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/api_response.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/config/constants.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/categories/category_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/categories/list_categories_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/models/list_questions/list_questions_model.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/sources/list_questions_api.dart';
@@ -23,7 +24,8 @@ class ListQuestionsRepositoryImpl {
     _listQuestionFirebase ??= ListQuestionsFirebase.getInstance();
     _paramsGameEntity ??= ParamsGameEntity(
         difficulty_question: DIFFICULTY_QUESTION.any,
-        type_question: TYPE_QUESTION.any);
+        type_question: TYPE_QUESTION.any,
+        category: null);
     _listQuestionsModel ??= null;
     _instanceGameRepositoryImpl ??= ListQuestionsRepositoryImpl._();
     return _instanceGameRepositoryImpl!;
@@ -72,7 +74,8 @@ class ListQuestionsRepositoryImpl {
     try {
       final result_api = await _listQuestionApi!.getCategories();
       if (result_api.statusCode == 200) {
-        return SuccessResponse(result_api.statusCode.toString(),ListCategoriesModel.fromJson(result_api.data));
+        return SuccessResponse(result_api.statusCode.toString(),
+            ListCategoriesModel.fromJson(result_api.data));
       } else {
         return FailResponse(result_api.statusCode.toString(),
             failure: result_api.statusMessage);
@@ -92,5 +95,11 @@ class ListQuestionsRepositoryImpl {
     required TYPE_QUESTION type_question,
   }) {
     _paramsGameEntity!.setTypeQuestion(type_question);
+  }
+
+  void setCategoryQuestion({
+    required CategoryModel? category_question,
+  }) {
+    _paramsGameEntity!.setCategoryQuestion(category_question);
   }
 }
