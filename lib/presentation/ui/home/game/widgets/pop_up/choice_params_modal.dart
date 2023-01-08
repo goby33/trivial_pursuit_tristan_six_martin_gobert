@@ -41,7 +41,6 @@ class ChoiceParamsModal extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(0, 109, 119, 1),
                         ),
                       ),
                       ChoiceDifficulty(
@@ -51,7 +50,6 @@ class ChoiceParamsModal extends StatelessWidget {
                       Text("Your type of question : ",  style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(0, 109, 119, 1),
                       ),),
                       ChoiceTypeQuestion(
                         typeQuestionChoose:
@@ -60,7 +58,6 @@ class ChoiceParamsModal extends StatelessWidget {
                       Text("Your Category : ",  style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(0, 109, 119, 1),
                       ),),
                       ChoiceCategory(
                         categoryChoose:
