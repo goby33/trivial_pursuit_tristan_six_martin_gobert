@@ -42,5 +42,7 @@ class ListQuestionsFirebase {
     _listQuestionsCollection.doc(_getDate()).set(listQuestions);
   }
 
-  Future<void> delete() async {}
+  Future<void> delete({required String date}) async {
+    _listQuestionsCollection.doc(date).delete();
+  }
 }
