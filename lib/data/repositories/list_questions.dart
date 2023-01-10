@@ -34,14 +34,16 @@ class ListQuestionsRepositoryImpl {
   Future<ApiResponse<ListQuestionsModel>> getQuestionsOfTheDay() async {
     try {
       final resultFirebase = await _listQuestionFirebase!.getQuestionsOfToDay();
-      if (resultFirebase != null) {
-        return SuccessResponse(202.toString(), resultFirebase);
+      if (resultFirebase != null && resultFirebase.id == getDateToday()) {
+        return SuccessResponse(202.toString(), resultFirebase.data());
       } else {
         final listQuestionsModel = await _listQuestionApi?.getQuestions(
             params: _paramsGameEntity!.getPath());
         if (listQuestionsModel != null) {
-          //await _listQuestionFirebase!.delete();
           await _listQuestionFirebase!.post(listQuestions: listQuestionsModel);
+          if (resultFirebase != null) {
+            await _listQuestionFirebase!.delete(date : resultFirebase!.id);
+          }
           return SuccessResponse(200.toString(), listQuestionsModel);
         } else {
           return FailResponse(404.toString(),

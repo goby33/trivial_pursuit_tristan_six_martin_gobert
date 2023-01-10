@@ -13,4 +13,8 @@ class SettingCubit extends Cubit<SettingState> {
     }
 
   }
+
+  ThemeMode getThemeMode() {
+    return state.themeMode;
+  }
 }

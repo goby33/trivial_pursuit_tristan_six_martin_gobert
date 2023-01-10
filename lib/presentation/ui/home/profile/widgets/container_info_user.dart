@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/settings/settings_page.dart';
+import 'package:trivial_pursuit_six_tristan_gobert_martin/router.dart';
 
 class ContainerInfoUser extends StatelessWidget {
   final String name;
@@ -65,7 +67,9 @@ class ContainerInfoUser extends StatelessWidget {
             ],
           ),
           ElevatedButton.icon(
-            onPressed: () => context.push('/home/settings'),
+            onPressed: ()  => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()))
+                .then((value) async => await context.read<ProfileCubit>().getProfile()),
             icon: Icon(
               Icons.settings,
               size: 24.0,

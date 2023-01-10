@@ -1,5 +1,9 @@
 //Game
 // how many questions in the game
+import 'package:intl/intl.dart';
+
+const String NAME_FOLDERS = 'questionOfTheDay';
+
 const int NB_QUESTIONS = 10;
 // how many point for an easy question
 const int EASY_SCORE = 1;
@@ -23,7 +27,9 @@ enum TYPE_QUESTION {
 
 //get date of today
 String getDateToday() {
-  DateTime now = DateTime.now();;
-  DateTime date = new DateTime(now.year, now.month, now.day);
-  return '${date.year}-${date.month}-${date.day}';
+  // get date of today in format yyyy-MM-dd
+  DateTime today = DateTime.now();
+  final DateFormat formatter = DateFormat('yyyy-MM-dd');
+  return formatter.format(today);
 }
+

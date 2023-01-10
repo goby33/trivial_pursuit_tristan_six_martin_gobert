@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/auth_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/picker_photo_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/storage_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/data/repositories/user_model_repository_impl.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/picker_image_cubit.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/cubits/profile_cubit.dart';
-import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/states/picker_image_state.dart';
 import 'package:trivial_pursuit_six_tristan_gobert_martin/presentation/ui/home/profile/widgets/pop_up/pop_up_profile_photo.dart';
 
 class CirclePhoto extends StatelessWidget {
@@ -87,11 +85,11 @@ class CirclePhoto extends StatelessWidget {
         ),
         child: PopUpProfilePhoto(),
       ),
-    ).then((value) {
+    ).then((value) async {
       print(value);
       if (value != null) {
         if (value == "updated") {
-          buildContext.read<ProfileCubit>().getProfile();
+          await buildContext.read<ProfileCubit>().getProfile();
         }
       }
     });

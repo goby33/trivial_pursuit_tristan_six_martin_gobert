@@ -106,9 +106,10 @@ class SettingsPage extends StatelessWidget {
                     children: [
                       Text('Dark Mode'),
                       Switch(
-                        value: (ThemeMode.system == ThemeMode.dark),
-                        onChanged: (value) =>
-                            context.read<SettingCubit>().changeTheme(),
+                        value: context.read<SettingCubit>().getThemeMode() == ThemeMode.dark,
+                        onChanged: (value) {
+                          context.read<SettingCubit>().changeTheme();
+                        }
                       ),
                     ],
                   ),

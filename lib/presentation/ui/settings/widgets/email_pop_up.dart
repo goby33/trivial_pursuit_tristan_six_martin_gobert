@@ -61,6 +61,7 @@ class _EmailPopUpState extends State<EmailPopUp> {
                 height: 40,
                 child: TextField(
                   enabled: !(state is SettingsProfileStateLoading),
+                  obscureText: true,
                   controller: passwordController,
                   decoration: InputDecoration(
                     errorText: state.error,

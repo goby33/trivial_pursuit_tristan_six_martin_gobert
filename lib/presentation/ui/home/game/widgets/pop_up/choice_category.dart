@@ -15,7 +15,7 @@ class ChoiceCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 140,
       child: ListView(
         scrollDirection: Axis.vertical,
         children: listCategory.trivia_categories.map((category) {

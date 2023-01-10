@@ -12,4 +12,5 @@ class SettingState with _$SettingState {
     required ThemeMode themeMode,
   }) = _SettingState;
 
+
 }
