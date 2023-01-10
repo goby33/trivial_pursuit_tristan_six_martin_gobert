@@ -129,8 +129,8 @@ class AuthRepositoryImpl {
   Future<ApiResponse<String>> updatePassword(
       {required String password, required String oldPassword}) async {
     try {
-      final response_old_password =
-          await _authFirebase?.reauthenticate(email: _user!.email!, password: oldPassword);
+      final response_old_password = await _authFirebase?.reauthenticate(
+          email: _user!.email!, password: oldPassword);
       if (response_old_password == true) {
         await _authFirebase?.updatePassword(password: password);
         return SuccessResponse(402.toString(), "ok");
@@ -143,10 +143,16 @@ class AuthRepositoryImpl {
   }
 
   // delete account
-  Future<ApiResponse<void>> deleteAccount() async {
+  Future<ApiResponse<String>> deleteAccount({required String password}) async {
     try {
-      await _authFirebase?.deleteUser();
-      return SuccessResponse(402.toString(), null);
+      final response_old_password = await _authFirebase?.reauthenticate(
+          email: _user!.email!, password: password);
+      if (response_old_password == true) {
+        await _authFirebase?.deleteUser();
+        return SuccessResponse(402.toString(), "ok");
+      } else {
+        return FailResponse(0.toString(), failure: "Password failed");
+      }
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
     }

@@ -34,13 +34,13 @@ class UserModelRepositoryImpl {
     }
   }
 
-  Future<ApiResponse<void>> deleteUser({
+  Future<ApiResponse<String>> deleteUser({
     required String uid,
   }) async {
     try {
       await _userFirebase?.deleteUser(uid: uid);
       _userModel = null;
-      return SuccessResponse(402.toString(), null);
+      return SuccessResponse(402.toString(), "ok");
     } on FirebaseAuthException catch (e) {
       return FailResponse(e.code, failure: e.message);
     }

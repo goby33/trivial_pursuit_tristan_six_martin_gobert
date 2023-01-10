@@ -101,25 +101,29 @@ class SettingsProfileCubit extends Cubit<SettingsProfileState> {
 
   }
 
-  Future<void> deleteAccount() async {
+  Future<void> deleteAccount({
+  required String password
+}) async {
     emit(SettingsProfileStateLoading());
     final user = await authRepository.user;
     if (user != null) {
-      final delete_response = await authRepository.deleteAccount();
-      if (delete_response is SuccessResponse && delete_response.data != null) {
+      final delete_response = await authRepository.deleteAccount(password:  password);
+      if (delete_response is SuccessResponse) {
         final delete_user_model_response =
             await userModelRepositoryImpl.deleteUser(uid: user.uid);
-        if (delete_user_model_response is SuccessResponse &&
-            delete_user_model_response.data != null) {
-          emit(SettingsProfileStateSuccess());
+        if (delete_user_model_response is SuccessResponse) {
+          emit(SettingsProfileStateErrorUserNoConnected(
+            message: "User is null",
+            dateTime: DateTime.now(),
+          ));
         } else {
           emit(SettingsProfileStateFailed(
-              message: delete_user_model_response.toString(),
+              message: delete_user_model_response.failure.toString(),
               dateTime: DateTime.now()));
         }
       } else {
         emit(SettingsProfileStateFailed(
-          message: delete_response.toString(),
+          message: delete_response.failure.toString(),
           dateTime: DateTime.now(),
         ));
       }
